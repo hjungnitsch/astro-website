@@ -1,0 +1,17 @@
+id: m42
+slug: m42
+title: Orion Nebula
+catalogs:
+  messier: M42
+  ngc: NGC 1976
+type: emission-nebula
+constellation: Orion
+ra_deg: 83.8221
+dec_deg: -5.3911
+magnitude: 4.0
+angular_size_arcmin: "85 x 60"
+description: >
+  One of the brightest diffuse nebulae in the night sky and a common target for deep
+  sky astrophotography.
+aliases:
+  - Great Orion Nebula

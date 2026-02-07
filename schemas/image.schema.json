@@ -1,0 +1,244 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/image.schema.json",
+  "title": "Astro Image Metadata",
+  "description": "Schema for image detail pages and linked metadata.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "slug",
+    "title",
+    "date_utc",
+    "description",
+    "targets",
+    "equipment",
+    "capture",
+    "framing",
+    "files"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 3,
+      "pattern": "^[a-z0-9][a-z0-9_-]*$"
+    },
+    "slug": {
+      "type": "string",
+      "minLength": 3,
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3
+    },
+    "date_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lat": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "lon": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        }
+      }
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "targets": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9_-]*$"
+      }
+    },
+    "equipment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scope_id",
+        "mount_id",
+        "camera_id"
+      ],
+      "properties": {
+        "scope_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]*$"
+        },
+        "mount_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]*$"
+        },
+        "camera_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]*$"
+        },
+        "filter_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]*$"
+        }
+      }
+    },
+    "capture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "focal_length_mm",
+        "total_integration_s",
+        "subexposures"
+      ],
+      "properties": {
+        "focal_length_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "pixel_scale_arcsec_per_px": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "total_integration_s": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "subexposures": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "count",
+              "exposure_s"
+            ],
+            "properties": {
+              "filter": {
+                "type": "string",
+                "minLength": 1
+              },
+              "count": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "exposure_s": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            }
+          }
+        },
+        "gain": {
+          "type": "number"
+        },
+        "offset": {
+          "type": "number"
+        },
+        "bortle": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9
+        }
+      }
+    },
+    "framing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "center_ra_deg",
+        "center_dec_deg",
+        "rotation_deg",
+        "fov_width_deg",
+        "fov_height_deg"
+      ],
+      "properties": {
+        "center_ra_deg": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 360
+        },
+        "center_dec_deg": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "rotation_deg": {
+          "type": "number",
+          "minimum": -360,
+          "maximum": 360
+        },
+        "fov_width_deg": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "fov_height_deg": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "files": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "original_key",
+        "web_key",
+        "thumb_key"
+      ],
+      "properties": {
+        "original_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "web_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "thumb_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "full_jpeg_key": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "seo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "alt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "keywords": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+id: filter-optolong-lpro
+slug: optolong-lpro
+kind: filter
+brand: Optolong
+model: L-Pro
+summary: Broadband light-pollution reduction filter for OSC imaging.
+specs:
+  filter_type: broadband
+  size_inch: 2

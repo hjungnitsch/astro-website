@@ -1,0 +1,9 @@
+id: mount-heq5
+slug: heq5
+kind: mount
+brand: Sky-Watcher
+model: HEQ5 Pro
+summary: German equatorial mount used for guided long-exposure imaging.
+specs:
+  payload_kg: 13
+  mount_type: equatorial

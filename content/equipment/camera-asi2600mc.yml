@@ -1,0 +1,11 @@
+id: camera-asi2600mc
+slug: asi2600mc
+kind: camera
+brand: ZWO
+model: ASI2600MC Pro
+summary: Cooled one-shot-color camera with APS-C sensor.
+specs:
+  sensor: Sony IMX571
+  resolution_px: "6248x4176"
+  pixel_size_um: 3.76
+  cooled: true

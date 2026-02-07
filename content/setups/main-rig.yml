@@ -1,0 +1,6 @@
+id: setup-main-rig
+name: Main Deep Sky Rig
+scope_id: scope-esprit-100
+mount_id: mount-heq5
+camera_id: camera-asi2600mc
+filter_id: filter-optolong-lpro

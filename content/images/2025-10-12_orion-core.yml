@@ -1,0 +1,62 @@
+id: img_orion_core_20251012
+slug: orion-core
+title: Orion Nebula Core and Dust
+date_utc: 2025-10-12T23:10:00Z
+location:
+  name: Bavaria, Germany
+  lat: 48.1234
+  lon: 11.5678
+description: >
+  LRGB image of M42 focusing on the bright core and surrounding dust lanes.
+
+targets:
+  - m42
+  - ngc1977
+
+equipment:
+  scope_id: scope-esprit-100
+  mount_id: mount-heq5
+  camera_id: camera-asi2600mc
+  filter_id: filter-optolong-lpro
+
+capture:
+  focal_length_mm: 550
+  pixel_scale_arcsec_per_px: 1.35
+  total_integration_s: 14400
+  subexposures:
+    - filter: L
+      count: 40
+      exposure_s: 180
+    - filter: R
+      count: 20
+      exposure_s: 180
+    - filter: G
+      count: 20
+      exposure_s: 180
+    - filter: B
+      count: 20
+      exposure_s: 180
+  gain: 100
+  offset: 20
+  bortle: 4
+
+framing:
+  center_ra_deg: 83.8221
+  center_dec_deg: -5.3911
+  rotation_deg: 32.4
+  fov_width_deg: 2.1
+  fov_height_deg: 1.4
+
+files:
+  original_key: originals/img_orion_core_20251012/original.tif
+  web_key: web/img_orion_core_20251012/v1.webp
+  thumb_key: thumbs/img_orion_core_20251012/v1.webp
+  full_jpeg_key: full/img_orion_core_20251012/v1.jpg
+
+seo:
+  alt: Orion Nebula (M42) with surrounding dust lanes
+  keywords:
+    - orion nebula
+    - m42
+    - astrophotography
+    - deep sky

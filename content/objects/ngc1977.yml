@@ -1,0 +1,16 @@
+id: ngc1977
+slug: ngc1977
+title: Running Man Nebula
+catalogs:
+  ngc: NGC 1977
+type: reflection-nebula
+constellation: Orion
+ra_deg: 83.84
+dec_deg: -4.85
+magnitude: 7.0
+angular_size_arcmin: "40 x 25"
+description: >
+  Reflection nebula near Orion Nebula, often captured together in wide-field
+  compositions.
+aliases:
+  - The Running Man
