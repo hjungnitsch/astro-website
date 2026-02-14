@@ -26,8 +26,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--changed-from", help="Git revision to diff from")
     parser.add_argument("--changed-to", help="Git revision to diff to")
     parser.add_argument("--all", action="store_true", help="Process all image YAML files")
-    parser.add_argument("--thumb-size", type=int, default=500, help="Thumbnail long edge in px")
-    parser.add_argument("--web-size", type=int, default=2200, help="Web image long edge in px")
+    parser.add_argument("--thumb-size", type=int, default=600, help="Thumbnail long edge in px")
+    parser.add_argument("--web-size", type=int, default=2800, help="Web image long edge in px")
     return parser.parse_args()
 
 

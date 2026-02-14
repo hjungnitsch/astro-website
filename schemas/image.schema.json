@@ -7,7 +7,6 @@
   "additionalProperties": false,
   "required": [
     "id",
-    "slug",
     "title",
     "date",
     "capture_mode",
@@ -23,11 +22,6 @@
       "type": "string",
       "minLength": 3,
       "pattern": "^[a-z0-9][a-z0-9_-]*$"
-    },
-    "slug": {
-      "type": "string",
-      "minLength": 3,
-      "pattern": "^[a-z0-9][a-z0-9-]*$"
     },
     "title": {
       "type": "string",

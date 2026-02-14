@@ -9,7 +9,7 @@ interface Props {
 const { image } = Astro.props;
 ---
 
-<a class="image-card" href={`/images/${image.slug}`}>
+<a class="image-card" href={`/images/${image.id}`}>
   <img src={getImageAssetUrl(image, "thumb")} alt={image.seo?.alt ?? image.title} loading="lazy" />
   <div class="overlay">
     <strong>{image.title}</strong>

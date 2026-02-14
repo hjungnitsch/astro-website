@@ -17,7 +17,6 @@ const dateString = z.preprocess(
 
 const imageSchema = z.object({
   id: z.string(),
-  slug: z.string(),
   title: z.string(),
   date: dateString,
   capture_mode: z.enum(["deep_sky", "solar_system"]),
@@ -153,7 +152,18 @@ async function readYamlDirectory<T>(directory: string, schema: z.ZodType<T>): Pr
   return records;
 }
 
-function assertUnique(records: Array<{ id: string; slug: string }>, label: string): void {
+function assertUniqueId(records: Array<{ id: string }>, label: string): void {
+  const ids = new Set<string>();
+
+  for (const record of records) {
+    if (ids.has(record.id)) {
+      throw new Error(`Duplicate ${label} id: ${record.id}`);
+    }
+    ids.add(record.id);
+  }
+}
+
+function assertUniqueIdAndSlug(records: Array<{ id: string; slug: string }>, label: string): void {
   const ids = new Set<string>();
   const slugs = new Set<string>();
 
@@ -221,10 +231,10 @@ async function loadSiteData(): Promise<SiteData> {
     locations: sortedLocations
   };
 
-  assertUnique(data.images, "image");
-  assertUnique(data.objects, "object");
-  assertUnique(data.equipment, "equipment");
-  assertUnique(data.locations, "location");
+  assertUniqueId(data.images, "image");
+  assertUniqueIdAndSlug(data.objects, "object");
+  assertUniqueIdAndSlug(data.equipment, "equipment");
+  assertUniqueIdAndSlug(data.locations, "location");
   assertReferences(data);
 
   return data;
@@ -247,9 +257,9 @@ export async function getAllObjects(): Promise<ObjectEntry[]> {
   return objects;
 }
 
-export async function getImageBySlug(slug: string): Promise<ImageEntry | undefined> {
+export async function getImageById(id: string): Promise<ImageEntry | undefined> {
   const images = await getAllImages();
-  return images.find((image) => image.slug === slug);
+  return images.find((image) => image.id === id);
 }
 
 export async function getObjectBySlug(slug: string): Promise<ObjectEntry | undefined> {
@@ -283,7 +293,7 @@ export function getSkychartUrl(image: ImageEntry): string | null {
     return null;
   }
   const baseUrl = (import.meta.env.PUBLIC_IMAGE_BASE_URL ?? "https://img.astrocaptures.de").replace(/\/+$/, "");
-  return `${baseUrl}/charts/${image.id}/v${image.skychart.version}.jpg`;
+  return `${baseUrl}/charts/${image.id}/v${image.skychart.version}.webp`;
 }
 
 export function formatDate(date: string): string {

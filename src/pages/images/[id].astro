@@ -6,7 +6,7 @@ import {
   formatIntegrationSeconds,
   getAllImages,
   getImageAssetUrl,
-  getImageBySlug,
+  getImageById,
   getSiteData,
   getSkychartUrl,
   imageTotalIntegration
@@ -15,16 +15,16 @@ import {
 export async function getStaticPaths() {
   const images = await getAllImages();
   return images.map((image) => ({
-    params: { slug: image.slug }
+    params: { id: image.id }
   }));
 }
 
-const { slug } = Astro.params;
-if (!slug) {
-  throw new Error("Missing image slug");
+const { id } = Astro.params;
+if (!id) {
+  throw new Error("Missing image id");
 }
 
-const image = await getImageBySlug(slug);
+const image = await getImageById(id);
 if (!image) {
   return Astro.redirect("/gallery");
 }
@@ -53,7 +53,7 @@ const locationLon = location?.lon !== undefined ? location.lon.toFixed(4) : unde
   title={`${image.title} | AstroCaptures`}
   description={image.description ?? image.title}
   image={getImageAssetUrl(image, "web")}
-  canonicalPath={`/images/${image.slug}`}
+  canonicalPath={`/images/${image.id}`}
 >
   <section class="hero">
     <h1>{image.title}</h1>
