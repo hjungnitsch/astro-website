@@ -31,7 +31,7 @@ jobs:
 
       - name: Generate missing derivatives in R2
         env:
-          S3_URL: ${{ secrets.S3_URL }}
+          S3_URL: ${{ vars.S3_URL }}
           S3_ACCESS_KEY: ${{ secrets.S3_ACCESS_KEY }}
           S3_SECRET_KEY: ${{ secrets.S3_SECRET_KEY }}
         run: |
