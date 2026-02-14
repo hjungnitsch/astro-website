@@ -21,15 +21,15 @@ const items = await Promise.all(
     <p class="muted">Browse all imaged celestial objects and open their dedicated detail pages.</p>
   </section>
 
-  <div class="grid">
+  <div class="object-list">
     {
       items.map((object) => (
-        <a class="card" href={`/objects/${object.slug}`}>
-          <div class="card-content">
+        <a class="object-row" href={`/objects/${object.slug}`}>
+          <span class="object-meta">
             <strong>{object.title}</strong>
             <span class="muted">{object.object_type}</span>
-            <span>{object.imageCount} image{object.imageCount === 1 ? "" : "s"}</span>
-          </div>
+          </span>
+          <span class="count">{object.imageCount} image{object.imageCount === 1 ? "" : "s"}</span>
         </a>
       ))
     }

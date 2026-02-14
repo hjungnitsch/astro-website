@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { formatDate, getAllImages, getImageAssetUrl } from "../lib/content";
+import ImageCard from "../components/ImageCard.astro";
+import { getAllImages } from "../lib/content";
 
 const images = await getAllImages();
 const latest = images.slice(0, 6);
@@ -19,15 +20,7 @@ const latest = images.slice(0, 6);
     <h2 class="section-title">Latest Captures</h2>
     <div class="grid">
       {
-        latest.map((image) => (
-          <a class="card" href={`/images/${image.slug}`}>
-            <img src={getImageAssetUrl(image, "thumb")} alt={image.seo?.alt ?? image.title} loading="lazy" />
-            <div class="card-content">
-              <strong>{image.title}</strong>
-              <span class="muted">{formatDate(image.date)}</span>
-            </div>
-          </a>
-        ))
+        latest.map((image) => <ImageCard image={image} />)
       }
     </div>
   </section>

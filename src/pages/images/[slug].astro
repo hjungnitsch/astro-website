@@ -45,6 +45,8 @@ const filter = image.equipment.filter_id
 
 const totalIntegration = imageTotalIntegration(image);
 const skychartUrl = getSkychartUrl(image);
+const locationLat = location?.lat !== undefined ? location.lat.toFixed(4) : undefined;
+const locationLon = location?.lon !== undefined ? location.lon.toFixed(4) : undefined;
 ---
 
 <BaseLayout
@@ -59,80 +61,109 @@ const skychartUrl = getSkychartUrl(image);
     {image.description && <p>{image.description}</p>}
   </section>
 
-  <section class="detail-grid">
-    <article class="panel">
-      <img src={getImageAssetUrl(image, "web")} alt={image.seo?.alt ?? image.title} />
-      <a class="download-btn" href={getImageAssetUrl(image, "original")} download>
-        Download original JPG
-      </a>
+  <section class="image-stage">
+    <img
+      src={getImageAssetUrl(image, "web")}
+      alt={image.seo?.alt ?? image.title}
+      loading="eager"
+      fetchpriority="high"
+    />
+    <a class="download-btn" href={getImageAssetUrl(image, "original")} download>Download original JPG</a>
 
-      {skychartUrl && (
-        <div style="margin-top:1.2rem;">
-          <h3>Sky Chart</h3>
-          <img src={skychartUrl} alt={image.skychart?.caption ?? `Sky chart for ${image.title}`} loading="lazy" />
-          {image.skychart?.caption && <p class="muted">{image.skychart.caption}</p>}
-        </div>
-      )}
-    </article>
-
-    <aside class="panel meta-list">
-      <div>
-        <dt>Capture mode</dt>
-        <dd>{image.capture_mode.replace("_", " ")}</dd>
+    <dl class="meta-grid">
+      <div class="meta-tile">
+        <dt>Date</dt>
+        <dd>{formatDate(image.date)}</dd>
       </div>
-      <div>
-        <dt>Composition</dt>
-        <dd>{image.composition_type}</dd>
-      </div>
-      <div>
+      <div class="meta-tile">
         <dt>Location</dt>
         <dd>{location ? location.name : image.location_id}</dd>
+        {locationLat && locationLon && <small class="meta-sub">{locationLat}, {locationLon}</small>}
+        {location?.bortle && <small class="meta-sub">Bortle {location.bortle}</small>}
+        {location?.timezone && <small class="meta-sub">{location.timezone}</small>}
       </div>
-      <div>
+      <div class="meta-tile">
         <dt>Total integration</dt>
         <dd>{formatIntegrationSeconds(totalIntegration)}</dd>
       </div>
-      <div>
-        <dt>Objects</dt>
-        <dd class="pill-list">
-          {objectItems.map((item) => (
-            <a class="pill" href={`/objects/${item.slug}`}>{item.title}</a>
-          ))}
-        </dd>
+      <div class="meta-tile">
+        <dt>Composition</dt>
+        <dd>{image.composition_type}</dd>
       </div>
-      <div>
-        <dt>Equipment</dt>
-        <dd>
-          <div>{scope ? `${scope.brand} ${scope.model}` : image.equipment.scope_id}</div>
-          <div>{mount ? `${mount.brand} ${mount.model}` : image.equipment.mount_id}</div>
-          <div>{camera ? `${camera.brand} ${camera.model}` : image.equipment.camera_id}</div>
-          {filter && <div>{`${filter.brand} ${filter.model}`}</div>}
-        </dd>
-      </div>
-    </aside>
-  </section>
+    </dl>
 
-  <section class="panel" style="margin-top:1rem;">
-    <h2>Acquisitions</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Frames</th>
-          <th>Exposure</th>
-          <th>Integration</th>
-        </tr>
-      </thead>
-      <tbody>
-        {image.acquisitions.map((acquisition) => (
-          <tr>
-            <td>{formatDate(acquisition.date)}</td>
-            <td>{acquisition.frames}</td>
-            <td>{acquisition.exposure_s}s</td>
-            <td>{formatIntegrationSeconds(acquisitionIntegration(acquisition))}</td>
-          </tr>
+    <div class="panel" style="margin-top:0.9rem;">
+      <h2>Objects</h2>
+      <div class="pill-list" style="margin-top:0.7rem;">
+        {objectItems.map((item) => (
+          <a class="pill" href={`/objects/${item.slug}`}>{item.title}</a>
         ))}
-      </tbody>
-    </table>
+      </div>
+    </div>
+
+    <div class="detail-grid" style="margin-top:0.9rem;">
+      <section class="panel">
+        <h2>Acquisitions</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Frames</th>
+              <th>Exposure</th>
+              <th>Integration</th>
+            </tr>
+          </thead>
+          <tbody>
+            {image.acquisitions.map((acquisition) => (
+              <tr>
+                <td>{formatDate(acquisition.date)}</td>
+                <td>{acquisition.frames}</td>
+                <td>{acquisition.exposure_s}s</td>
+                <td>{formatIntegrationSeconds(acquisitionIntegration(acquisition))}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+
+      <aside class="panel meta-list">
+        <div>
+          <dt>Equipment</dt>
+          <dd class="equipment-list">
+            <div>
+              <span class="equip-label">Scope</span>
+              <span>{scope ? `${scope.brand} ${scope.model}` : image.equipment.scope_id}</span>
+            </div>
+            <div>
+              <span class="equip-label">Mount</span>
+              <span>{mount ? `${mount.brand} ${mount.model}` : image.equipment.mount_id}</span>
+            </div>
+            <div>
+              <span class="equip-label">Camera</span>
+              <span>{camera ? `${camera.brand} ${camera.model}` : image.equipment.camera_id}</span>
+            </div>
+            {filter && (
+              <div>
+                <span class="equip-label">Filter</span>
+                <span>{`${filter.brand} ${filter.model}`}</span>
+              </div>
+            )}
+          </dd>
+        </div>
+      </aside>
+    </div>
+
+    {skychartUrl && (
+      <section class="panel" style="margin-top:0.9rem;">
+        <h2>Sky Chart</h2>
+        <img
+          class="skychart-img"
+          src={skychartUrl}
+          alt={image.skychart?.caption ?? `Sky chart for ${image.title}`}
+          loading="lazy"
+        />
+        {image.skychart?.caption && <p class="muted">{image.skychart.caption}</p>}
+      </section>
+    )}
   </section>
 </BaseLayout>

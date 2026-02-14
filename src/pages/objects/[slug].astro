@@ -1,12 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import {
-  formatDate,
-  getAllObjects,
-  getImageAssetUrl,
-  getImagesForObject,
-  getObjectBySlug
-} from "../../lib/content";
+import ImageCard from "../../components/ImageCard.astro";
+import { getAllObjects, getImagesForObject, getObjectBySlug } from "../../lib/content";
 
 export async function getStaticPaths() {
   const objects = await getAllObjects();
@@ -46,15 +41,7 @@ const images = await getImagesForObject(object.id);
         <p class="muted">No images linked yet.</p>
       ) : (
         <div class="grid">
-          {images.map((image) => (
-            <a class="card" href={`/images/${image.slug}`}>
-              <img src={getImageAssetUrl(image, "thumb")} alt={image.seo?.alt ?? image.title} loading="lazy" />
-              <div class="card-content">
-                <strong>{image.title}</strong>
-                <span class="muted">{formatDate(image.date)}</span>
-              </div>
-            </a>
-          ))}
+          {images.map((image) => <ImageCard image={image} />)}
         </div>
       )
     }

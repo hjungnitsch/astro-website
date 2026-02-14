@@ -1,0 +1,22 @@
+---
+import type { ImageEntry } from "../lib/content";
+import { formatDate, getImageAssetUrl } from "../lib/content";
+
+interface Props {
+  image: ImageEntry;
+}
+
+const { image } = Astro.props;
+---
+
+<a class="image-card" href={`/images/${image.slug}`}>
+  <img src={getImageAssetUrl(image, "thumb")} alt={image.seo?.alt ?? image.title} loading="lazy" />
+  <div class="overlay">
+    <strong>{image.title}</strong>
+    <span class="muted">{formatDate(image.date)}</span>
+  </div>
+</a>
+<div class="meta-caption">
+  <strong>{image.title}</strong>
+  <span class="muted">{formatDate(image.date)}</span>
+</div>

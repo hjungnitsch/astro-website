@@ -18,6 +18,12 @@ const {
 const siteUrl = Astro.site ?? new URL("https://astrocaptures.de");
 const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
 const ogImage = image ? new URL(image, siteUrl).toString() : undefined;
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+const navItems = [
+  { href: "/gallery", label: "Gallery" },
+  { href: "/objects", label: "Objects" }
+];
 ---
 
 <!doctype html>
@@ -43,9 +49,17 @@ const ogImage = image ? new URL(image, siteUrl).toString() : undefined;
   <body>
     <header class="site-header">
       <a class="brand" href="/">AstroCaptures</a>
-      <nav>
-        <a href="/gallery">Gallery</a>
-        <a href="/objects">Objects</a>
+      <nav class="site-nav" aria-label="Main">
+        {
+          navItems.map((item) => {
+            const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
+            return (
+              <a class:list={{ active }} href={item.href} aria-current={active ? "page" : undefined}>
+                {item.label}
+              </a>
+            );
+          })
+        }
       </nav>
     </header>
     <main class="content"><slot /></main>
