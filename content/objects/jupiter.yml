@@ -1,0 +1,12 @@
+id: jupiter
+slug: jupiter
+title: Jupiter
+domain: solar_system
+object_type: planet
+catalogs:
+  iau: Jupiter
+description: >
+  The largest planet in the Solar System. Planetary images often show cloud bands,
+  storms, and the Great Red Spot.
+aliases:
+  - Jupiter with GRS

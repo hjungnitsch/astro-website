@@ -1,0 +1,17 @@
+id: ngc2174
+slug: ngc2174
+title: Monkey Head Nebula
+domain: deep_sky
+object_type: emission-nebula
+catalogs:
+  ngc: NGC 2174
+constellation: Orion
+ra_deg: 92.875
+dec_deg: 20.5667
+angular_size_arcmin: "40 x 40"
+description: >
+  Emission nebula in Orion commonly called the Monkey Head Nebula, frequently
+  imaged in hydrogen-alpha and broadband deep-sky sessions.
+aliases:
+  - Sharpless 252
+  - Sh2-252

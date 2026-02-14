@@ -1,0 +1,18 @@
+id: m45
+slug: m45
+title: Pleiades
+domain: deep_sky
+object_type: open-cluster
+catalogs:
+  messier: M45
+  ngc: NGC 1432
+constellation: Taurus
+ra_deg: 56.75
+dec_deg: 24.1167
+magnitude: 1.6
+angular_size_arcmin: "110 x 110"
+description: >
+  Bright open star cluster in Taurus, often photographed as a blue reflection
+  nebula complex around the main stars.
+aliases:
+  - Seven Sisters

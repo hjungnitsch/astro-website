@@ -1,9 +1,9 @@
-id: mount-heq5
-slug: heq5
+id: mount-sxp2
+slug: sxp2
 kind: mount
-brand: Sky-Watcher
-model: HEQ5 Pro
+brand: Vixen
+model: SXP2
 summary: German equatorial mount used for guided long-exposure imaging.
 specs:
-  payload_kg: 13
+  payload_kg: 17
   mount_type: equatorial

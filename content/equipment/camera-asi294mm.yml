@@ -1,0 +1,11 @@
+id: camera-asi294mm
+slug: asi294mm
+kind: camera
+brand: ZWO
+model: ASI294MM
+summary: Uncooled monochrome camera for solar system imaging.
+specs:
+  sensor: Sony IMX492
+  resolution_px: "8288x5644"
+  pixel_size_um: 2.32
+  cooled: false

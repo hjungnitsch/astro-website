@@ -1,0 +1,9 @@
+id: filter-antlia-triband
+slug: antlia-triband
+kind: filter
+brand: Antlia
+model: Triband RGB
+summary: Multiband light-pollution reduction filter for OSC imaging that better isolates the OIII and H-alpha lines.
+specs:
+  filter_type: multiband
+  size_inch: 2

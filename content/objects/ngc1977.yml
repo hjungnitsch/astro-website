@@ -1,9 +1,10 @@
 id: ngc1977
 slug: ngc1977
 title: Running Man Nebula
+domain: deep_sky
+object_type: reflection-nebula
 catalogs:
   ngc: NGC 1977
-type: reflection-nebula
 constellation: Orion
 ra_deg: 83.84
 dec_deg: -4.85

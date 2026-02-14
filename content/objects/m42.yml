@@ -1,10 +1,11 @@
 id: m42
 slug: m42
 title: Orion Nebula
+domain: deep_sky
+object_type: emission-nebula
 catalogs:
   messier: M42
   ngc: NGC 1976
-type: emission-nebula
 constellation: Orion
 ra_deg: 83.8221
 dec_deg: -5.3911

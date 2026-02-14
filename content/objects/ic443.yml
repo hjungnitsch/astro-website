@@ -1,0 +1,17 @@
+id: ic443
+slug: ic443
+title: Jellyfish Nebula
+domain: deep_sky
+object_type: supernova-remnant
+catalogs:
+  ic: IC 443
+constellation: Gemini
+ra_deg: 94.2125
+dec_deg: 22.5083
+angular_size_arcmin: "50 x 40"
+description: >
+  Supernova remnant in Gemini known for filamentary structures and strong
+  narrowband emission, often photographed with nearby IC 444 and Sh2 regions.
+aliases:
+  - Sharpless 248
+  - Sh2-248

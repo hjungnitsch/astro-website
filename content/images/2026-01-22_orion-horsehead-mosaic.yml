@@ -1,0 +1,57 @@
+id: img_orion_horsehead_mosaic_20251102
+slug: orion-horsehead-mosaic
+title: Orion Horsehead Widefield Mosaic
+date: 2026-01-22
+capture_mode: deep_sky
+composition_type: mosaic
+location_id: loc-bielefeld-backyard
+description: >
+  Widefield two panel Mosaic covering the Orion Nebula, Horsehead Nebula and Flame Nebula with surrounding dust and
+  reflection nebulae. The frames for the mosaic were taken over a period of 4 nights.
+
+targets:
+  - m42
+  - ngc1977
+  - barnard33
+  - ngc2024
+
+equipment:
+  scope_id: scope-sqa-106
+  mount_id: mount-sxp2
+  camera_id: camera-asi2400mc
+  filter_id: filter-antlia-triband
+
+acquisitions:
+  - session_id: 2026-01-19-night1
+    date: 2026-01-19
+    frames: 185
+    exposure_s: 45
+    filter_id: filter-antlia-triband
+  - session_id: 2026-01-20-night2
+    date: 2026-01-20
+    frames: 185
+    exposure_s: 45
+    filter_id: filter-antlia-triband
+  - session_id: 2026-01-21-night3
+    date: 2026-01-21
+    frames: 185
+    exposure_s: 45
+    filter_id: filter-antlia-triband
+  - session_id: 2026-01-22-night4
+    date: 2026-01-22
+    frames: 185
+    exposure_s: 45
+    filter_id: filter-antlia-triband
+
+assets:
+  version: 1
+
+seo:
+  alt: Widefield Orion and Horsehead mosaic with M42 and Barnard33
+  keywords:
+    - orion horsehead mosaic
+    - m42
+    - ngc1977
+    - barnard33
+    - ngc2024
+    - deep sky astrophotography

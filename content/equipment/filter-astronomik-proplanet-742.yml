@@ -1,0 +1,9 @@
+id: filter-astronomik-proplanet-742
+slug: astronomik-proplanet-742
+kind: filter
+brand: Astronomik
+model: Proplanet 742
+summary: IR Pass Filter for wavelengths of more than 742 nm.
+specs:
+  filter_type: ir-pass
+  size_inch: 1.25

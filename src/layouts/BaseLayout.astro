@@ -1,0 +1,56 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonicalPath?: string;
+}
+
+const {
+  title,
+  description = "Astrophotography images, capture details, and celestial object references.",
+  image,
+  canonicalPath = Astro.url.pathname
+} = Astro.props;
+
+const siteUrl = Astro.site ?? new URL("https://astrocaptures.de");
+const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
+const ogImage = image ? new URL(image, siteUrl).toString() : undefined;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/">AstroCaptures</a>
+      <nav>
+        <a href="/gallery">Gallery</a>
+        <a href="/objects">Objects</a>
+      </nav>
+    </header>
+    <main class="content"><slot /></main>
+    <footer class="site-footer">
+      <p>AstroCaptures · Deep Sky + Solar System</p>
+    </footer>
+  </body>
+</html>

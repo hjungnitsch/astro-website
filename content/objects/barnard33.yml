@@ -1,0 +1,16 @@
+id: barnard33
+slug: barnard33
+title: Horsehead Nebula
+domain: deep_sky
+object_type: dark-nebula
+catalogs:
+  barnard: B33
+constellation: Orion
+ra_deg: 85.25
+dec_deg: -2.45
+angular_size_arcmin: "8 x 6"
+description: >
+  Dark nebula silhouette in front of the bright emission region IC 434, one of
+  the most iconic deep-sky astrophotography targets.
+aliases:
+  - B33

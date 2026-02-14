@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { formatDate, getAllImages, getImageAssetUrl } from "../lib/content";
+
+const images = await getAllImages();
+---
+
+<BaseLayout
+  title="Gallery | AstroCaptures"
+  description="All astrophotography images sorted by capture date, including deep-sky and solar-system work."
+  canonicalPath="/gallery"
+>
+  <section class="hero">
+    <h1>Gallery</h1>
+    <p class="muted">All captures sorted by date, including deep-sky and solar-system sessions.</p>
+  </section>
+
+  <div class="grid">
+    {
+      images.map((image) => (
+        <a class="card" href={`/images/${image.slug}`}>
+          <img src={getImageAssetUrl(image, "thumb")} alt={image.seo?.alt ?? image.title} loading="lazy" />
+          <div class="card-content">
+            <strong>{image.title}</strong>
+            <span class="muted">{formatDate(image.date)}</span>
+          </div>
+        </a>
+      ))
+  </div>
+</BaseLayout>

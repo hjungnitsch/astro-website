@@ -1,0 +1,39 @@
+id: img_jupiter_europa_20260118
+slug: jupiter-europa
+title: Jupiter and europa
+date: 2026-01-18
+capture_mode: solar_system
+composition_type: single
+location_id: loc-bielefeld-backyard
+description: >
+  High frame-rate planetary capture with derotation and sharpening to reveal cloud
+  bands. The moon europa can be seen casting a shadow on the planet.
+
+targets:
+  - jupiter
+
+equipment:
+  scope_id: scope-t350-350
+  mount_id: mount-ecliptica
+  camera_id: camera-asi294mm
+
+capture:
+  focal_length_mm: 2550
+  notes: 1.5x Barlow used for planetary image scale.
+
+acquisitions:
+  - session_id: 2026-01-18-ser-01
+    date: 2026-01-18
+    frames: 12000
+    exposure_s: 0.008
+    notes: Best 20 percent frames stacked.
+
+assets:
+  version: 1
+
+seo:
+  alt: Jupiter with europa
+  keywords:
+    - jupiter
+    - europa
+    - planetary astrophotography

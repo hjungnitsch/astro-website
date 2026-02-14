@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import datetime
 import json
 import sys
 from pathlib import Path
@@ -28,6 +29,7 @@ SCHEMA_MAP = {
     "images": "image.schema.json",
     "objects": "object.schema.json",
     "equipment": "equipment.schema.json",
+    "locations": "location.schema.json",
     "setups": "setup.schema.json",
 }
 
@@ -39,7 +41,19 @@ def load_json(path: Path) -> dict[str, Any]:
 
 def load_yaml(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as handle:
-        return yaml.safe_load(handle)
+        return normalize_yaml_types(yaml.safe_load(handle))
+
+
+def normalize_yaml_types(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {key: normalize_yaml_types(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [normalize_yaml_types(item) for item in value]
+    if isinstance(value, datetime.datetime):
+        return value.isoformat()
+    if isinstance(value, datetime.date):
+        return value.isoformat()
+    return value
 
 
 def yaml_files_in(directory: Path) -> list[Path]:
@@ -54,7 +68,7 @@ def main() -> int:
     parser.add_argument(
         "--content-dir",
         default="content",
-        help="Directory containing images/objects/equipment/setups YAML folders.",
+        help="Directory containing images/objects/equipment/locations/setups YAML folders.",
     )
     parser.add_argument(
         "--schemas-dir",

@@ -1,0 +1,11 @@
+id: camera-asi2400mc
+slug: asi2400mc
+kind: camera
+brand: ZWO
+model: ASI2400MC Pro
+summary: Cooled one-shot-color camera with full frame sensor.
+specs:
+  sensor: Sony IMX410
+  resolution_px: "6072x4042"
+  pixel_size_um: 5.94
+  cooled: true

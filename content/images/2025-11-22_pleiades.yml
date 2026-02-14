@@ -1,0 +1,39 @@
+id: img_pleiades_20251122
+slug: pleiades
+title: Pleiades
+date: 2025-11-22
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld-backyard
+description: >
+  Widefield image of the Pleiades star cluster (M45) taken with the SQA-106 scope
+  and ASI2400MC camera.
+
+targets:
+  - m45
+
+equipment:
+  scope_id: scope-sqa-106
+  mount_id: mount-sxp2
+  camera_id: camera-asi2400mc
+
+acquisitions:
+  - session_id: 2025-11-22-main
+    date: 2025-11-22
+    frames: 261
+    exposure_s: 90
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+  caption: Plate-solved field chart exported from PixInsight.
+
+seo:
+  alt: Pleiades (M45) widefield with surrounding dust
+  keywords:
+    - pleiades
+    - m45
+    - astrophotography
+    - deep sky

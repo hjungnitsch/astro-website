@@ -1,0 +1,62 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  formatDate,
+  getAllObjects,
+  getImageAssetUrl,
+  getImagesForObject,
+  getObjectBySlug
+} from "../../lib/content";
+
+export async function getStaticPaths() {
+  const objects = await getAllObjects();
+  return objects.map((object) => ({
+    params: { slug: object.slug }
+  }));
+}
+
+const { slug } = Astro.params;
+if (!slug) {
+  throw new Error("Missing object slug");
+}
+
+const object = await getObjectBySlug(slug);
+if (!object) {
+  return Astro.redirect("/objects");
+}
+
+const images = await getImagesForObject(object.id);
+---
+
+<BaseLayout
+  title={`${object.title} | Objects | AstroCaptures`}
+  description={object.description}
+  canonicalPath={`/objects/${object.slug}`}
+>
+  <section class="hero">
+    <h1>{object.title}</h1>
+    <p class="muted">{object.object_type}</p>
+    <p>{object.description}</p>
+  </section>
+
+  <section>
+    <h2 class="section-title">Images</h2>
+    {
+      images.length === 0 ? (
+        <p class="muted">No images linked yet.</p>
+      ) : (
+        <div class="grid">
+          {images.map((image) => (
+            <a class="card" href={`/images/${image.slug}`}>
+              <img src={getImageAssetUrl(image, "thumb")} alt={image.seo?.alt ?? image.title} loading="lazy" />
+              <div class="card-content">
+                <strong>{image.title}</strong>
+                <span class="muted">{formatDate(image.date)}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </section>
+</BaseLayout>

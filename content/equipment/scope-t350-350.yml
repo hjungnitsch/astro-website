@@ -1,0 +1,9 @@
+id: scope-t350-350
+slug: t350-350
+kind: scope
+brand: Taurus
+model: T350
+summary: 350mm dobsonian reflector.
+specs:
+  aperture_mm: 350
+  focal_length_mm: 1700

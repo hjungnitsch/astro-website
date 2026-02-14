@@ -2,14 +2,15 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.com/schemas/object.schema.json",
   "title": "Astro Object Metadata",
-  "description": "Schema for deep-sky object detail pages.",
+  "description": "Schema for deep-sky and solar-system object detail pages.",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "id",
     "slug",
     "title",
-    "type",
+    "domain",
+    "object_type",
     "description"
   ],
   "properties": {
@@ -27,16 +28,24 @@
       "type": "string",
       "minLength": 2
     },
+    "domain": {
+      "type": "string",
+      "enum": [
+        "deep_sky",
+        "solar_system"
+      ]
+    },
+    "object_type": {
+      "type": "string",
+      "minLength": 2,
+      "pattern": "^[a-z0-9-]+$"
+    },
     "catalogs": {
       "type": "object",
       "additionalProperties": {
         "type": "string",
         "minLength": 1
       }
-    },
-    "type": {
-      "type": "string",
-      "minLength": 2
     },
     "constellation": {
       "type": "string",

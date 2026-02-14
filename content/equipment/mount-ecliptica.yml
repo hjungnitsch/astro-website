@@ -1,0 +1,9 @@
+id: mount-ecliptica
+slug: ecliptica
+kind: mount
+brand: Asterion
+model: Ecliptica
+summary: Equatorial platform for dobsonian telescopes.
+specs:
+  payload_kg: 50
+  mount_type: eq-platform

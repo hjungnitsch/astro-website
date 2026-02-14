@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { formatDate, getAllImages, getImageAssetUrl } from "../lib/content";
+
+const images = await getAllImages();
+const latest = images.slice(0, 6);
+---
+
+<BaseLayout title="AstroCaptures" description="Astrophotography gallery with deep-sky and solar-system captures.">
+  <section class="hero">
+    <h1>Astrophotography by Hendrik</h1>
+    <p class="muted">
+      A growing collection of deep-sky and solar-system images with capture details,
+      equipment references, and object pages.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="section-title">Latest Captures</h2>
+    <div class="grid">
+      {
+        latest.map((image) => (
+          <a class="card" href={`/images/${image.slug}`}>
+            <img src={getImageAssetUrl(image, "thumb")} alt={image.seo?.alt ?? image.title} loading="lazy" />
+            <div class="card-content">
+              <strong>{image.title}</strong>
+              <span class="muted">{formatDate(image.date)}</span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,9 @@
+id: scope-sqa-106
+slug: sqa-106
+kind: scope
+brand: Askar
+model: SQA 106
+summary: 106 mm apochromatic refractor for wide-field deep sky imaging.
+specs:
+  aperture_mm: 106
+  focal_length_mm: 509
