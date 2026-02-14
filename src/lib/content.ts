@@ -326,3 +326,36 @@ export function acquisitionIntegration(acquisition: ImageEntry["acquisitions"][n
 export function imageTotalIntegration(image: ImageEntry): number {
   return image.acquisitions.reduce((total, acquisition) => total + acquisitionIntegration(acquisition), 0);
 }
+
+export function imageTotalFrames(image: ImageEntry): number {
+  return image.acquisitions.reduce((total, acquisition) => total + acquisition.frames, 0);
+}
+
+export function imageSessionCount(image: ImageEntry): number {
+  return image.acquisitions.length;
+}
+
+export function imageExposureSummary(image: ImageEntry): { value: string; secondary?: string } {
+  const totalFrames = imageTotalFrames(image);
+  const uniqueExposureSeconds = Array.from(new Set(image.acquisitions.map((acquisition) => acquisition.exposure_s)));
+
+  if (uniqueExposureSeconds.length === 1) {
+    return {
+      value: `${totalFrames} x ${uniqueExposureSeconds[0]}s`
+    };
+  }
+
+  return {
+    value: "Mixed exposures",
+    secondary: `${totalFrames} frames`
+  };
+}
+
+export function imageFocalLengthMm(image: ImageEntry, scope?: EquipmentEntry): number | null {
+  if (typeof image.capture?.focal_length_mm === "number") {
+    return image.capture.focal_length_mm;
+  }
+
+  const candidate = scope?.specs?.focal_length_mm;
+  return typeof candidate === "number" ? candidate : null;
+}

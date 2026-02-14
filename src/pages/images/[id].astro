@@ -9,6 +9,9 @@ import {
   getImageById,
   getSiteData,
   getSkychartUrl,
+  imageExposureSummary,
+  imageFocalLengthMm,
+  imageSessionCount,
   imageTotalIntegration
 } from "../../lib/content";
 
@@ -44,6 +47,9 @@ const filter = image.equipment.filter_id
   : undefined;
 
 const totalIntegration = imageTotalIntegration(image);
+const sessionCount = imageSessionCount(image);
+const exposureSummary = imageExposureSummary(image);
+const focalLengthMm = imageFocalLengthMm(image, scope);
 const skychartUrl = getSkychartUrl(image);
 const locationLat = location?.lat !== undefined ? location.lat.toFixed(4) : undefined;
 const locationLon = location?.lon !== undefined ? location.lon.toFixed(4) : undefined;
@@ -72,10 +78,6 @@ const locationLon = location?.lon !== undefined ? location.lon.toFixed(4) : unde
 
     <dl class="meta-grid">
       <div class="meta-tile">
-        <dt>Date</dt>
-        <dd>{formatDate(image.date)}</dd>
-      </div>
-      <div class="meta-tile">
         <dt>Location</dt>
         <dd>{location ? location.name : image.location_id}</dd>
         {locationLat && locationLon && <small class="meta-sub">{locationLat}, {locationLon}</small>}
@@ -83,12 +85,20 @@ const locationLon = location?.lon !== undefined ? location.lon.toFixed(4) : unde
         {location?.timezone && <small class="meta-sub">{location.timezone}</small>}
       </div>
       <div class="meta-tile">
-        <dt>Total integration</dt>
+        <dt>Integration</dt>
         <dd>{formatIntegrationSeconds(totalIntegration)}</dd>
+        <small class="meta-sub">
+          {sessionCount} session{sessionCount === 1 ? "" : "s"}
+        </small>
       </div>
       <div class="meta-tile">
-        <dt>Composition</dt>
-        <dd>{image.composition_type}</dd>
+        <dt>Capture summary</dt>
+        <dd>{exposureSummary.value}</dd>
+        {exposureSummary.secondary && <small class="meta-sub">{exposureSummary.secondary}</small>}
+      </div>
+      <div class="meta-tile">
+        <dt>Focal length</dt>
+        <dd>{focalLengthMm !== null ? `${focalLengthMm} mm` : "-"}</dd>
       </div>
     </dl>
 
