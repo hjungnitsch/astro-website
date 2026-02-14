@@ -84,10 +84,11 @@ def load_yaml(path: Path) -> dict[str, Any]:
 
 
 def derive_keys(image_id: str, version: int) -> dict[str, str]:
+    file_base = f"{image_id}_v{version}"
     return {
-        "original": f"originals/{image_id}/v{version}.jpg",
-        "web": f"web/{image_id}/v{version}.webp",
-        "thumb": f"thumbs/{image_id}/v{version}.webp",
+        "original": f"originals/{image_id}/{file_base}.jpg",
+        "web": f"web/{image_id}/{file_base}.webp",
+        "thumb": f"thumbs/{image_id}/{file_base}.webp",
     }
 
 

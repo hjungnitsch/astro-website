@@ -19,10 +19,10 @@ AstroCaptures is a static Astro website for publishing astrophotography images w
 
 Image asset keys are derived from `image.id` and `assets.version`:
 
-- `originals/{id}/v{version}.jpg`
-- `web/{id}/v{version}.webp`
-- `thumbs/{id}/v{version}.webp`
-- optional skychart: `charts/{id}/v{skychart.version}.webp`
+- `originals/{id}/{id}_v{version}.jpg`
+- `web/{id}/{id}_v{version}.webp`
+- `thumbs/{id}/{id}_v{version}.webp`
+- optional skychart: `charts/{id}/{id}_v{skychart.version}.webp`
 
 ## Local development
 

@@ -274,13 +274,14 @@ export async function getImagesForObject(objectId: string): Promise<ImageEntry[]
 
 export function getImageAssetKey(image: ImageEntry, kind: "original" | "web" | "thumb"): string {
   const version = image.assets.version;
+  const fileBase = `${image.id}_v${version}`;
   if (kind === "original") {
-    return `originals/${image.id}/v${version}.jpg`;
+    return `originals/${image.id}/${fileBase}.jpg`;
   }
   if (kind === "web") {
-    return `web/${image.id}/v${version}.webp`;
+    return `web/${image.id}/${fileBase}.webp`;
   }
-  return `thumbs/${image.id}/v${version}.webp`;
+  return `thumbs/${image.id}/${fileBase}.webp`;
 }
 
 export function getImageAssetUrl(image: ImageEntry, kind: "original" | "web" | "thumb"): string {
@@ -293,7 +294,7 @@ export function getSkychartUrl(image: ImageEntry): string | null {
     return null;
   }
   const baseUrl = (import.meta.env.PUBLIC_IMAGE_BASE_URL ?? "https://img.astrocaptures.de").replace(/\/+$/, "");
-  return `${baseUrl}/charts/${image.id}/v${image.skychart.version}.webp`;
+  return `${baseUrl}/charts/${image.id}/${image.id}_v${image.skychart.version}.webp`;
 }
 
 export function formatDate(date: string): string {

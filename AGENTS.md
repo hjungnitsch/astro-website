@@ -11,10 +11,10 @@
 
 Image storage paths are deterministic and derived from YAML values:
 
-- original: `originals/{image.id}/v{assets.version}.jpg`
-- web: `web/{image.id}/v{assets.version}.webp`
-- thumb: `thumbs/{image.id}/v{assets.version}.webp`
-- skychart: `charts/{image.id}/v{skychart.version}.webp`
+- original: `originals/{image.id}/{image.id}_v{assets.version}.jpg`
+- web: `web/{image.id}/{image.id}_v{assets.version}.webp`
+- thumb: `thumbs/{image.id}/{image.id}_v{assets.version}.webp`
+- skychart: `charts/{image.id}/{image.id}_v{skychart.version}.webp`
 
 When an image is reprocessed, increment `assets.version` (and `skychart.version` if needed).
 
