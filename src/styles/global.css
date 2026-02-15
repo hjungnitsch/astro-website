@@ -325,8 +325,9 @@ th {
 }
 
 .equipment-list {
+  margin-top: 1rem;
   display: grid;
-  gap: 0.52rem;
+  gap: 1rem;
 }
 
 .equipment-list div {
