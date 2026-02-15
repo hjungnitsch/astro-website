@@ -5,6 +5,9 @@
   --bg-0: #0b0d10;
   --bg-1: #111418;
   --bg-2: #191d22;
+  --surface-0: rgba(24, 29, 36, 0.92);
+  --surface-1: rgba(29, 35, 44, 0.94);
+  --surface-border: rgba(236, 241, 252, 0.16);
   --text-0: #edf0f6;
   --text-1: #b2b9c6;
   --text-2: #7d8798;
@@ -417,7 +420,7 @@ th {
 }
 
 .equipment-jump a {
-  border: 1px solid var(--line);
+  border: 1px solid var(--surface-border);
   border-radius: 999px;
   padding: 0.22rem 0.64rem;
   font-size: 0.86rem;
@@ -450,11 +453,17 @@ th {
 }
 
 .equipment-tile {
-  background: rgba(11, 17, 27, 0.72);
+  background: var(--surface-0);
+  border: 1px solid var(--surface-border);
   border-radius: 12px;
   padding: 0.72rem 0.8rem;
   display: grid;
   gap: 0.45rem;
+}
+
+.equipment-tile:hover {
+  background: var(--surface-1);
+  border-color: rgba(47, 224, 208, 0.38);
 }
 
 .equipment-tile header {
@@ -493,7 +502,7 @@ th {
 }
 
 .object-jump a {
-  border: 1px solid var(--line);
+  border: 1px solid var(--surface-border);
   border-radius: 999px;
   padding: 0.22rem 0.64rem;
   font-size: 0.86rem;
@@ -533,7 +542,7 @@ th {
 }
 
 .count-badge {
-  border: 1px solid var(--line);
+  border: 1px solid var(--surface-border);
   border-radius: 999px;
   font-size: 0.72rem;
   color: var(--text-1);
@@ -552,7 +561,8 @@ th {
 }
 
 .object-tile {
-  background: rgba(11, 17, 27, 0.72);
+  background: var(--surface-0);
+  border: 1px solid var(--surface-border);
   border-radius: 12px;
   padding: 0.6rem 0.72rem;
   display: grid;
@@ -562,7 +572,8 @@ th {
 }
 
 .object-tile:hover {
-  background: rgba(16, 25, 39, 0.95);
+  background: var(--surface-1);
+  border-color: rgba(47, 224, 208, 0.38);
 }
 
 .object-meta {
