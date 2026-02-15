@@ -21,6 +21,7 @@ const ogImage = image ? new URL(image, siteUrl).toString() : undefined;
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 const navItems = [
+  { href: "/", label: "Home" },
   { href: "/gallery", label: "Gallery" },
   { href: "/objects", label: "Objects" }
 ];
