@@ -16,6 +16,7 @@ equipment:
   mount_id: mount-sxp2
   camera_id: camera-asi2400mc
 
+
 acquisitions:
   - session_id: 2025-11-22-main
     date: 2025-11-22

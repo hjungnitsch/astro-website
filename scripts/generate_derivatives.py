@@ -163,7 +163,7 @@ def ensure_derivatives(client: Any, bucket: str, image_yaml: Path, thumb_size: i
     original_data = fetch_original(client, bucket, keys["original"])
 
     if missing_web:
-        web_image = resize_to_long_edge(original_data, web_size, quality=82)
+        web_image = resize_to_long_edge(original_data, web_size, quality=100)
         upload_object(client, bucket, keys["web"], web_image)
         print(f"  uploaded {keys['web']}")
 
