@@ -294,7 +294,7 @@ export function getSkychartUrl(image: ImageEntry): string | null {
     return null;
   }
   const baseUrl = (import.meta.env.PUBLIC_IMAGE_BASE_URL ?? "https://img.astrocaptures.de").replace(/\/+$/, "");
-  return `${baseUrl}/charts/${image.id}/${image.id}_v${image.skychart.version}.webp`;
+  return `${baseUrl}/charts/${image.id}/${image.id}_v${image.skychart.version}.jpg`;
 }
 
 export function formatDate(date: string): string {

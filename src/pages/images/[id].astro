@@ -53,6 +53,26 @@ const focalLengthMm = imageFocalLengthMm(image, scope);
 const skychartUrl = getSkychartUrl(image);
 const locationLat = location?.lat !== undefined ? location.lat.toFixed(4) : undefined;
 const locationLon = location?.lon !== undefined ? location.lon.toFixed(4) : undefined;
+
+const scopeAperture = typeof scope?.specs?.aperture_mm === "number" ? scope.specs.aperture_mm : null;
+const scopeNativeFocal = typeof scope?.specs?.focal_length_mm === "number" ? scope.specs.focal_length_mm : null;
+const scopeFRatioValue =
+  typeof scope?.specs?.focal_ratio === "number"
+    ? scope.specs.focal_ratio
+    : scopeAperture && scopeNativeFocal
+      ? scopeNativeFocal / scopeAperture
+      : null;
+const scopeFRatio = scopeFRatioValue ? `f/${scopeFRatioValue.toFixed(1)}` : null;
+
+const mountTypeRaw = typeof mount?.specs?.mount_type === "string" ? mount.specs.mount_type : null;
+const mountType = mountTypeRaw ? mountTypeRaw.replace(/-/g, " ") : null;
+
+const filterTypeRaw = typeof filter?.specs?.filter_type === "string" ? filter.specs.filter_type : null;
+const filterType = filterTypeRaw ? filterTypeRaw.replace(/-/g, " ") : null;
+const filterSizeInch =
+  typeof filter?.specs?.size_inch === "number" || typeof filter?.specs?.size_inch === "string"
+    ? `${filter.specs.size_inch}\"`
+    : null;
 ---
 
 <BaseLayout
@@ -111,42 +131,40 @@ const locationLon = location?.lon !== undefined ? location.lon.toFixed(4) : unde
       </div>
     </div>
 
-    <div class="detail-grid" style="margin-top:0.9rem;">
-      <section class="panel">
-        <h2>Acquisitions</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Frames</th>
-              <th>Exposure</th>
-              <th>Integration</th>
-            </tr>
-          </thead>
-          <tbody>
-            {image.acquisitions.map((acquisition) => (
-              <tr>
-                <td>{formatDate(acquisition.date)}</td>
-                <td>{acquisition.frames}</td>
-                <td>{acquisition.exposure_s}s</td>
-                <td>{formatIntegrationSeconds(acquisitionIntegration(acquisition))}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
+    <div class:list={{ "detail-grid": true, "detail-grid-single": !skychartUrl }} style="margin-top:0.9rem;">
+      {skychartUrl && (
+        <section class="panel">
+          <h2>Sky Chart</h2>
+          <img
+            class="skychart-img"
+            src={skychartUrl}
+            alt={image.skychart?.caption ?? `Sky chart for ${image.title}`}
+            loading="lazy"
+          />
+        </section>
+      )}
 
       <aside class="panel meta-list">
         <div>
-          <dt>Equipment</dt>
+          <h2>Equipment</h2>
           <dd class="equipment-list">
             <div>
               <span class="equip-label">Scope</span>
               <span>{scope ? `${scope.brand} ${scope.model}` : image.equipment.scope_id}</span>
+              {(scopeAperture || scopeNativeFocal || scopeFRatio) && (
+                <small class="equipment-spec">
+                  {scopeAperture && `${scopeAperture}mm`}
+                  {scopeAperture && scopeNativeFocal && " · "}
+                  {scopeNativeFocal && `${scopeNativeFocal}mm`}
+                  {(scopeAperture || scopeNativeFocal) && scopeFRatio && " · "}
+                  {scopeFRatio && scopeFRatio}
+                </small>
+              )}
             </div>
             <div>
               <span class="equip-label">Mount</span>
               <span>{mount ? `${mount.brand} ${mount.model}` : image.equipment.mount_id}</span>
+              {mountType && <small class="equipment-spec">{mountType}</small>}
             </div>
             <div>
               <span class="equip-label">Camera</span>
@@ -156,6 +174,13 @@ const locationLon = location?.lon !== undefined ? location.lon.toFixed(4) : unde
               <div>
                 <span class="equip-label">Filter</span>
                 <span>{`${filter.brand} ${filter.model}`}</span>
+                {(filterType || filterSizeInch) && (
+                  <small class="equipment-spec">
+                    {filterType}
+                    {filterType && filterSizeInch && " · "}
+                    {filterSizeInch}
+                  </small>
+                )}
               </div>
             )}
           </dd>
@@ -163,17 +188,31 @@ const locationLon = location?.lon !== undefined ? location.lon.toFixed(4) : unde
       </aside>
     </div>
 
-    {skychartUrl && (
-      <section class="panel" style="margin-top:0.9rem;">
-        <h2>Sky Chart</h2>
-        <img
-          class="skychart-img"
-          src={skychartUrl}
-          alt={image.skychart?.caption ?? `Sky chart for ${image.title}`}
-          loading="lazy"
-        />
-        {image.skychart?.caption && <p class="muted">{image.skychart.caption}</p>}
-      </section>
-    )}
+    <details class="panel capture-details" style="margin-top:0.9rem;">
+      <summary>
+        Capture details
+        <span class="muted">{sessionCount} sessions · {exposureSummary.value}</span>
+      </summary>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Frames</th>
+            <th>Exposure</th>
+            <th>Integration</th>
+          </tr>
+        </thead>
+        <tbody>
+          {image.acquisitions.map((acquisition) => (
+            <tr>
+              <td>{formatDate(acquisition.date)}</td>
+              <td>{acquisition.frames}</td>
+              <td>{acquisition.exposure_s}s</td>
+              <td>{formatIntegrationSeconds(acquisitionIntegration(acquisition))}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </details>
   </section>
 </BaseLayout>

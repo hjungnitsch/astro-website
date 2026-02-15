@@ -27,7 +27,6 @@ assets:
 
 skychart:
   version: 1
-  caption: Plate-solved field chart exported from PixInsight.
 
 seo:
   alt: Pleiades (M45) widefield with surrounding dust.

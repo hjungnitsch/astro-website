@@ -9,6 +9,88 @@ const items = await Promise.all(
     imageCount: (await getImagesForObject(object.id)).length
   }))
 );
+
+type DomainKey = "deep_sky" | "solar_system";
+
+const domainConfig: Record<
+  DomainKey,
+  {
+    label: string;
+    anchor: string;
+    groups: string[];
+  }
+> = {
+  deep_sky: {
+    label: "Deep Sky",
+    anchor: "deep-sky",
+    groups: ["Nebulae", "Dark Nebulae", "Supernova Remnants", "Galaxies", "Star Clusters", "Other"]
+  },
+  solar_system: {
+    label: "Solar System",
+    anchor: "solar-system",
+    groups: ["Planets", "Moon", "Sun", "Other"]
+  }
+};
+
+function groupLabelForType(domain: DomainKey, objectType: string): string {
+  if (domain === "deep_sky") {
+    if (["emission-nebula", "reflection-nebula", "planetary-nebula"].includes(objectType)) {
+      return "Nebulae";
+    }
+    if (objectType === "dark-nebula") {
+      return "Dark Nebulae";
+    }
+    if (objectType === "supernova-remnant") {
+      return "Supernova Remnants";
+    }
+    if (["galaxy", "galaxy-group"].includes(objectType)) {
+      return "Galaxies";
+    }
+    if (["open-cluster", "globular-cluster"].includes(objectType)) {
+      return "Star Clusters";
+    }
+    return "Other";
+  }
+
+  if (objectType === "planet") {
+    return "Planets";
+  }
+  if (objectType === "moon") {
+    return "Moon";
+  }
+  if (objectType === "sun") {
+    return "Sun";
+  }
+  return "Other";
+}
+
+const groupedByDomain = (Object.keys(domainConfig) as DomainKey[]).map((domain) => {
+  const config = domainConfig[domain];
+  const domainItems = items.filter((item) => item.domain === domain).sort((a, b) => a.title.localeCompare(b.title));
+
+  const grouped = new Map<string, typeof domainItems>();
+  for (const group of config.groups) {
+    grouped.set(group, []);
+  }
+
+  for (const item of domainItems) {
+    const label = groupLabelForType(domain, item.object_type);
+    grouped.get(label)?.push(item);
+  }
+
+  const visibleGroups = config.groups
+    .map((label) => ({
+      label,
+      items: grouped.get(label) ?? []
+    }))
+    .filter((group) => group.items.length > 0);
+
+  return {
+    ...config,
+    groups: visibleGroups,
+    objectCount: visibleGroups.reduce((count, group) => count + group.items.length, 0)
+  };
+});
 ---
 
 <BaseLayout
@@ -21,17 +103,48 @@ const items = await Promise.all(
     <p class="muted">Browse all imaged celestial objects and open their dedicated detail pages.</p>
   </section>
 
-  <div class="object-list">
+  <div class="object-jump">
+    <span class="muted">Jump to:</span>
     {
-      items.map((object) => (
-        <a class="object-row" href={`/objects/${object.slug}`}>
-          <span class="object-meta">
-            <strong>{object.title}</strong>
-            <span class="muted">{object.object_type}</span>
-          </span>
-          <span class="count">{object.imageCount} image{object.imageCount === 1 ? "" : "s"}</span>
+      groupedByDomain.map((domain) => (
+        <a href={`#${domain.anchor}`}>
+          {domain.label}
+          <span class="count-badge">{domain.objectCount}</span>
         </a>
       ))
     }
   </div>
+
+  {
+    groupedByDomain.map((domain) => (
+      <section id={domain.anchor} class="object-domain">
+        <h2>
+          {domain.label}
+          <span class="count-badge">{domain.objectCount}</span>
+        </h2>
+
+        {
+          domain.groups.map((group) => (
+            <div class="object-group">
+              <h3 class="object-group-title">
+                {group.label}
+                <span class="count-badge">{group.items.length}</span>
+              </h3>
+              <div class="object-grid">
+                {group.items.map((object) => (
+                  <a class="object-tile" href={`/objects/${object.slug}`}>
+                    <span class="object-meta">
+                      <strong>{object.title}</strong>
+                      <span class="muted">{object.object_type}</span>
+                    </span>
+                    <span class="count-badge inline">{object.imageCount} image{object.imageCount === 1 ? "" : "s"}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </section>
+    ))
+  }
 </BaseLayout>

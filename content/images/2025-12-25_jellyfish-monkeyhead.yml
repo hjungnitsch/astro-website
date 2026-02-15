@@ -30,7 +30,6 @@ assets:
 
 skychart:
   version: 1
-  caption: Plate-solved field chart exported from PixInsight.
 
 seo:
   alt: Widefield image of the Jellyfish and Monkeyhead Nebula.

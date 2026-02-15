@@ -45,6 +45,9 @@ acquisitions:
 assets:
   version: 1
 
+skychart:
+  version: 1
+
 seo:
   alt: Widefield Orion and Horsehead mosaic with M42 and Barnard33.
   keywords:
