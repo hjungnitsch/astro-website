@@ -325,7 +325,6 @@ th {
 }
 
 .equipment-list {
-  margin-top: 1rem;
   display: grid;
   gap: 1rem;
 }
@@ -347,6 +346,7 @@ th {
   text-transform: uppercase;
   font-size: 0.72rem;
   letter-spacing: 0.06em;
+  margin-bottom: 1rem;
 }
 
 .skychart-img {
