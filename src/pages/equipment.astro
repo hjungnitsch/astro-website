@@ -1,0 +1,159 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getSiteData, type EquipmentEntry } from "../lib/content";
+
+type EquipmentKind = EquipmentEntry["kind"];
+
+const kindConfig: Array<{ kind: EquipmentKind; label: string; anchor: string }> = [
+  { kind: "scope", label: "Scopes", anchor: "scopes" },
+  { kind: "mount", label: "Mounts", anchor: "mounts" },
+  { kind: "camera", label: "Cameras", anchor: "cameras" },
+  { kind: "filter", label: "Filters", anchor: "filters" }
+];
+
+const { equipment, images } = await getSiteData();
+
+const usageCountById = new Map<string, number>();
+for (const image of images) {
+  const refs = [
+    image.equipment.scope_id,
+    image.equipment.mount_id,
+    image.equipment.camera_id,
+    image.equipment.filter_id
+  ].filter(Boolean) as string[];
+
+  for (const id of refs) {
+    usageCountById.set(id, (usageCountById.get(id) ?? 0) + 1);
+  }
+}
+
+function toReadable(value: string): string {
+  return value
+    .replace(/-/g, " ")
+    .split(" ")
+    .map((token) => token.charAt(0).toUpperCase() + token.slice(1))
+    .join(" ");
+}
+
+function getNumberSpec(entry: EquipmentEntry, key: string): number | null {
+  const value = entry.specs?.[key];
+  return typeof value === "number" ? value : null;
+}
+
+function getStringSpec(entry: EquipmentEntry, key: string): string | null {
+  const value = entry.specs?.[key];
+  return typeof value === "string" ? value : null;
+}
+
+function getBooleanSpec(entry: EquipmentEntry, key: string): boolean | null {
+  const value = entry.specs?.[key];
+  return typeof value === "boolean" ? value : null;
+}
+
+function getSpecLines(entry: EquipmentEntry): string[] {
+  if (entry.kind === "scope") {
+    const aperture = getNumberSpec(entry, "aperture_mm");
+    const focalLength = getNumberSpec(entry, "focal_length_mm");
+    const focalRatio = getNumberSpec(entry, "focal_ratio") ?? (aperture && focalLength ? focalLength / aperture : null);
+
+    const parts = [
+      aperture ? `${aperture}mm aperture` : null,
+      focalLength ? `${focalLength}mm focal length` : null,
+      focalRatio ? `f/${focalRatio.toFixed(1)}` : null
+    ].filter(Boolean) as string[];
+
+    return parts.length > 0 ? [parts.join(" · ")] : [];
+  }
+
+  if (entry.kind === "mount") {
+    const mountType = getStringSpec(entry, "mount_type");
+    const payload = getNumberSpec(entry, "payload_kg");
+    const parts = [mountType ? toReadable(mountType) : null, payload ? `${payload}kg payload` : null].filter(Boolean) as string[];
+    return parts.length > 0 ? [parts.join(" · ")] : [];
+  }
+
+  if (entry.kind === "camera") {
+    const sensor = getStringSpec(entry, "sensor");
+    const resolution = getStringSpec(entry, "resolution_px");
+    const pixelSize = getNumberSpec(entry, "pixel_size_um");
+    const cooled = getBooleanSpec(entry, "cooled");
+
+    const lines = [
+      [sensor, resolution].filter(Boolean).join(" · "),
+      [pixelSize ? `${pixelSize}um pixels` : null, cooled === null ? null : cooled ? "Cooled" : "Uncooled"]
+        .filter(Boolean)
+        .join(" · ")
+    ].filter((line) => line.length > 0);
+
+    return lines;
+  }
+
+  const filterType = getStringSpec(entry, "filter_type");
+  const size = getNumberSpec(entry, "size_inch");
+  const parts = [filterType ? toReadable(filterType) : null, size ? `${size}\"` : null].filter(Boolean) as string[];
+  return parts.length > 0 ? [parts.join(" · ")] : [];
+}
+
+const grouped = kindConfig
+  .map((section) => {
+    const items = equipment.filter((entry) => entry.kind === section.kind);
+    return {
+      ...section,
+      items,
+      count: items.length
+    };
+  })
+  .filter((section) => section.items.length > 0);
+---
+
+<BaseLayout
+  title="Equipment | AstroCaptures"
+  description="Overview of all imaging equipment grouped by type, with usage counts and key specifications."
+  canonicalPath="/equipment"
+>
+  <section class="hero">
+    <h1>Equipment</h1>
+    <p class="muted">A complete overview of the current setups and accessories used in published captures.</p>
+  </section>
+
+  <div class="equipment-jump">
+    <span class="muted">Jump to:</span>
+    {
+      grouped.map((group) => (
+        <a href={`#${group.anchor}`}>
+          {group.label}
+          <span class="count-badge">{group.count}</span>
+        </a>
+      ))
+    }
+  </div>
+
+  {
+    grouped.map((group) => (
+      <section id={group.anchor} class="equipment-section">
+        <h2>
+          {group.label}
+          <span class="count-badge">{group.count}</span>
+        </h2>
+        <div class="equipment-grid">
+          {group.items.map((item) => (
+            <article class="equipment-tile">
+              <header>
+                <h3>{`${item.brand} ${item.model}`}</h3>
+                <span class="count-badge inline">
+                  {usageCountById.get(item.id) ?? 0} image{(usageCountById.get(item.id) ?? 0) === 1 ? "" : "s"}
+                </span>
+              </header>
+              <p class="muted">{item.summary}</p>
+              <div class="equipment-spec-lines">
+                {getSpecLines(item).map((line) => (
+                  <small>{line}</small>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    ))
+  }
+</BaseLayout>
