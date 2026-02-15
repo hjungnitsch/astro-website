@@ -257,6 +257,11 @@ export async function getAllObjects(): Promise<ObjectEntry[]> {
   return objects;
 }
 
+export async function getAllEquipment(): Promise<EquipmentEntry[]> {
+  const { equipment } = await getSiteData();
+  return equipment;
+}
+
 export async function getImageById(id: string): Promise<ImageEntry | undefined> {
   const images = await getAllImages();
   return images.find((image) => image.id === id);
