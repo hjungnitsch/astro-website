@@ -1,0 +1,16 @@
+id: ic1805
+slug: ic1805
+title: Heart Nebula
+domain: deep_sky
+object_type: emission-nebula
+catalogs:
+  ic: IC 1805
+constellation: Cassiopeia
+ra_deg: 38.5
+dec_deg: 61.45
+angular_size_arcmin: "150 x 150"
+description: >
+  Large emission nebula in Cassiopeia, part of the Heart and Soul complex.
+  Frequently imaged in narrowband and dual-band workflows.
+aliases:
+  - Heart Nebula

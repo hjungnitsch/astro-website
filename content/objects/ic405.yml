@@ -1,0 +1,16 @@
+id: ic405
+slug: ic405
+title: Flaming Star Nebula
+domain: deep_sky
+object_type: emission-nebula
+catalogs:
+  ic: IC 405
+constellation: Auriga
+ra_deg: 79.1833
+dec_deg: 34.4167
+angular_size_arcmin: "37 x 19"
+description: >
+  Emission and reflection nebula in Auriga illuminated by the star AE Aurigae.
+  It is a popular deep-sky target often captured together with nearby IC 410.
+aliases:
+  - Flaming Star

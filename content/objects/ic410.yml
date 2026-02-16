@@ -1,0 +1,17 @@
+id: ic410
+slug: ic410
+title: Tadpoles Nebula
+domain: deep_sky
+object_type: emission-nebula
+catalogs:
+  ic: IC 410
+constellation: Auriga
+ra_deg: 79.3833
+dec_deg: 33.0667
+angular_size_arcmin: "40 x 30"
+description: >
+  Emission nebula in Auriga known for the dark "tadpole" structures (Bok globules)
+  silhouetted against glowing hydrogen.
+aliases:
+  - Tadpoles
+  - NGC 1893 region

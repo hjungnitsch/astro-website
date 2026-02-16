@@ -1,0 +1,41 @@
+id: img_20251211_flaming_star
+title: Flaming Star and Tadpoles Nebula
+date: 2025-12-11
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Widefield image of Flaming Star (IC 405) and Tadpoles Nebula (IC 410).
+
+targets:
+  - ic405
+  - ic410
+
+equipment:
+  scope_id: scope-sqa-106
+  mount_id: mount-sxp2
+  camera_id: camera-asi2400mc
+  filter_id: filter-antlia-triband
+
+acquisitions:
+  - session_id: 2025-12-11-main
+    date: 2025-12-11
+    frames: 133
+    exposure_s: 180
+    filter_id: filter-antlia-triband
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Widefield image of the Flaming Star and Tadpoles Nebula.
+  keywords:
+    - flaming star nebula
+    - tadpoles nebula
+    - ic405
+    - ic410
+    - astrophotography
+    - deep sky

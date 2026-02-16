@@ -1,0 +1,43 @@
+id: img_20251002_heart_nebula
+title: Heart Nebula
+date: 2025-10-02
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of the Heart Nebula (IC 1805) taken with the SQA-106 scope.
+
+targets:
+  - ic1805
+
+equipment:
+  scope_id: scope-sqa-106
+  mount_id: mount-sxp2
+  camera_id: camera-asi2400mc
+  filter_id: filter-antlia-triband
+
+acquisitions:
+  - session_id: 2025-10-01-main
+    date: 2025-10-01
+    frames: 108
+    exposure_s: 180
+    filter_id: filter-antlia-triband
+  - session_id: 2025-10-02-main
+    date: 2025-10-02
+    frames: 100
+    exposure_s: 180
+    filter_id: filter-antlia-triband
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of the Heart Nebula.
+  keywords:
+    - heart nebula
+    - ic1805
+    - astrophotography
+    - deep sky
