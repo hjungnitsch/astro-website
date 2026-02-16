@@ -15,6 +15,7 @@ equipment:
   scope_id: scope-t350-350
   mount_id: mount-ecliptica
   camera_id: camera-asi294mm
+  filter_id: filter-astronomik-proplanet-742
 
 capture:
   focal_length_mm: 2550
