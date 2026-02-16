@@ -1,8 +1,9 @@
-id: loc-bielefeld-backyard
-slug: bielefeld-backyard
-name: Bielefeld Backyard
-lat: 52.0295
-lon: 8.6062
+id: loc-bielefeld
+slug: bielefeld
+name: Bielefeld
+country: Germany
+lat: 52.03
+lon: 8.60
 bortle: 5
 timezone: Europe/Berlin
 description: Home location used for most deep-sky and planetary sessions.

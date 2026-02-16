@@ -14,7 +14,6 @@
     "location_id",
     "targets",
     "equipment",
-    "acquisitions",
     "assets"
   ],
   "properties": {
@@ -115,14 +114,11 @@
     },
     "acquisitions": {
       "type": "array",
-      "minItems": 1,
       "items": {
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "date",
-          "frames",
-          "exposure_s"
+          "date"
         ],
         "properties": {
           "session_id": {
@@ -237,5 +233,33 @@
         }
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "capture_mode": {
+            "const": "deep_sky"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "acquisitions"
+        ],
+        "properties": {
+          "acquisitions": {
+            "minItems": 1,
+            "items": {
+              "required": [
+                "date",
+                "frames",
+                "exposure_s"
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
 }

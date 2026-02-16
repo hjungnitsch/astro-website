@@ -44,13 +44,13 @@ const imageSchema = z.object({
       z.object({
         session_id: z.string().optional(),
         date: dateString,
-        frames: z.number().int().positive(),
-        exposure_s: z.number().positive(),
+        frames: z.number().int().positive().optional(),
+        exposure_s: z.number().positive().optional(),
         filter_id: z.string().optional(),
         notes: z.string().optional()
       })
     )
-    .min(1),
+    .optional(),
   framing: z
     .object({
       center_ra_deg: z.number(),
@@ -75,6 +75,27 @@ const imageSchema = z.object({
       keywords: z.array(z.string()).optional()
     })
     .optional()
+}).superRefine((image, context) => {
+  if (image.capture_mode === "deep_sky") {
+    if (!image.acquisitions || image.acquisitions.length === 0) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["acquisitions"],
+        message: "Deep sky images must include at least one acquisition."
+      });
+      return;
+    }
+
+    image.acquisitions.forEach((acquisition, index) => {
+      if (typeof acquisition.frames !== "number" || typeof acquisition.exposure_s !== "number") {
+        context.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["acquisitions", index],
+          message: "Deep sky acquisitions require both frames and exposure_s."
+        });
+      }
+    });
+  }
 });
 
 const objectSchema = z.object({
@@ -107,6 +128,7 @@ const locationSchema = z.object({
   id: z.string(),
   slug: z.string(),
   name: z.string(),
+  country: z.string().min(2),
   lat: z.number(),
   lon: z.number(),
   bortle: z.number().int().min(1).max(9).optional(),
@@ -299,7 +321,7 @@ export function getSkychartUrl(image: ImageEntry): string | null {
     return null;
   }
   const baseUrl = (import.meta.env.PUBLIC_IMAGE_BASE_URL ?? "https://img.astrocaptures.de").replace(/\/+$/, "");
-  return `${baseUrl}/charts/${image.id}/${image.id}_v${image.skychart.version}.jpg`;
+  return `${baseUrl}/charts/${image.id}/${image.id}_v${image.skychart.version}.webp`;
 }
 
 export function formatDate(date: string): string {
@@ -324,25 +346,66 @@ export function formatIntegrationSeconds(totalSeconds: number): string {
   return `${seconds}s`;
 }
 
-export function acquisitionIntegration(acquisition: ImageEntry["acquisitions"][number]): number {
+type DetailedAcquisition = {
+  session_id?: string;
+  date: string;
+  frames: number;
+  exposure_s: number;
+  filter_id?: string;
+  notes?: string;
+};
+
+export function getDetailedAcquisitions(image: ImageEntry): DetailedAcquisition[] {
+  if (!image.acquisitions) {
+    return [];
+  }
+
+  return image.acquisitions.filter(
+    (acquisition): acquisition is DetailedAcquisition =>
+      typeof acquisition.frames === "number" && typeof acquisition.exposure_s === "number"
+  );
+}
+
+export function acquisitionIntegration(acquisition: DetailedAcquisition): number {
   return acquisition.frames * acquisition.exposure_s;
 }
 
-export function imageTotalIntegration(image: ImageEntry): number {
-  return image.acquisitions.reduce((total, acquisition) => total + acquisitionIntegration(acquisition), 0);
+export function imageTotalIntegration(image: ImageEntry): number | null {
+  const acquisitions = getDetailedAcquisitions(image);
+  if (acquisitions.length === 0) {
+    return null;
+  }
+  return acquisitions.reduce((total, acquisition) => total + acquisitionIntegration(acquisition), 0);
 }
 
-export function imageTotalFrames(image: ImageEntry): number {
-  return image.acquisitions.reduce((total, acquisition) => total + acquisition.frames, 0);
+export function imageTotalFrames(image: ImageEntry): number | null {
+  const acquisitions = getDetailedAcquisitions(image);
+  if (acquisitions.length === 0) {
+    return null;
+  }
+  return acquisitions.reduce((total, acquisition) => total + acquisition.frames, 0);
 }
 
-export function imageSessionCount(image: ImageEntry): number {
-  return image.acquisitions.length;
+export function imageSessionCount(image: ImageEntry): number | null {
+  const acquisitions = getDetailedAcquisitions(image);
+  if (acquisitions.length === 0) {
+    return null;
+  }
+  return acquisitions.length;
 }
 
-export function imageExposureSummary(image: ImageEntry): { value: string; secondary?: string } {
+export function imageExposureSummary(image: ImageEntry): { value: string; secondary?: string } | null {
+  const acquisitions = getDetailedAcquisitions(image);
+  if (acquisitions.length === 0) {
+    return null;
+  }
+
   const totalFrames = imageTotalFrames(image);
-  const uniqueExposureSeconds = Array.from(new Set(image.acquisitions.map((acquisition) => acquisition.exposure_s)));
+  if (totalFrames === null) {
+    return null;
+  }
+
+  const uniqueExposureSeconds = Array.from(new Set(acquisitions.map((acquisition) => acquisition.exposure_s)));
 
   if (uniqueExposureSeconds.length === 1) {
     return {

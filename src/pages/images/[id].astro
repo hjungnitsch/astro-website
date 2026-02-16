@@ -7,6 +7,7 @@ import {
   getAllImages,
   getImageAssetUrl,
   getImageById,
+  getDetailedAcquisitions,
   getSiteData,
   getSkychartUrl,
   imageExposureSummary,
@@ -49,6 +50,7 @@ const filter = image.equipment.filter_id
 const totalIntegration = imageTotalIntegration(image);
 const sessionCount = imageSessionCount(image);
 const exposureSummary = imageExposureSummary(image);
+const detailedAcquisitions = getDetailedAcquisitions(image);
 const focalLengthMm = imageFocalLengthMm(image, scope);
 const skychartUrl = getSkychartUrl(image);
 const locationLat = location?.lat !== undefined ? location.lat.toFixed(4) : undefined;
@@ -73,6 +75,10 @@ const filterSizeInch =
   typeof filter?.specs?.size_inch === "number" || typeof filter?.specs?.size_inch === "string"
     ? `${filter.specs.size_inch}\"`
     : null;
+
+const showCaptureTile = totalIntegration !== null && sessionCount !== null && exposureSummary !== null;
+const showCaptureDetails = detailedAcquisitions.length > 0;
+const effectiveFRatio = scopeAperture && focalLengthMm ? focalLengthMm / scopeAperture : null;
 ---
 
 <BaseLayout
@@ -99,27 +105,27 @@ const filterSizeInch =
     <dl class="meta-grid">
       <div class="meta-tile">
         <dt>Location</dt>
-        <dd>{location ? location.name : image.location_id}</dd>
-        {locationLat && locationLon && <small class="meta-sub">{locationLat}, {locationLon}</small>}
+        <dd>{location ? `${location.name}, ${location.country}` : image.location_id}</dd>
+        {locationLat && locationLon && <small class="meta-sub">lat: {locationLat}, long: {locationLon}</small>}
         {location?.bortle && <small class="meta-sub">Bortle {location.bortle}</small>}
-        {location?.timezone && <small class="meta-sub">{location.timezone}</small>}
       </div>
-      <div class="meta-tile">
-        <dt>Integration</dt>
-        <dd>{formatIntegrationSeconds(totalIntegration)}</dd>
-        <small class="meta-sub">
-          {sessionCount} session{sessionCount === 1 ? "" : "s"}
-        </small>
-      </div>
-      <div class="meta-tile">
-        <dt>Capture summary</dt>
-        <dd>{exposureSummary.value}</dd>
-        {exposureSummary.secondary && <small class="meta-sub">{exposureSummary.secondary}</small>}
-      </div>
-      <div class="meta-tile">
-        <dt>Focal length</dt>
-        <dd>{focalLengthMm !== null ? `${focalLengthMm} mm` : "-"}</dd>
-      </div>
+      {showCaptureTile && (
+        <div class="meta-tile">
+          <dt>Capture</dt>
+          <dd>{formatIntegrationSeconds(totalIntegration!)}</dd>
+          <small class="meta-sub">
+            {sessionCount!} session{sessionCount === 1 ? "" : "s"} · {exposureSummary!.value}
+          </small>
+          {exposureSummary!.secondary && <small class="meta-sub">{exposureSummary!.secondary}</small>}
+        </div>
+      )}
+      {focalLengthMm !== null && (
+        <div class="meta-tile">
+          <dt>Focal length</dt>
+          <dd>{`${focalLengthMm} mm`}</dd>
+          {effectiveFRatio !== null && <small class="meta-sub">{`f/${effectiveFRatio.toFixed(1)}`}</small>}
+        </div>
+      )}
     </dl>
 
     <div class="panel" style="margin-top:0.9rem;">
@@ -188,31 +194,30 @@ const filterSizeInch =
       </aside>
     </div>
 
-    <details class="panel capture-details" style="margin-top:0.9rem;">
-      <summary>
-        Capture details
-        <span class="muted">{sessionCount} sessions · {exposureSummary.value}</span>
-      </summary>
-      <table>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Frames</th>
-            <th>Exposure</th>
-            <th>Integration</th>
-          </tr>
-        </thead>
-        <tbody>
-          {image.acquisitions.map((acquisition) => (
+    {showCaptureDetails && (
+      <details class="panel capture-details" style="margin-top:0.9rem;">
+        <summary>Capture details</summary>
+        <table>
+          <thead>
             <tr>
-              <td>{formatDate(acquisition.date)}</td>
-              <td>{acquisition.frames}</td>
-              <td>{acquisition.exposure_s}s</td>
-              <td>{formatIntegrationSeconds(acquisitionIntegration(acquisition))}</td>
+              <th>Date</th>
+              <th>Frames</th>
+              <th>Exposure</th>
+              <th>Integration</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </details>
+          </thead>
+          <tbody>
+            {detailedAcquisitions.map((acquisition) => (
+              <tr>
+                <td>{formatDate(acquisition.date)}</td>
+                <td>{acquisition.frames}</td>
+                <td>{acquisition.exposure_s}s</td>
+                <td>{formatIntegrationSeconds(acquisitionIntegration(acquisition))}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </details>
+    )}
   </section>
 </BaseLayout>

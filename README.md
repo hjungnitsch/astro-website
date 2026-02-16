@@ -17,6 +17,30 @@ AstroCaptures is a static Astro website for publishing astrophotography images w
 - `content/equipment/*.yml`
 - `content/locations/*.yml`
 
+Image capture detail conventions:
+
+- Deep-sky images include detailed `acquisitions` with `frames` and `exposure_s`.
+- Solar-system images can omit detailed `acquisitions` when historical capture stats are unavailable.
+
+Example (deep sky with capture stats):
+
+```yaml
+id: img_20251226_orion_widefield
+capture_mode: deep_sky
+acquisitions:
+  - date: 2025-12-26
+    frames: 275
+    exposure_s: 45
+```
+
+Example (solar system without capture stats):
+
+```yaml
+id: img_20260118_jupiter_europa
+capture_mode: solar_system
+# acquisitions omitted when stats are unavailable
+```
+
 Image asset keys are derived from `image.id` and `assets.version`:
 
 - `originals/{id}/{id}_v{version}.jpg`
