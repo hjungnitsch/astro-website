@@ -33,6 +33,20 @@ const navItems = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link
+      rel="preload"
+      href="/fonts/manrope/manrope-latin-wght.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/merriweather/merriweather-latin-wght.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
@@ -66,7 +80,14 @@ const navItems = [
     </header>
     <main class="content"><slot /></main>
     <footer class="site-footer">
-      <p>AstroCaptures · Deep Sky + Solar System</p>
+      <div class="footer-inner">
+        <p>AstroCaptures · Deep Sky + Solar System</p>
+        <p class="footer-links">
+          <a href="/impressum">Impressum</a>
+          <span aria-hidden="true">·</span>
+          <a href="/datenschutz">Datenschutz</a>
+        </p>
+      </div>
     </footer>
   </body>
 </html>

@@ -1,5 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Manrope:wght@400;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap");
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/fonts/manrope/manrope-latin-wght.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Merriweather";
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+  src: url("/fonts/merriweather/merriweather-latin-wght.woff2") format("woff2");
+}
 
 :root {
   --bg-0: #0b0d10;
@@ -60,7 +73,7 @@ button:focus-visible {
 }
 
 .brand {
-  font-family: "Newsreader", serif;
+  font-family: "Merriweather", serif;
   font-size: 1.54rem;
   letter-spacing: 0.02em;
   color: #f3f6fc;
@@ -409,6 +422,30 @@ th {
   color: var(--text-2);
   padding: 1rem 0 2rem;
   font-size: 0.92rem;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-links {
+  display: inline-flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.footer-links a {
+  color: var(--text-2);
+  border-bottom: 1px solid transparent;
+}
+
+.footer-links a:hover {
+  color: var(--text-0);
+  border-bottom-color: rgba(47, 224, 208, 0.5);
 }
 
 .equipment-jump {
