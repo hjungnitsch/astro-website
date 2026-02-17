@@ -1,0 +1,9 @@
+id: filter-astronomik-l3
+slug: astronomik-l3
+kind: filter
+brand: Astronomik
+model: L-3
+summary: UV-IR block filter.
+specs:
+  filter_type: uv-ir-block
+  size_inch: 1.25

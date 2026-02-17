@@ -1,0 +1,11 @@
+id: camera-asi533mc
+slug: asi533mc
+kind: camera
+brand: ZWO
+model: ASI533MC Pro
+summary: Cooled one-shot-color camera.
+specs:
+  sensor: Sony IMX533
+  resolution_px: "3008x3008"
+  pixel_size_um: 3.76
+  cooled: true

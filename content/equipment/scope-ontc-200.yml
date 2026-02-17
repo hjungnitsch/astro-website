@@ -1,0 +1,9 @@
+id: scope-ontc-200
+slug: ontc-200
+kind: scope
+brand: TS
+model: ONTC 200
+summary: 200 mm newtonian reflector for deep sky imaging.
+specs:
+  aperture_mm: 200
+  focal_length_mm: 800
