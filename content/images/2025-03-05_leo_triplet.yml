@@ -18,7 +18,6 @@ equipment:
   camera_id: camera-asi533mc
   filter_id: filter-astronomik-l3
 
-
 acquisitions:
   - session_id: 2025-03-04-main
     date: 2025-03-04
