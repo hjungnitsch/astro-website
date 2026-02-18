@@ -29,10 +29,10 @@ acquisitions:
     exposure_s: 180
 
 assets:
-  version: 3
+  version: 4
 
 skychart:
-  version: 3
+  version: 4
 
 seo:
   alt: Galaxy group Leo Triplet.
