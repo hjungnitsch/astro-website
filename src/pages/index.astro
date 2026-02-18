@@ -4,7 +4,7 @@ import ImageCard from "../components/ImageCard.astro";
 import { getAllImages } from "../lib/content";
 
 const images = await getAllImages();
-const latest = images.slice(0, 6);
+const latest = images.slice(0, 5);
 ---
 
 <BaseLayout title="AstroCaptures" description="Astrophotography gallery with deep-sky and solar-system captures.">
