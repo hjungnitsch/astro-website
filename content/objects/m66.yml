@@ -1,0 +1,17 @@
+id: m66
+slug: m66
+title: Leo Triplet Galaxy M66
+domain: deep_sky
+object_type: galaxy
+catalogs:
+  messier: M66
+  ngc: NGC 3627
+constellation: Leo
+ra_deg: 170.0625
+dec_deg: 12.9917
+magnitude: 8.9
+angular_size_arcmin: "9.1 x 4.2"
+description: >
+  Spiral galaxy in Leo, part of the Leo Triplet together with M65 and NGC 3628.
+aliases:
+  - NGC 3627

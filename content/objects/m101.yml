@@ -1,0 +1,18 @@
+id: m101
+slug: m101
+title: Pinwheel Galaxy
+domain: deep_sky
+object_type: galaxy
+catalogs:
+  messier: M101
+  ngc: NGC 5457
+constellation: Ursa Major
+ra_deg: 210.8023
+dec_deg: 54.3489
+magnitude: 7.9
+angular_size_arcmin: "28 x 26"
+description: >
+  Face-on spiral galaxy in Ursa Major known for its faint outer arms and bright
+  star-forming regions.
+aliases:
+  - Pinwheel

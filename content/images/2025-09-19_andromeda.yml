@@ -1,0 +1,41 @@
+id: img_20250919_andromeda
+title: Andromeda Galaxy
+date: 2025-09-19
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Widefield image of the Andromeda Galaxy (M31).
+
+targets:
+  - m31
+  - m33
+  - m110
+
+equipment:
+  scope_id: scope-sqa-106
+  mount_id: mount-sxp2
+  camera_id: camera-asi2400mc
+
+
+acquisitions:
+  - session_id: 2025-09-19-main
+    date: 2025-09-19
+    frames: 112
+    exposure_s: 180
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Andromeda Galaxy (M31) widefield.
+  keywords:
+    - andromeda galaxy
+    - m31
+    - m33
+    - m110
+    - astrophotography
+    - deep sky

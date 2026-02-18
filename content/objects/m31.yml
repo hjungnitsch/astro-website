@@ -1,0 +1,18 @@
+id: m31
+slug: m31
+title: Andromeda Galaxy
+domain: deep_sky
+object_type: galaxy
+catalogs:
+  messier: M31
+  ngc: NGC 224
+constellation: Andromeda
+ra_deg: 10.6847
+dec_deg: 41.2690
+magnitude: 3.4
+angular_size_arcmin: "190 x 60"
+description: >
+  The nearest major spiral galaxy to the Milky Way and one of the brightest deep-sky
+  targets for wide-field astrophotography.
+aliases:
+  - Andromeda

@@ -1,0 +1,47 @@
+id: img_20250305_leo_triplet
+title: Leo Triplet
+date: 2025-03-05
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of the Leo Triple, a small group of Galaxies in the constellation Leo.
+
+targets:
+  - m65
+  - m66
+  - ngc3628
+
+equipment:
+  scope_id: scope-ontc-200
+  mount_id: mount-sxp2
+  camera_id: camera-asi533mc
+  filter_id: filter-astronomik-l3
+
+
+acquisitions:
+  - session_id: 2025-03-04-main
+    date: 2025-03-04
+    frames: 102
+    exposure_s: 180
+  - session_id: 2025-03-05-main
+    date: 2025-03-05
+    frames: 103
+    exposure_s: 180
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Galaxy group Leo Triplet.
+  keywords:
+    - leo triplet
+    - m65
+    - m66
+    - ngc3628
+    - galaxies
+    - astrophotography
+    - deep sky

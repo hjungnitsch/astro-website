@@ -1,0 +1,18 @@
+id: m33
+slug: m33
+title: Triangulum Galaxy
+domain: deep_sky
+object_type: galaxy
+catalogs:
+  messier: M33
+  ngc: NGC 598
+constellation: Triangulum
+ra_deg: 23.4621
+dec_deg: 30.6602
+magnitude: 5.7
+angular_size_arcmin: "70 x 40"
+description: >
+  Face-on spiral galaxy in Triangulum with prominent HII regions, commonly imaged
+  as a large, diffuse target requiring dark skies and careful processing.
+aliases:
+  - Triangulum

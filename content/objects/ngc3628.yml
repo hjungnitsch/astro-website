@@ -1,0 +1,18 @@
+id: ngc3628
+slug: ngc3628
+title: Hamburger Galaxy
+domain: deep_sky
+object_type: galaxy
+catalogs:
+  ngc: NGC 3628
+constellation: Leo
+ra_deg: 170.0708
+dec_deg: 13.5897
+magnitude: 9.5
+angular_size_arcmin: "15.0 x 3.0"
+description: >
+  Edge-on spiral galaxy in Leo, famous for its prominent dust lane. Together with
+  M65 and M66 it forms the Leo Triplet.
+aliases:
+  - Leo Triplet NGC 3628
+  - Hamburger

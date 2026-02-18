@@ -1,0 +1,18 @@
+id: m110
+slug: m110
+title: Satellite Galaxy M110
+domain: deep_sky
+object_type: galaxy
+catalogs:
+  messier: M110
+  ngc: NGC 205
+constellation: Andromeda
+ra_deg: 10.0929
+dec_deg: 41.6853
+magnitude: 8.1
+angular_size_arcmin: "19 x 11"
+description: >
+  Dwarf elliptical galaxy and satellite of the Andromeda Galaxy (M31), often captured
+  in the same wide-field frames.
+aliases:
+  - NGC 205

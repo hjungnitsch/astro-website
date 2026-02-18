@@ -1,0 +1,17 @@
+id: m65
+slug: m65
+title: Leo Triplet Galaxy M65
+domain: deep_sky
+object_type: galaxy
+catalogs:
+  messier: M65
+  ngc: NGC 3623
+constellation: Leo
+ra_deg: 170.0629
+dec_deg: 13.0923
+magnitude: 9.3
+angular_size_arcmin: "8.7 x 2.5"
+description: >
+  Spiral galaxy in Leo, part of the Leo Triplet together with M66 and NGC 3628.
+aliases:
+  - NGC 3623
