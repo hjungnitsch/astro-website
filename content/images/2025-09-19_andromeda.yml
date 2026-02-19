@@ -5,11 +5,11 @@ capture_mode: deep_sky
 composition_type: single
 location_id: loc-bielefeld
 description: >
-  Widefield image of the Andromeda Galaxy (M31).
+  Widefield image of the Andromeda Galaxy (M31) with satellite galaxies M32 and M110.
 
 targets:
   - m31
-  - m33
+  - m32
   - m110
 
 equipment:
@@ -35,7 +35,7 @@ seo:
   keywords:
     - andromeda galaxy
     - m31
-    - m33
+    - m32
     - m110
     - astrophotography
     - deep sky
