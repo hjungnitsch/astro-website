@@ -24,7 +24,7 @@ acquisitions:
     exposure_s: 90
 
 assets:
-  version: 1
+  version: 2
 
 skychart:
   version: 1
