@@ -25,7 +25,7 @@ acquisitions:
     filter_id: filter-antlia-triband
 
 assets:
-  version: 1
+  version: 2
 
 skychart:
   version: 1
