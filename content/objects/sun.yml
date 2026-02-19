@@ -1,0 +1,12 @@
+id: sun
+slug: sun
+title: Sun
+domain: solar_system
+object_type: sun
+catalogs:
+  iau: Sun
+description: >
+  The star at the center of the Solar System. Solar images range from white-light
+  photosphere detail to H-alpha views of prominences and active regions.
+aliases:
+  - Sol

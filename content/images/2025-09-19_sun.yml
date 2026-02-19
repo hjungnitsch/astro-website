@@ -1,0 +1,30 @@
+id: img_20250919_sun
+title: Sun in H-Alpha
+date: 2025-09-19
+capture_mode: solar_system
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Two panel mosaic of the sun taken with an h-alpha telescope. A 2.5x barlow lens was used to get the magnification.
+
+targets:
+  - sun
+
+equipment:
+  scope_id: scope-heliostar-76
+  mount_id: mount-sxp2
+  camera_id: camera-asi294mm
+
+capture:
+  focal_length_mm: 1575
+  notes: A 2.5x Barlow used. The Asi294mm camera was used in binned mode.
+
+assets:
+  version: 1
+
+seo:
+  alt: Sun in H-Alpha.
+  keywords:
+    - sun
+    - h-alpha
+    - solar astrophotography

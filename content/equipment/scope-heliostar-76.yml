@@ -1,0 +1,9 @@
+id: scope-heliostar-76
+slug: heliostar-76
+kind: scope
+brand: Skywatcher
+model: Heliostar 76
+summary: 76mm H-Alpha telescope for imaging the sun.
+specs:
+  aperture_mm: 76
+  focal_length_mm: 630
