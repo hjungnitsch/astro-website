@@ -1,0 +1,16 @@
+id: sh2-157
+slug: sh2-157
+title: Lobster Claw Nebula
+domain: deep_sky
+object_type: emission-nebula
+catalogs:
+  sharpless: Sh2-157
+constellation: Cassiopeia
+ra_deg: 350.3333
+dec_deg: 60.9833
+angular_size_arcmin: "50 x 35"
+description: >
+  Emission nebula complex in Cassiopeia commonly known as the Lobster Claw Nebula.
+  A popular narrowband target near the Bubble Nebula region.
+aliases:
+  - Lobster Claw

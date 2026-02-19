@@ -1,0 +1,41 @@
+id: img_20250630_iris_widefield
+title: Iris Nebula
+date: 2025-06-30
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Widefield image of the Iris Nebula (NGC 7023), a bright reflection nebula in the constellation Cepheus.
+
+targets:
+  - ngc7023
+
+equipment:
+  scope_id: scope-sqa-106
+  mount_id: mount-sxp2
+  camera_id: camera-asi2400mc
+
+
+acquisitions:
+  - session_id: 2025-06-29-main
+    date: 2025-06-29
+    frames: 83
+    exposure_s: 120
+  - session_id: 2025-06-30-main
+    date: 2025-06-30
+    frames: 90
+    exposure_s: 120
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Widefield image of the Iris Nebula.
+  keywords:
+    - iris nebula
+    - ngc7023
+    - astrophotography
+    - deep sky

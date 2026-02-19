@@ -1,0 +1,12 @@
+id: moon
+slug: moon
+title: Moon
+domain: solar_system
+object_type: moon
+catalogs:
+  iau: Moon
+description: >
+  Earth's natural satellite. Lunar images range from full-disk mosaics to close-up
+  crater and mountain detail.
+aliases:
+  - Luna

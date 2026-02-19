@@ -1,0 +1,16 @@
+id: ic1396a
+slug: ic1396a
+title: Elephant's Trunk Nebula
+domain: deep_sky
+object_type: dark-nebula
+catalogs:
+  ic: IC 1396A
+constellation: Cepheus
+ra_deg: 324.98
+dec_deg: 57.27
+angular_size_arcmin: "20 x 15"
+description: >
+  Dark globule within the IC 1396 region, popularly known as the Elephant's Trunk
+  Nebula. Often imaged in narrowband to highlight surrounding emission.
+aliases:
+  - Elephant Trunk

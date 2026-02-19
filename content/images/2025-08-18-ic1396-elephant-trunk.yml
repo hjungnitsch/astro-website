@@ -1,0 +1,44 @@
+id: img_20250818_ic1396-elephant-trunk
+title: IC 1396 - Elephant Trunk
+date: 2025-08-18
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of IC 1396 a large emission nebula that contains the Elephant Trunk (IC 1396A).
+
+targets:
+  - ic1396
+  - ic1396a
+
+equipment:
+  scope_id: scope-sqa-106
+  mount_id: mount-sxp2
+  camera_id: camera-asi2400mc
+  filter_id: filter-antlia-triband
+
+acquisitions:
+  - session_id: 2025-08-17-main
+    date: 2025-08-17
+    frames: 77
+    exposure_s: 180
+    filter_id: filter-antlia-triband
+  - session_id: 2025-08-18-main
+    date: 2025-08-18
+    frames: 69
+    exposure_s: 180
+    filter_id: filter-antlia-triband
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of IC 1396 - Elephant Trunk.
+  keywords:
+    - elephant trunk nebula
+    - ic1396
+    - astrophotography
+    - deep sky

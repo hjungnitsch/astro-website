@@ -1,12 +1,11 @@
-id: img_20260118_jupiter_europa
-title: Jupiter and Europa
-date: 2026-01-18
+id: img_20251106_jupiter_io_ganymede
+title: Jupiter with Io and Ganymede
+date: 2025-11-06
 capture_mode: solar_system
 composition_type: single
 location_id: loc-bielefeld
 description: >
-  High frame-rate planetary capture with slight derotation and sharpening to reveal cloud
-  bands. The moon europa can be seen casting a shadow on the planet. Infrared filter used to get a sharper image.
+  Jupiter with Io and Ganymede. 1.5x Barlow and infrared filter used.
 
 targets:
   - jupiter
@@ -25,8 +24,9 @@ assets:
   version: 1
 
 seo:
-  alt: Jupiter with Europa.
+  alt: Jupiter with Io and Ganymede.
   keywords:
     - jupiter
-    - europa
+    - io
+    - ganymede
     - planetary astrophotography

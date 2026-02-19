@@ -1,0 +1,16 @@
+id: ngc7635
+slug: ngc7635
+title: Bubble Nebula
+domain: deep_sky
+object_type: emission-nebula
+catalogs:
+  ngc: NGC 7635
+constellation: Cassiopeia
+ra_deg: 350.2063
+dec_deg: 61.2017
+angular_size_arcmin: "15 x 8"
+description: >
+  Emission nebula in Cassiopeia featuring a wind-blown bubble created by a massive
+  star. Often imaged together with the nearby open cluster M52.
+aliases:
+  - Bubble

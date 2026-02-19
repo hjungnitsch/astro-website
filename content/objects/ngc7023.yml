@@ -1,0 +1,17 @@
+id: ngc7023
+slug: ngc7023
+title: Iris Nebula
+domain: deep_sky
+object_type: reflection-nebula
+catalogs:
+  ngc: NGC 7023
+constellation: Cepheus
+ra_deg: 315.4167
+dec_deg: 68.1667
+magnitude: 6.8
+angular_size_arcmin: "18 x 18"
+description: >
+  Reflection nebula in Cepheus illuminated by a young star and surrounded by dusty
+  brown and blue structures. A classic broadband target.
+aliases:
+  - Iris

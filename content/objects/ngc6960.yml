@@ -1,0 +1,16 @@
+id: ngc6960
+slug: ngc6960
+title: Western Veil Nebula
+domain: deep_sky
+object_type: supernova-remnant
+catalogs:
+  ngc: NGC 6960
+constellation: Cygnus
+ra_deg: 311.75
+dec_deg: 30.72
+angular_size_arcmin: "70 x 6"
+description: >
+  Bright western arc of the Veil Nebula supernova remnant near 52 Cygni,
+  commonly captured in wide-field narrowband compositions.
+aliases:
+  - Veil Nebula West

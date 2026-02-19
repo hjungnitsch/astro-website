@@ -1,0 +1,16 @@
+id: ic1396
+slug: ic1396
+title: IC 1396
+domain: deep_sky
+object_type: emission-nebula
+catalogs:
+  ic: IC 1396
+constellation: Cepheus
+ra_deg: 324.75
+dec_deg: 57.5
+angular_size_arcmin: "170 x 140"
+description: >
+  Large emission nebula and HII region in Cepheus, home to multiple dark globules
+  including the Elephant's Trunk (IC 1396A).
+aliases:
+  - IC 1396 region

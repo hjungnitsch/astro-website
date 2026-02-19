@@ -1,0 +1,16 @@
+id: ngc6992
+slug: ngc6992
+title: Eastern Veil Nebula
+domain: deep_sky
+object_type: supernova-remnant
+catalogs:
+  ngc: NGC 6992
+constellation: Cygnus
+ra_deg: 313.0
+dec_deg: 31.0
+angular_size_arcmin: "60 x 8"
+description: >
+  Bright eastern arc of the Veil Nebula supernova remnant, known for intricate
+  filamentary structure in narrowband imaging.
+aliases:
+  - Veil Nebula East

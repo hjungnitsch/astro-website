@@ -1,0 +1,42 @@
+id: img_20250724_veil_nebula
+title: Veil Nebula
+date: 2025-07-24
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Widefield image of whole Veil Nebula, containing the Eastern (NGC 6992) and Western (NGC 6960) Veil Nebulae.
+
+targets:
+  - ngc6960
+  - ngc6992
+
+equipment:
+  scope_id: scope-sqa-106
+  mount_id: mount-sxp2
+  camera_id: camera-asi2400mc
+  filter_id: filter-antlia-triband
+
+acquisitions:
+  - session_id: 2025-07-24-main
+    date: 2025-07-24
+    frames: 69
+    exposure_s: 180
+    filter_id: filter-antlia-triband
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image the Veil Nebula.
+  keywords:
+    - veil nebula
+    - eastern veil nebula
+    - western veil nebula
+    - ngc6960
+    - ngc6992
+    - astrophotography
+    - deep sky
