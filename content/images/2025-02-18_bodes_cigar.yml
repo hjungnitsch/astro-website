@@ -1,0 +1,45 @@
+id: img_20250218_bodes_cigar
+title: Bode's Galaxy and Cigar Galaxy
+date: 2025-02-18
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of Bode's Galaxy and the Cigar Galaxy. The Antlia Triband filter was used to enhance the h-alpha regions.
+
+targets:
+  - m81
+  - m82
+
+equipment:
+  scope_id: scope-ontc-200
+  mount_id: mount-sxp2
+  camera_id: camera-asi533mc
+  filter_id: filter-astronomik-triband
+
+acquisitions:
+  - session_id: 2025-02-17-main
+    date: 2025-02-17
+    frames: 101
+    exposure_s: 180
+  - session_id: 2025-02-18-main
+    date: 2025-02-18
+    frames: 98
+    exposure_s: 180
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of Bodes Galaxy and Cigar Galaxy.
+  keywords:
+    - bodes galaxy
+    - cigar galaxy
+    - m81
+    - m82
+    - galaxies
+    - astrophotography
+    - deep sky
