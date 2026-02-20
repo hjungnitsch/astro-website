@@ -1,0 +1,19 @@
+id: m108
+slug: m108
+title: Surfboard Galaxy
+domain: deep_sky
+object_type: galaxy
+catalogs:
+  messier: M108
+  ngc: NGC 3556
+constellation: Ursa Major
+ra_deg: 167.8792
+dec_deg: 55.6742
+magnitude: 10.0
+angular_size_arcmin: "8.7 x 2.2"
+description: >
+  Edge-on spiral galaxy in Ursa Major, commonly photographed alongside M97 in the
+  same field of view.
+aliases:
+  - NGC 3556
+  - Surfboard

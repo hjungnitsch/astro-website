@@ -1,0 +1,41 @@
+id: img_20250203_rosette_nebula
+title: Rosette Nebula
+date: 2025-02-03
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of the Rosette Nebula taken with a newtonian reflection telescope.
+
+targets:
+  - ngc2244
+
+equipment:
+  scope_id: scope-ontc-200
+  mount_id: mount-sxp2
+  camera_id: camera-asi2400mc
+  filter_id: filter-antlia-triband
+
+capture:
+  focal_length_mm: 920
+
+acquisitions:
+  - session_id: 2025-02-03-main
+    date: 2025-02-03
+    frames: 91
+    exposure_s: 180
+    filter_id: filter-antlia-triband
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of the Rosette Nebula.
+  keywords:
+    - rosette nebula
+    - ngc2244
+    - astrophotography
+    - deep sky

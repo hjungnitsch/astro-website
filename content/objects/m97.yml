@@ -1,0 +1,18 @@
+id: m97
+slug: m97
+title: Owl Nebula
+domain: deep_sky
+object_type: planetary-nebula
+catalogs:
+  messier: M97
+  ngc: NGC 3587
+constellation: Ursa Major
+ra_deg: 168.6988
+dec_deg: 55.0192
+magnitude: 9.9
+angular_size_arcmin: "3.4 x 3.3"
+description: >
+  Planetary nebula in Ursa Major known for its "owl eyes" appearance. Often imaged
+  together with the nearby galaxy M108.
+aliases:
+  - NGC 3587

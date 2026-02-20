@@ -1,0 +1,41 @@
+id: img_20250302_owl_surfboard
+title: Owl Nebula and Surfboard Galaxy
+date: 2025-03-02
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of the Owl Nebula and a Surfboard Galaxy.
+
+targets:
+  - m97
+  - m108
+
+equipment:
+  scope_id: scope-ontc-200
+  mount_id: mount-sxp2
+  camera_id: camera-asi533mc
+  filter_id: filter-astronomik-l3
+
+acquisitions:
+  - session_id: 2025-03-02-main
+    date: 2025-03-02
+    frames: 117
+    exposure_s: 180
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of the Owl Nebula and a Surfboard Galaxy.
+  keywords:
+    - owl nebula
+    - surfboard galaxy
+    - m97
+    - m108
+    - galaxies
+    - astrophotography
+    - deep sky

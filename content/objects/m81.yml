@@ -1,0 +1,18 @@
+id: m81
+slug: m81
+title: Bode's Galaxy
+domain: deep_sky
+object_type: galaxy
+catalogs:
+  messier: M81
+  ngc: NGC 3031
+constellation: Ursa Major
+ra_deg: 148.8882
+dec_deg: 69.0653
+magnitude: 6.9
+angular_size_arcmin: "26.9 x 14.1"
+description: >
+  Bright spiral galaxy in Ursa Major and a favorite wide-field target, often captured
+  together with the nearby starburst galaxy M82.
+aliases:
+  - NGC 3031

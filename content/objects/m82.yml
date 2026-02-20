@@ -1,0 +1,19 @@
+id: m82
+slug: m82
+title: Cigar Galaxy
+domain: deep_sky
+object_type: galaxy
+catalogs:
+  messier: M82
+  ngc: NGC 3034
+constellation: Ursa Major
+ra_deg: 148.9683
+dec_deg: 69.6797
+magnitude: 8.4
+angular_size_arcmin: "11.2 x 4.3"
+description: >
+  Starburst galaxy in Ursa Major with strong dust and outflow structures, commonly
+  imaged as a pair with M81.
+aliases:
+  - NGC 3034
+  - Cigar

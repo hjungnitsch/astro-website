@@ -1,0 +1,12 @@
+id: mars
+slug: mars
+title: Mars
+domain: solar_system
+object_type: planet
+catalogs:
+  iau: Mars
+description: >
+  The fourth planet from the Sun. Planetary images may show polar caps, albedo
+  features, and dust storms depending on season and seeing.
+aliases:
+  - The Red Planet

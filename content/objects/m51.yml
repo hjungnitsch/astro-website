@@ -1,0 +1,19 @@
+id: m51
+slug: m51
+title: Whirlpool Galaxy
+domain: deep_sky
+object_type: galaxy
+catalogs:
+  messier: M51
+  ngc: NGC 5194
+constellation: Canes Venatici
+ra_deg: 202.4696
+dec_deg: 47.1953
+magnitude: 8.4
+angular_size_arcmin: "11.2 x 6.9"
+description: >
+  Interacting spiral galaxy system in Canes Venatici with prominent spiral arms and
+  companion galaxy NGC 5195.
+aliases:
+  - NGC 5194
+  - Whirlpool

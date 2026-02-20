@@ -1,0 +1,17 @@
+id: ngc4565
+slug: ngc4565
+title: Needle Galaxy
+domain: deep_sky
+object_type: galaxy
+catalogs:
+  ngc: NGC 4565
+constellation: Coma Berenices
+ra_deg: 189.0867
+dec_deg: 25.9875
+magnitude: 9.6
+angular_size_arcmin: "15.9 x 2.1"
+description: >
+  Edge-on spiral galaxy in Coma Berenices with a prominent central bulge and dust
+  lane, often photographed as a classic high-contrast galaxy target.
+aliases:
+  - Needle

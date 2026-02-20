@@ -77,6 +77,24 @@ button:focus-visible {
   font-size: 1.54rem;
   letter-spacing: 0.02em;
   color: #f3f6fc;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.brand-mark {
+  display: block;
+  flex: 0 0 auto;
+}
+
+.brand-text {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0;
+}
+
+.brand-domain {
+  color: var(--text-2);
 }
 
 .site-nav {

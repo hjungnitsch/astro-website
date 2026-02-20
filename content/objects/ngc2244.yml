@@ -1,0 +1,17 @@
+id: ngc2244
+slug: ngc2244
+title: Rosette Nebula Cluster (NGC 2244)
+domain: deep_sky
+object_type: open-cluster
+catalogs:
+  ngc: NGC 2244
+constellation: Monoceros
+ra_deg: 97.95
+dec_deg: 4.95
+magnitude: 4.8
+angular_size_arcmin: "24 x 24"
+description: >
+  Young open cluster at the center of the Rosette Nebula (NGC 2237-9), whose hot
+  stars illuminate and sculpt the surrounding emission.
+aliases:
+  - Rosette Cluster

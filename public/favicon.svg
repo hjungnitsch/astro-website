@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="AstroCaptures">
+  <defs>
+    <style>
+      .ring { fill: none; stroke: #edf0f6; stroke-opacity: .88; stroke-width: 16; stroke-linecap: round; }
+      .star { fill: #2fe0d0; }
+    </style>
+  </defs>
+
+  <circle class="ring" cx="128" cy="128" r="90" stroke-dasharray="532 36" transform="rotate(-18 128 128)"/>
+  <path class="star" d="M128 72 143 116 187 128 143 140 128 184 113 140 69 128 113 116Z"/>
+</svg>

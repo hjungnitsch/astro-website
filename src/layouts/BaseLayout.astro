@@ -33,6 +33,8 @@ const navItems = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.svg" sizes="any" />
     <link
       rel="preload"
       href="/fonts/manrope/manrope-latin-wght.woff2"
@@ -64,7 +66,10 @@ const navItems = [
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="/">AstroCaptures.de</a>
+      <a class="brand" href="/">
+        <img class="brand-mark" src="/mark-outline.svg" alt="" width="30" height="30" loading="eager" />
+        <span class="brand-text"><span class="brand-name">AstroCaptures</span><span class="brand-domain">.de</span></span>
+      </a>
       <nav class="site-nav" aria-label="Main">
         {
           navItems.map((item) => {
