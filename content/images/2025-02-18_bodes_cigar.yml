@@ -15,7 +15,7 @@ equipment:
   scope_id: scope-ontc-200
   mount_id: mount-sxp2
   camera_id: camera-asi533mc
-  filter_id: filter-astronomik-triband
+  filter_id: filter-antlia-triband
 
 acquisitions:
   - session_id: 2025-02-17-main
