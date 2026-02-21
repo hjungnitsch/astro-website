@@ -1,0 +1,30 @@
+id: img_20250118_mars
+title: Mars
+date: 2025-01-18
+capture_mode: solar_system
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of Mars taken with a 14" reflector. 2.7x Barlow used for planetary image scale.
+
+targets:
+  - mars
+
+equipment:
+  scope_id: scope-t350-350
+  mount_id: mount-ecliptica
+  camera_id: camera-asi533mc
+  filter_id: filter-astronomik-l3
+
+capture:
+  focal_length_mm: 4590
+  notes: 2.7x Barlow used for planetary image scale.
+
+assets:
+  version: 1
+
+seo:
+  alt: Image of the Planet Mars.
+  keywords:
+    - mars
+    - planetary astrophotography
