@@ -1,0 +1,9 @@
+id: filter-solarspectrum-suna
+slug: sola-spectrum-suna
+kind: filter
+brand: Solar Spectrum
+model: Suna
+summary: H-Alpha filter for solar imaging.
+specs:
+  filter_type: h-alpha-solar
+  size_inch: 1.25

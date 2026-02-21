@@ -1,0 +1,30 @@
+id: img_20240510_sun
+title: Sun in H-Alpha
+date: 2024-05-10
+capture_mode: solar_system
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of the the solar surface taken with the Suna H-Alpha filter.
+
+targets:
+  - sun
+
+equipment:
+  scope_id: scope-fc-100dc
+  mount_id: mount-sxp2
+  camera_id: camera-asi294mm
+
+capture:
+  focal_length_mm: 2220
+  notes: A 3x Barlow used. The Asi294mm camera was used in binned mode.
+
+assets:
+  version: 1
+
+seo:
+  alt: Sun in H-Alpha.
+  keywords:
+    - sun
+    - h-alpha
+    - solar astrophotography

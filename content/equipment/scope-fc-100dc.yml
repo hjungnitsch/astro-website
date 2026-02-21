@@ -1,0 +1,9 @@
+id: scope-fc-100dc
+slug: fc-100dc
+kind: scope
+brand: Takahashi
+model: FC 100DC
+summary: 100mm flourid doublet refractor mostly used for visual observing.
+specs:
+  aperture_mm: 100
+  focal_length_mm: 740
