@@ -1,0 +1,31 @@
+id: img_20240921_moon_surface_2
+title: Lunar Surface
+date: 2024-09-21
+capture_mode: solar_system
+composition_type: mosaic
+location_id: loc-bielefeld
+description: >
+ Image of the lunar surface.
+
+targets:
+  - moon
+
+equipment:
+  scope_id: scope-t350-350
+  mount_id: mount-ecliptica
+  camera_id: camera-asi294mm
+  filter_id: filter-astronomik-l3
+
+capture:
+  focal_length_mm: 2550
+  notes: 1.5x Barlow used for planetary image scale.
+
+assets:
+  version: 1
+
+seo:
+  alt: Image of the lunar surface.
+  keywords:
+    - moon
+    - lunar surface
+    - lunar astrophotography
