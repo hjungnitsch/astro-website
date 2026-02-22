@@ -1,0 +1,46 @@
+id: img_20240729_crescent_nebula
+title: Crescent Nebula
+date: 2024-07-29
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of the Crescent Nebula with surrounding nebulosity.
+
+targets:
+  - ngc6888
+
+equipment:
+  scope_id: scope-ontc-200
+  mount_id: mount-sxp2
+  camera_id: camera-asi2400mc
+  filter_id: filter-antlia-alpt
+
+capture:
+  focal_length_mm: 920
+
+acquisitions:
+  - session_id: 2024-07-28-main
+    date: 2024-07-28
+    frames: 64
+    exposure_s: 180
+    filter_id: filter-antlia-alpt
+  - session_id: 2024-07-29-main
+    date: 2024-07-29
+    frames: 56
+    exposure_s: 180
+    filter_id: filter-antlia-alpt
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of the Crescent Nebula.
+  keywords:
+    - crescent nebula
+    - ngc6888
+    - astrophotography
+    - deep sky

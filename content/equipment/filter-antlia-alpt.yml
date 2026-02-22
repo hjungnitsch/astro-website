@@ -1,0 +1,9 @@
+id: filter-antlia-triband
+slug: antlia-alpt
+kind: filter
+brand: Antlia
+model: ALP-T
+summary: Dualband (OIII and H-Alpha) filter for OSC imaging.
+specs:
+  filter_type: multiband
+  size_inch: 2
