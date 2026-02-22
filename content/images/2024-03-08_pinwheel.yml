@@ -1,0 +1,37 @@
+id: img_20240308_pinwheel
+title: Pinwheel Galaxy
+date: 2024-03-09
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of the Pinwheel Galaxy (M101).
+
+targets:
+  - m101
+
+equipment:
+  scope_id: scope-ontc-200
+  mount_id: mount-sxp2
+  camera_id: camera-asi533mc
+
+acquisitions:
+  - session_id: 2024-03-08-main
+    date: 2024-03-08
+    frames: 114
+    exposure_s: 180
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of the Pinwheel Galaxy (M101).
+  keywords:
+    - pinwheel galaxy
+    - m101
+    - galaxies
+    - astrophotography
+    - deep sky
