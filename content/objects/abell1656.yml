@@ -1,0 +1,17 @@
+id: abell1656
+slug: abell1656
+title: Coma Cluster
+domain: deep_sky
+object_type: galaxy-cluster
+catalogs:
+  abell: Abell 1656
+constellation: Coma Berenices
+ra_deg: 194.95
+dec_deg: 27.98
+magnitude: 1.8
+angular_size_arcmin: "270 x 270"
+description: >
+  Rich cluster of galaxies in Coma Berenices. Astrophotography often reveals many
+  faint member galaxies across a wide field.
+aliases:
+  - Coma Cluster

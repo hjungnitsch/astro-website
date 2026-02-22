@@ -1,0 +1,16 @@
+id: ngc7000
+slug: ngc7000
+title: North America Nebula
+domain: deep_sky
+object_type: emission-nebula
+catalogs:
+  ngc: NGC 7000
+constellation: Cygnus
+ra_deg: 314.75
+dec_deg: 44.50
+angular_size_arcmin: "120 x 100"
+description: >
+  Large emission nebula in Cygnus near Deneb. Commonly photographed in wide-field
+  compositions, often together with the Pelican Nebula (IC 5070).
+aliases:
+  - North America

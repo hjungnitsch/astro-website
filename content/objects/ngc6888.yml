@@ -1,0 +1,17 @@
+id: ngc6888
+slug: ngc6888
+title: Crescent Nebula
+domain: deep_sky
+object_type: emission-nebula
+catalogs:
+  ngc: NGC 6888
+constellation: Cygnus
+ra_deg: 303.03
+dec_deg: 38.35
+magnitude: 7.4
+angular_size_arcmin: "18 x 12"
+description: >
+  Wind-blown emission nebula in Cygnus formed by a Wolf-Rayet star. A popular
+  narrowband target with rich filament structure.
+aliases:
+  - Crescent

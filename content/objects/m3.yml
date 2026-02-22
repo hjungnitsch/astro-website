@@ -1,0 +1,18 @@
+id: m3
+slug: m3
+title: Globular Cluster M3
+domain: deep_sky
+object_type: globular-cluster
+catalogs:
+  messier: M3
+  ngc: NGC 5272
+constellation: Canes Venatici
+ra_deg: 205.5484
+dec_deg: 28.3773
+magnitude: 6.2
+angular_size_arcmin: "18 x 18"
+description: >
+  Bright globular cluster in Canes Venatici and a classic target for resolving
+  dense star fields.
+aliases:
+  - NGC 5272

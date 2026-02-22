@@ -1,0 +1,42 @@
+id: img_20250429_m3
+title: Globular Cluster M3
+date: 2025-03-05
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of the globular cluster M3.
+
+targets:
+  - m3
+
+equipment:
+  scope_id: scope-ontc-200
+  mount_id: mount-sxp2
+  camera_id: camera-asi533mc
+  filter_id: filter-astronomik-l3
+
+acquisitions:
+  - session_id: 2025-04-27-main
+    date: 2025-04-27
+    frames: 127
+    exposure_s: 90
+  - session_id: 2025-04-29-main
+    date: 2025-04-29
+    frames: 91
+    exposure_s: 90
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of the globular cluster M3.
+  keywords:
+    - m3
+    - m65
+    - globular cluster
+    - astrophotography
+    - deep sky
