@@ -1,0 +1,42 @@
+id: img_20250319_whirlpool_galaxy
+title: Whirlpool Galaxy
+date: 2025-03-19
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of the Whirlpool Galaxy (M51).
+
+targets:
+  - m51
+
+equipment:
+  scope_id: scope-ontc-200
+  mount_id: mount-sxp2
+  camera_id: camera-asi533mc
+  filter_id: filter-astronomik-l3
+
+acquisitions:
+  - session_id: 2025-03-18-main
+    date: 2025-03-18
+    frames: 108
+    exposure_s: 180
+  - session_id: 2025-03-19-main
+    date: 2025-03-19
+    frames: 105
+    exposure_s: 180
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of the Whirlpool Galaxy (M51).
+  keywords:
+    - whirlpool galaxy
+    - m51
+    - galaxies
+    - astrophotography
+    - deep sky
