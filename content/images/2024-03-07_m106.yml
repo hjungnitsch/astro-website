@@ -1,0 +1,38 @@
+id: img_20240307_m106
+title: Galaxy M106
+date: 2024-03-07
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of Galaxy M106 and Galaxy NGC 4217.
+
+targets:
+  - m106
+  - ngc4217
+
+equipment:
+  scope_id: scope-ontc-200
+  mount_id: mount-sxp2
+  camera_id: camera-asi533mc
+
+acquisitions:
+  - session_id: 2024-03-07-main
+    date: 2024-03-07
+    frames: 103
+    exposure_s: 180
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of Galaxy M106 and Galaxy NGC 4217.
+  keywords:
+    - m106
+    - ngc4217
+    - galaxies
+    - astrophotography
+    - deep sky

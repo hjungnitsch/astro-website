@@ -1,0 +1,16 @@
+id: ngc1499
+slug: ngc1499
+title: California Nebula
+domain: deep_sky
+object_type: emission-nebula
+catalogs:
+  ngc: NGC 1499
+constellation: Perseus
+ra_deg: 60.75
+dec_deg: 36.37
+angular_size_arcmin: "145 x 40"
+description: >
+  Large emission nebula in Perseus with a distinctive elongated shape, frequently
+  photographed in wide-field compositions and narrowband/dual-band imaging.
+aliases:
+  - California

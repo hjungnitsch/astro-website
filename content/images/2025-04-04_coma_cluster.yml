@@ -1,0 +1,38 @@
+id: img_20250404_coma_cluster
+title: Coma Cluster
+date: 2025-04-04
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of the Coma Cluster a large cluster of galaxies in the constellation of Coma Berenices.
+
+targets:
+  - abell1656
+
+equipment:
+  scope_id: scope-ontc-200
+  mount_id: mount-sxp2
+  camera_id: camera-asi533mc
+  filter_id: filter-astronomik-l3
+
+acquisitions:
+  - session_id: 2025-04-04-main
+    date: 2025-04-04
+    frames: 101
+    exposure_s: 180
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of the Coma Cluster.
+  keywords:
+    - coma cluster
+    - abell1656
+    - galaxies
+    - astrophotography
+    - deep sky

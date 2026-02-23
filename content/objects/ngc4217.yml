@@ -1,0 +1,17 @@
+id: ngc4217
+slug: ngc4217
+title: Galaxy NGC 4217
+domain: deep_sky
+object_type: galaxy
+catalogs:
+  ngc: NGC 4217
+constellation: Ursa Major
+ra_deg: 183.9625
+dec_deg: 47.0917
+magnitude: 11.1
+angular_size_arcmin: "5.8 x 1.6"
+description: >
+  Edge-on spiral galaxy in Ursa Major with a thin dust lane, often imaged as a
+  smaller companion target in galaxy fields.
+aliases:
+  - NGC 4217
