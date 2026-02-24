@@ -1,0 +1,17 @@
+id: ic1318
+slug: ic1318
+title: Gamma Cygni Nebula (Sadr Region)
+domain: deep_sky
+object_type: emission-nebula
+catalogs:
+  ic: IC 1318
+constellation: Cygnus
+ra_deg: 305.55
+dec_deg: 40.25
+angular_size_arcmin: "180 x 120"
+description: >
+  Emission nebula complex surrounding Sadr (Gamma Cygni) in Cygnus, often captured
+  in wide-field narrowband and dual-band imaging.
+aliases:
+  - Sadr Region
+  - Gamma Cygni Nebula

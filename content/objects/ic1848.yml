@@ -1,0 +1,17 @@
+id: ic1848
+slug: ic1848
+title: Soul Nebula
+domain: deep_sky
+object_type: emission-nebula
+catalogs:
+  ic: IC 1848
+constellation: Cassiopeia
+ra_deg: 38.5
+dec_deg: 60.4
+angular_size_arcmin: "150 x 150"
+description: >
+  Large emission nebula in Cassiopeia, paired with the nearby Heart Nebula (IC 1805)
+  as part of the Heart and Soul complex.
+aliases:
+  - Soul Nebula
+  - W5
