@@ -5,7 +5,7 @@ capture_mode: deep_sky
 composition_type: single
 location_id: loc-bielefeld
 description: >
-  Image of the Soul Nebula with taken with the alpt dual band filter.
+  Image of the Soul Nebula with taken with the ALP-T dual band filter.
 
 targets:
   - ic1848
@@ -32,7 +32,7 @@ acquisitions:
     filter_id: filter-antlia-alpt
 
 assets:
-  version: 2
+  version: 3
 
 skychart:
   version: 1
