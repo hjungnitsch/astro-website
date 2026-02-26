@@ -79,6 +79,29 @@ const filterSizeInch =
 const showCaptureTile = totalIntegration !== null && sessionCount !== null && exposureSummary !== null;
 const showCaptureDetails = detailedAcquisitions.length > 0;
 const effectiveFRatio = scopeAperture && focalLengthMm ? focalLengthMm / scopeAperture : null;
+const isSolarSystem = image.capture_mode === "solar_system";
+
+const totalVideoFrames = detailedAcquisitions.reduce((sum, acquisition) => sum + acquisition.frames, 0);
+const uniqueExposurePerFrame = Array.from(new Set(detailedAcquisitions.map((acquisition) => acquisition.exposure_s)));
+const exposurePerFrame =
+  uniqueExposurePerFrame.length === 1
+    ? uniqueExposurePerFrame[0] < 1
+      ? `${Math.round(uniqueExposurePerFrame[0] * 1000)} ms`
+      : `${uniqueExposurePerFrame[0]} s`
+    : "mixed";
+
+const stackedPercentValues = detailedAcquisitions
+  .map((acquisition) => acquisition.stacked_percent)
+  .filter((value): value is number => typeof value === "number");
+const stackedSummary =
+  stackedPercentValues.length === 0
+    ? null
+    : Array.from(new Set(stackedPercentValues)).length === 1
+      ? `${stackedPercentValues[0]}% stacked`
+      : `${Math.min(...stackedPercentValues)}-${Math.max(...stackedPercentValues)}% stacked`;
+
+const showDeepSkyCaptureTile = !isSolarSystem && showCaptureTile;
+const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
 ---
 
 <BaseLayout
@@ -109,7 +132,7 @@ const effectiveFRatio = scopeAperture && focalLengthMm ? focalLengthMm / scopeAp
         {locationLat && locationLon && <small class="meta-sub">lat: {locationLat}, long: {locationLon}</small>}
         {location?.bortle && <small class="meta-sub">Bortle {location.bortle}</small>}
       </div>
-      {showCaptureTile && (
+      {showDeepSkyCaptureTile && (
         <div class="meta-tile">
           <dt>Capture</dt>
           <dd>{formatIntegrationSeconds(totalIntegration!)}</dd>
@@ -117,6 +140,14 @@ const effectiveFRatio = scopeAperture && focalLengthMm ? focalLengthMm / scopeAp
             {sessionCount!} session{sessionCount === 1 ? "" : "s"} · {exposureSummary!.value}
           </small>
           {exposureSummary!.secondary && <small class="meta-sub">{exposureSummary!.secondary}</small>}
+        </div>
+      )}
+      {showSolarCaptureTile && (
+        <div class="meta-tile">
+          <dt>Capture</dt>
+          <dd>{totalVideoFrames} video frames</dd>
+          <small class="meta-sub">Exposure/frame: {exposurePerFrame}</small>
+          {stackedSummary && <small class="meta-sub">{stackedSummary}</small>}
         </div>
       )}
       {focalLengthMm !== null && (
@@ -199,20 +230,33 @@ const effectiveFRatio = scopeAperture && focalLengthMm ? focalLengthMm / scopeAp
         <summary>Capture details</summary>
         <table>
           <thead>
-            <tr>
-              <th>Date</th>
-              <th>Frames</th>
-              <th>Exposure</th>
-              <th>Integration</th>
-            </tr>
+            {isSolarSystem ? (
+              <tr>
+                <th>Date</th>
+                <th>Video frames</th>
+                <th>Exposure/frame</th>
+                <th>Stacked</th>
+              </tr>
+            ) : (
+              <tr>
+                <th>Date</th>
+                <th>Frames</th>
+                <th>Exposure</th>
+                <th>Integration</th>
+              </tr>
+            )}
           </thead>
           <tbody>
             {detailedAcquisitions.map((acquisition) => (
               <tr>
                 <td>{formatDate(acquisition.date)}</td>
                 <td>{acquisition.frames}</td>
-                <td>{acquisition.exposure_s}s</td>
-                <td>{formatIntegrationSeconds(acquisitionIntegration(acquisition))}</td>
+                <td>{acquisition.exposure_s < 1 ? `${Math.round(acquisition.exposure_s * 1000)} ms` : `${acquisition.exposure_s}s`}</td>
+                {isSolarSystem ? (
+                  <td>{typeof acquisition.stacked_percent === "number" ? `${acquisition.stacked_percent}%` : "-"}</td>
+                ) : (
+                  <td>{formatIntegrationSeconds(acquisitionIntegration(acquisition))}</td>
+                )}
               </tr>
             ))}
           </tbody>

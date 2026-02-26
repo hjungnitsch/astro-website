@@ -137,6 +137,11 @@
             "type": "number",
             "exclusiveMinimum": 0
           },
+          "stacked_percent": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
           "filter_id": {
             "type": "string",
             "pattern": "^[a-z0-9][a-z0-9_-]*$"

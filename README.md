@@ -21,6 +21,7 @@ Image capture detail conventions:
 
 - Deep-sky images include detailed `acquisitions` with `frames` and `exposure_s`.
 - Solar-system images can omit detailed `acquisitions` when historical capture stats are unavailable.
+- For lucky imaging, `acquisitions` can include `stacked_percent` to document the best X% of video frames used for stacking.
 
 Example (deep sky with capture stats):
 
@@ -39,6 +40,18 @@ Example (solar system without capture stats):
 id: img_20260118_jupiter_europa
 capture_mode: solar_system
 # acquisitions omitted when stats are unavailable
+```
+
+Example (solar system lucky imaging):
+
+```yaml
+id: img_20260118_jupiter_europa
+capture_mode: solar_system
+acquisitions:
+  - date: 2026-01-18
+    frames: 12000
+    exposure_s: 0.008
+    stacked_percent: 20
 ```
 
 Image asset keys are derived from `image.id` and `assets.version`:

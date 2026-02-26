@@ -46,6 +46,7 @@ const imageSchema = z.object({
         date: dateString,
         frames: z.number().int().positive().optional(),
         exposure_s: z.number().positive().optional(),
+        stacked_percent: z.number().min(0).max(100).optional(),
         filter_id: z.string().optional(),
         notes: z.string().optional()
       })
@@ -351,6 +352,7 @@ type DetailedAcquisition = {
   date: string;
   frames: number;
   exposure_s: number;
+  stacked_percent?: number;
   filter_id?: string;
   notes?: string;
 };

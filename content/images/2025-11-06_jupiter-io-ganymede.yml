@@ -20,6 +20,12 @@ capture:
   focal_length_mm: 2550
   notes: 1.5x Barlow used for planetary image scale.
 
+acquisitions:
+  - date: 2026-01-18
+    frames: 3127
+    exposure_s: 0.027
+    stacked_percent: 20
+
 assets:
   version: 1
 
