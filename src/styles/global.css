@@ -259,6 +259,10 @@ p {
   padding: 1rem;
 }
 
+.panel--clear {
+  background: transparent;
+}
+
 .panel img {
   width: 100%;
   border-radius: 14px;
