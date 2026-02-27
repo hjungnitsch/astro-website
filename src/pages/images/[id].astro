@@ -521,7 +521,14 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
       ensureOriginalLoaded(() => refreshFitScale(true));
     };
 
-    openImageViewer.addEventListener("click", () => openViewer(openImageViewer));
+    const mobileViewerMedia = window.matchMedia("(max-width: 560px)");
+
+    openImageViewer.addEventListener("click", () => {
+      if (mobileViewerMedia.matches) {
+        return;
+      }
+      openViewer(openImageViewer);
+    });
     openImageViewerButton.addEventListener("click", () => openViewer(openImageViewerButton));
 
     viewerDialog.addEventListener("close", () => {

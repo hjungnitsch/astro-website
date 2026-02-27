@@ -853,6 +853,10 @@ th {
     column-gap: 0.75rem;
   }
 
+  .image-view-trigger {
+    cursor: default;
+  }
+
   .grid {
     grid-template-columns: 1fr;
   }
