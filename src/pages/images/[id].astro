@@ -117,13 +117,25 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
   </section>
 
   <section class="image-stage">
-    <img
-      src={getImageAssetUrl(image, "web")}
-      alt={image.seo?.alt ?? image.title}
-      loading="eager"
-      fetchpriority="high"
-    />
-    <a class="download-btn" href={getImageAssetUrl(image, "original")} download>Download original JPG</a>
+    <button
+      type="button"
+      class="image-view-trigger"
+      id="open-image-viewer"
+      aria-haspopup="dialog"
+      aria-controls="image-viewer-dialog"
+      aria-label={`Open full-size viewer for ${image.title}`}
+    >
+      <img
+        src={getImageAssetUrl(image, "web")}
+        alt={image.seo?.alt ?? image.title}
+        loading="eager"
+        fetchpriority="high"
+      />
+    </button>
+    <div class="image-actions">
+      <button type="button" class="download-btn" id="open-image-viewer-btn">View full size</button>
+      <a class="download-btn" href={getImageAssetUrl(image, "original")} download>Download original JPG</a>
+    </div>
 
     <dl class="meta-grid">
       <div class="meta-tile">
@@ -263,5 +275,401 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
         </table>
       </details>
     )}
+
+    <dialog class="image-viewer" id="image-viewer-dialog" aria-label={`Image viewer for ${image.title}`}>
+      <div class="image-viewer-body">
+        <div class="image-viewer-viewport" id="image-viewer-viewport">
+          <div class="viewer-overlay" role="group" aria-label="Image viewer controls">
+            <button type="button" class="viewer-control-btn" id="close-viewer-btn" aria-label="Close image viewer">
+              Close
+            </button>
+            <button type="button" class="viewer-control-btn" id="zoom-out-btn" aria-label="Zoom out">-</button>
+            <button type="button" class="viewer-control-btn" id="zoom-in-btn" aria-label="Zoom in">+</button>
+            <button type="button" class="viewer-control-btn" id="fit-image-btn">Fit</button>
+            <button type="button" class="viewer-control-btn" id="fullsize-image-btn">100%</button>
+            <button type="button" class="viewer-control-btn" id="double-size-image-btn">200%</button>
+            <span class="viewer-zoom-label" id="zoom-label">100%</span>
+          </div>
+          <div class="image-viewer-canvas" id="image-viewer-canvas">
+            <img
+              id="image-viewer-image"
+              src={getImageAssetUrl(image, "web")}
+              data-web-src={getImageAssetUrl(image, "web")}
+              data-original-src={getImageAssetUrl(image, "original")}
+              alt={image.seo?.alt ?? image.title}
+              draggable="false"
+            />
+          </div>
+        </div>
+      </div>
+    </dialog>
   </section>
 </BaseLayout>
+
+<script is:inline>
+  const openImageViewer = document.getElementById("open-image-viewer");
+  const openImageViewerButton = document.getElementById("open-image-viewer-btn");
+  const viewerDialog = document.getElementById("image-viewer-dialog");
+  const viewerViewport = document.getElementById("image-viewer-viewport");
+  const viewerCanvas = document.getElementById("image-viewer-canvas");
+  const viewerImage = document.getElementById("image-viewer-image");
+  const closeViewerButton = document.getElementById("close-viewer-btn");
+  const zoomOutButton = document.getElementById("zoom-out-btn");
+  const zoomInButton = document.getElementById("zoom-in-btn");
+  const fitButton = document.getElementById("fit-image-btn");
+  const fullsizeButton = document.getElementById("fullsize-image-btn");
+  const doubleSizeButton = document.getElementById("double-size-image-btn");
+  const zoomLabel = document.getElementById("zoom-label");
+
+  if (
+    openImageViewer instanceof HTMLElement &&
+    openImageViewerButton instanceof HTMLElement &&
+    viewerDialog instanceof HTMLDialogElement &&
+    viewerImage instanceof HTMLImageElement &&
+    viewerViewport instanceof HTMLElement &&
+    viewerCanvas instanceof HTMLElement &&
+    closeViewerButton instanceof HTMLButtonElement &&
+    zoomOutButton instanceof HTMLButtonElement &&
+    zoomInButton instanceof HTMLButtonElement &&
+    fitButton instanceof HTMLButtonElement &&
+    fullsizeButton instanceof HTMLButtonElement &&
+    doubleSizeButton instanceof HTMLButtonElement &&
+    zoomLabel instanceof HTMLElement
+  ) {
+    let lastTrigger = null;
+    let loadedOriginal = false;
+    const supportsDialog = typeof viewerDialog.showModal === "function";
+    const pointerMap = new Map();
+
+    let fitScale = 1;
+    let nativeScale = 1;
+    let maxScale = 1;
+    let scale = 1;
+    let tx = 0;
+    let ty = 0;
+
+    let dragState = null;
+    let pinchState = null;
+
+    const roundZoomPercent = (value) => `${Math.round(value * 100)}%`;
+
+    const clampPan = () => {
+      const viewportWidth = viewerViewport.clientWidth;
+      const viewportHeight = viewerViewport.clientHeight;
+      const imageWidth = viewerImage.naturalWidth * scale;
+      const imageHeight = viewerImage.naturalHeight * scale;
+
+      const maxX = Math.max(0, (imageWidth - viewportWidth) / 2);
+      const maxY = Math.max(0, (imageHeight - viewportHeight) / 2);
+
+      tx = Math.min(maxX, Math.max(-maxX, tx));
+      ty = Math.min(maxY, Math.max(-maxY, ty));
+    };
+
+    const render = () => {
+      viewerCanvas.style.transform = `translate(-50%, -50%) translate(${tx}px, ${ty}px) scale(${scale})`;
+      const relativeZoom = nativeScale > 0 ? scale / nativeScale : scale;
+      zoomLabel.textContent = roundZoomPercent(relativeZoom);
+
+      const atMin = scale <= fitScale + 0.001;
+      const atNative = Math.abs(scale - nativeScale) <= 0.001;
+      const atMax = scale >= maxScale - 0.001;
+
+      zoomOutButton.disabled = atMin;
+      zoomInButton.disabled = atMax;
+      fitButton.disabled = atMin;
+      fullsizeButton.disabled = atNative;
+      doubleSizeButton.disabled = atMax;
+
+      viewerViewport.classList.toggle("is-pannable", !atMin);
+      if (atMin) {
+        viewerViewport.classList.remove("is-panning");
+      }
+    };
+
+    const clampScale = (nextScale) => Math.min(maxScale, Math.max(fitScale, nextScale));
+
+    const setScale = (nextScale, anchorClientX, anchorClientY) => {
+      const previousScale = scale;
+      const targetScale = clampScale(nextScale);
+      if (Math.abs(targetScale - previousScale) < 0.0001) {
+        return;
+      }
+
+      if (typeof anchorClientX === "number" && typeof anchorClientY === "number") {
+        const rect = viewerViewport.getBoundingClientRect();
+        const localX = anchorClientX - (rect.left + rect.width / 2);
+        const localY = anchorClientY - (rect.top + rect.height / 2);
+
+        const imageX = (localX - tx) / previousScale;
+        const imageY = (localY - ty) / previousScale;
+
+        scale = targetScale;
+        tx = localX - imageX * scale;
+        ty = localY - imageY * scale;
+      } else {
+        scale = targetScale;
+      }
+
+      clampPan();
+      render();
+    };
+
+    const fitToWindow = () => {
+      scale = fitScale;
+      tx = 0;
+      ty = 0;
+      render();
+    };
+
+    const setFullSize = () => {
+      scale = nativeScale;
+      tx = 0;
+      ty = 0;
+      clampPan();
+      render();
+    };
+
+    const setDoubleSize = () => {
+      scale = maxScale;
+      tx = 0;
+      ty = 0;
+      clampPan();
+      render();
+    };
+
+    const refreshFitScale = (resetZoom) => {
+      const viewportWidth = viewerViewport.clientWidth;
+      const viewportHeight = viewerViewport.clientHeight;
+      const naturalWidth = viewerImage.naturalWidth;
+      const naturalHeight = viewerImage.naturalHeight;
+
+      if (!viewportWidth || !viewportHeight || !naturalWidth || !naturalHeight) {
+        return;
+      }
+
+      nativeScale = 1 / Math.max(1, window.devicePixelRatio || 1);
+      maxScale = Math.max(nativeScale, nativeScale * 2);
+      fitScale = Math.min(nativeScale, viewportWidth / naturalWidth, viewportHeight / naturalHeight);
+
+      if (resetZoom) {
+        scale = fitScale;
+        tx = 0;
+        ty = 0;
+      } else {
+        scale = clampScale(scale);
+        clampPan();
+      }
+
+      render();
+    };
+
+    const ensureOriginalLoaded = (onReady) => {
+      if (loadedOriginal) {
+        onReady();
+        return;
+      }
+
+      const originalSource = viewerImage.dataset.originalSrc;
+      const webSource = viewerImage.dataset.webSrc;
+
+      if (!originalSource) {
+        onReady();
+        return;
+      }
+
+      zoomLabel.textContent = "Loading...";
+
+      viewerImage.addEventListener(
+        "load",
+        () => {
+          loadedOriginal = viewerImage.src.includes(originalSource);
+          onReady();
+        },
+        { once: true }
+      );
+
+      viewerImage.addEventListener(
+        "error",
+        () => {
+          if (webSource) {
+            viewerImage.src = webSource;
+          }
+          onReady();
+        },
+        { once: true }
+      );
+
+      viewerImage.src = originalSource;
+    };
+
+    const openFallback = () => {
+      const webSource = viewerImage.dataset.webSrc;
+      if (webSource) {
+        window.open(webSource, "_blank", "noopener,noreferrer");
+      }
+    };
+
+    const openViewer = (trigger) => {
+      if (!supportsDialog) {
+        openFallback();
+        return;
+      }
+
+      lastTrigger = trigger;
+      viewerDialog.showModal();
+      ensureOriginalLoaded(() => refreshFitScale(true));
+    };
+
+    openImageViewer.addEventListener("click", () => openViewer(openImageViewer));
+    openImageViewerButton.addEventListener("click", () => openViewer(openImageViewerButton));
+
+    viewerDialog.addEventListener("close", () => {
+      pointerMap.clear();
+      dragState = null;
+      pinchState = null;
+      viewerViewport.classList.remove("is-panning");
+
+      if (lastTrigger instanceof HTMLElement) {
+        lastTrigger.focus();
+      }
+    });
+
+    viewerDialog.addEventListener("cancel", (event) => {
+      event.preventDefault();
+      viewerDialog.close();
+    });
+
+    viewerDialog.addEventListener("click", (event) => {
+      const rect = viewerDialog.getBoundingClientRect();
+      const isInDialog =
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom;
+
+      if (!isInDialog) {
+        viewerDialog.close();
+      }
+    });
+
+    viewerViewport.addEventListener("wheel", (event) => {
+      if (event.target instanceof Element && event.target.closest(".viewer-overlay")) {
+        return;
+      }
+      event.preventDefault();
+      const zoomFactor = event.deltaY < 0 ? 1.1 : 1 / 1.1;
+      setScale(scale * zoomFactor, event.clientX, event.clientY);
+    });
+
+    closeViewerButton.addEventListener("click", () => {
+      viewerDialog.close();
+    });
+
+    zoomOutButton.addEventListener("click", () => {
+      setScale(scale / 1.2);
+    });
+
+    zoomInButton.addEventListener("click", () => {
+      setScale(scale * 1.2);
+    });
+
+    fitButton.addEventListener("click", () => {
+      fitToWindow();
+    });
+
+    fullsizeButton.addEventListener("click", () => {
+      setFullSize();
+    });
+
+    doubleSizeButton.addEventListener("click", () => {
+      setDoubleSize();
+    });
+
+    viewerViewport.addEventListener("pointerdown", (event) => {
+      if (event.target instanceof Element && event.target.closest(".viewer-overlay")) {
+        return;
+      }
+      viewerViewport.setPointerCapture(event.pointerId);
+      pointerMap.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+      if (pointerMap.size === 1 && scale > fitScale + 0.001) {
+        dragState = {
+          pointerId: event.pointerId,
+          startX: event.clientX,
+          startY: event.clientY,
+          startTx: tx,
+          startTy: ty
+        };
+        viewerViewport.classList.add("is-panning");
+      }
+
+      if (pointerMap.size === 2) {
+        const points = Array.from(pointerMap.values());
+        const dx = points[0].x - points[1].x;
+        const dy = points[0].y - points[1].y;
+
+        pinchState = {
+          startDistance: Math.hypot(dx, dy),
+          startScale: scale
+        };
+        dragState = null;
+        viewerViewport.classList.remove("is-panning");
+      }
+    });
+
+    viewerViewport.addEventListener("pointermove", (event) => {
+      if (!pointerMap.has(event.pointerId)) {
+        return;
+      }
+
+      pointerMap.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+      if (pointerMap.size === 2 && pinchState) {
+        const points = Array.from(pointerMap.values());
+        const dx = points[0].x - points[1].x;
+        const dy = points[0].y - points[1].y;
+        const distance = Math.hypot(dx, dy);
+        const midpointX = (points[0].x + points[1].x) / 2;
+        const midpointY = (points[0].y + points[1].y) / 2;
+
+        if (pinchState.startDistance > 0) {
+          const pinchScale = pinchState.startScale * (distance / pinchState.startDistance);
+          setScale(pinchScale, midpointX, midpointY);
+        }
+        return;
+      }
+
+      if (dragState && dragState.pointerId === event.pointerId) {
+        tx = dragState.startTx + (event.clientX - dragState.startX);
+        ty = dragState.startTy + (event.clientY - dragState.startY);
+        clampPan();
+        render();
+      }
+    });
+
+    const endPointer = (event) => {
+      pointerMap.delete(event.pointerId);
+
+      if (dragState && dragState.pointerId === event.pointerId) {
+        dragState = null;
+        viewerViewport.classList.remove("is-panning");
+      }
+
+      if (pointerMap.size < 2) {
+        pinchState = null;
+      }
+    };
+
+    viewerViewport.addEventListener("pointerup", endPointer);
+    viewerViewport.addEventListener("pointercancel", endPointer);
+
+    window.addEventListener("resize", () => {
+      if (viewerDialog.open) {
+        refreshFitScale(false);
+      }
+    });
+
+    refreshFitScale(true);
+  }
+</script>
