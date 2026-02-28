@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ImageCard from "../../components/ImageCard.astro";
-import { getAllObjects, getImagesForObject, getObjectBySlug } from "../../lib/content";
+import { getAllObjects, getImagesForObject, getObjectAssetUrl, getObjectBySlug } from "../../lib/content";
 
 export async function getStaticPaths() {
   const objects = await getAllObjects();
@@ -28,10 +28,22 @@ const images = await getImagesForObject(object.id);
   description={object.description}
   canonicalPath={`/objects/${object.slug}`}
 >
-  <section class="hero">
-    <h1>{object.title}</h1>
-    <p class="muted">{object.object_type}</p>
-    <p>{object.description}</p>
+  <section class="hero object-hero">
+    <img
+      class="object-avatar"
+      src={getObjectAssetUrl(object.id)}
+      alt=""
+      width="72"
+      height="72"
+      loading="lazy"
+      decoding="async"
+      onerror="this.style.display='none'"
+    />
+    <div class="object-hero-copy">
+      <h1>{object.title}</h1>
+      <p class="muted">{object.object_type}</p>
+      <p>{object.description}</p>
+    </div>
   </section>
 
   <section>

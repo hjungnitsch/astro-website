@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getAllObjects, getImagesForObject } from "../../lib/content";
+import { getAllObjects, getImagesForObject, getObjectAssetUrl } from "../../lib/content";
 
 const objects = await getAllObjects();
 const items = await Promise.all(
@@ -133,6 +133,16 @@ const groupedByDomain = (Object.keys(domainConfig) as DomainKey[]).map((domain) 
               <div class="object-grid">
                 {group.items.map((object) => (
                   <a class="object-tile" href={`/objects/${object.slug}`}>
+                    <img
+                      class="object-thumb"
+                      src={getObjectAssetUrl(object.id)}
+                      alt=""
+                      width="128"
+                      height="128"
+                      loading="lazy"
+                      decoding="async"
+                      onerror="this.style.display='none'"
+                    />
                     <span class="object-meta">
                       <strong>{object.title}</strong>
                       <span class="muted">{object.object_type}</span>

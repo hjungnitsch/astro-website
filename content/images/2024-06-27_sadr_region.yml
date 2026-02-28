@@ -1,0 +1,47 @@
+id: img_20240627_sadr_region
+title: Sadr Region
+date: 2024-06-27
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of the Sadr Region also known as Gamma Cygni Nebula.
+
+targets:
+  - ic1318
+
+equipment:
+  scope_id: scope-ontc-200
+  mount_id: mount-sxp2
+  camera_id: camera-asi2400mc
+  filter_id: filter-antlia-alpt
+
+capture:
+  focal_length_mm: 920
+
+acquisitions:
+  - session_id: 2024-06-26-main
+    date: 2024-06-26
+    frames: 54
+    exposure_s: 180
+    filter_id: filter-antlia-alpt
+  - session_id: 2024-06-27-main
+    date: 2024-06-27
+    frames: 49
+    exposure_s: 180
+    filter_id: filter-antlia-alpt
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of the Sadr Region.
+  keywords:
+    - sadr region
+    - alpha cygni nebula
+    - ic1318
+    - astrophotography
+    - deep sky

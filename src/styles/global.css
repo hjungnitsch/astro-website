@@ -29,6 +29,7 @@
   --accent-1: rgba(47, 224, 208, 0.14);
   --max-width: 1440px;
   --radius: 18px;
+  --object-thumb-size: 128px;
 }
 
 * {
@@ -807,7 +808,7 @@ th {
 
 .object-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 0.55rem;
 }
 
@@ -815,10 +816,14 @@ th {
   background: var(--surface-0);
   border: 1px solid var(--surface-border);
   border-radius: 12px;
-  padding: 0.6rem 0.72rem;
+  padding: 0.6rem;
   display: grid;
-  gap: 0.4rem;
-  min-height: 86px;
+  grid-template-columns: var(--object-thumb-size) 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 0.6rem;
+  row-gap: 0.35rem;
+  min-height: calc(var(--object-thumb-size) + 24px);
+  align-items: center;
   transition: background-color 120ms ease;
 }
 
@@ -827,9 +832,23 @@ th {
   border-color: rgba(47, 224, 208, 0.38);
 }
 
+.object-thumb {
+  width: var(--object-thumb-size);
+  height: var(--object-thumb-size);
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+  background: rgba(6, 9, 13, 0.8);
+  border: 1px solid rgba(236, 241, 252, 0.16);
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
 .object-meta {
   display: grid;
   gap: 0.12rem;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .object-meta strong {
@@ -841,6 +860,33 @@ th {
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
+}
+
+.object-hero {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.object-hero-copy {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.object-avatar {
+  width: 128px;
+  height: 128px;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+  flex: 0 0 auto;
+  background: rgba(6, 9, 13, 0.8);
+  border: 1px solid rgba(236, 241, 252, 0.16);
+}
+
+.object-tile .count-badge.inline {
+  grid-column: 2;
+  grid-row: 2;
 }
 
 @media (hover: none) {
@@ -879,9 +925,17 @@ th {
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .object-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
 }
 
 @media (max-width: 560px) {
+  :root {
+    --object-thumb-size: 96px;
+  }
+
   .site-header {
     flex-direction: column;
     align-items: flex-start;
@@ -901,6 +955,20 @@ th {
 
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .object-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .object-hero {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .object-avatar {
+    width: 56px;
+    height: 56px;
   }
 
   .meta-grid {

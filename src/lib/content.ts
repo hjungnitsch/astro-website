@@ -325,6 +325,11 @@ export function getSkychartUrl(image: ImageEntry): string | null {
   return `${baseUrl}/charts/${image.id}/${image.id}_v${image.skychart.version}.webp`;
 }
 
+export function getObjectAssetUrl(objectId: string): string {
+  const baseUrl = (import.meta.env.PUBLIC_IMAGE_BASE_URL ?? "https://img.astrocaptures.de").replace(/\/+$/, "");
+  return `${baseUrl}/objects/${encodeURIComponent(objectId)}.webp`;
+}
+
 export function formatDate(date: string): string {
   return new Intl.DateTimeFormat("en", {
     year: "numeric",
