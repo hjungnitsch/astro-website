@@ -1,0 +1,41 @@
+id: img_20240629_north_america_nebula
+title: North America Nebula
+date: 2024-06-29
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of the North America Nebula an emission nebula in the constellation Cygnus.
+
+targets:
+  - ngc7000
+
+equipment:
+  scope_id: scope-ontc-200
+  mount_id: mount-sxp2
+  camera_id: camera-asi2400mc
+  filter_id: filter-antlia-triband
+
+capture:
+  focal_length_mm: 920
+
+acquisitions:
+  - session_id: 2024-06-29-main
+    date: 2024-06-29
+    frames: 61
+    exposure_s: 180
+    filter_id: filter-antlia-alpt
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of the North America Nebula.
+  keywords:
+    - north america nebula
+    - ngc7000
+    - astrophotography
+    - deep sky
