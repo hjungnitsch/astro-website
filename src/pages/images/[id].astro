@@ -279,6 +279,9 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
     <dialog class="image-viewer" id="image-viewer-dialog" aria-label={`Image viewer for ${image.title}`}>
       <div class="image-viewer-body">
         <div class="image-viewer-viewport" id="image-viewer-viewport">
+          <div class="viewer-loading" id="viewer-loading" role="status" aria-live="polite" hidden>
+            <span class="viewer-loading-pill">Loading original...</span>
+          </div>
           <div class="viewer-overlay" role="group" aria-label="Image viewer controls">
             <button type="button" class="viewer-control-btn" id="close-viewer-btn" aria-label="Close image viewer">
               Close
@@ -313,6 +316,7 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
   const viewerViewport = document.getElementById("image-viewer-viewport");
   const viewerCanvas = document.getElementById("image-viewer-canvas");
   const viewerImage = document.getElementById("image-viewer-image");
+  const viewerLoading = document.getElementById("viewer-loading");
   const closeViewerButton = document.getElementById("close-viewer-btn");
   const zoomOutButton = document.getElementById("zoom-out-btn");
   const zoomInButton = document.getElementById("zoom-in-btn");
@@ -328,6 +332,7 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
     viewerImage instanceof HTMLImageElement &&
     viewerViewport instanceof HTMLElement &&
     viewerCanvas instanceof HTMLElement &&
+    viewerLoading instanceof HTMLElement &&
     closeViewerButton instanceof HTMLButtonElement &&
     zoomOutButton instanceof HTMLButtonElement &&
     zoomInButton instanceof HTMLButtonElement &&
@@ -352,6 +357,10 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
     let pinchState = null;
 
     const roundZoomPercent = (value) => `${Math.round(value * 100)}%`;
+
+    const setLoading = (isLoading) => {
+      viewerLoading.hidden = !isLoading;
+    };
 
     const clampPan = () => {
       const viewportWidth = viewerViewport.clientWidth;
@@ -466,6 +475,7 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
 
     const ensureOriginalLoaded = (onReady) => {
       if (loadedOriginal) {
+        setLoading(false);
         onReady();
         return;
       }
@@ -474,16 +484,18 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
       const webSource = viewerImage.dataset.webSrc;
 
       if (!originalSource) {
+        setLoading(false);
         onReady();
         return;
       }
 
-      zoomLabel.textContent = "Loading...";
+      setLoading(true);
 
       viewerImage.addEventListener(
         "load",
         () => {
           loadedOriginal = viewerImage.src.includes(originalSource);
+          setLoading(false);
           onReady();
         },
         { once: true }
@@ -495,6 +507,7 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
           if (webSource) {
             viewerImage.src = webSource;
           }
+          setLoading(false);
           onReady();
         },
         { once: true }
@@ -518,6 +531,7 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
 
       lastTrigger = trigger;
       viewerDialog.showModal();
+      setLoading(true);
       ensureOriginalLoaded(() => refreshFitScale(true));
     };
 
@@ -532,6 +546,7 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
     openImageViewerButton.addEventListener("click", () => openViewer(openImageViewerButton));
 
     viewerDialog.addEventListener("close", () => {
+      setLoading(false);
       pointerMap.clear();
       dragState = null;
       pinchState = null;
