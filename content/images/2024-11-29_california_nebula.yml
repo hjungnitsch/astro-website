@@ -1,14 +1,14 @@
-id: img_20241011_soul_nebula
-title: Soul Nebula
-date: 2024-10-11
+id: img_20241129_california_nebula
+title: California Nebula
+date: 2024-11-29
 capture_mode: deep_sky
 composition_type: single
 location_id: loc-bielefeld
 description: >
-  Image of the Soul Nebula captured with the ALP-T dual band filter.
+  Image of the California Nebula captured with the ALP-T dual band filter.
 
 targets:
-  - ic1848
+  - ngc1499
 
 equipment:
   scope_id: scope-ontc-200
@@ -20,27 +20,22 @@ capture:
   focal_length_mm: 920
 
 acquisitions:
-  - session_id: 2024-10-04-main
-    date: 2024-10-04
-    frames: 98
-    exposure_s: 180
-    filter_id: filter-antlia-alpt
-  - session_id: 2024-10-11-main
-    date: 2024-10-11
-    frames: 83
+  - session_id: 2024-11-29-main
+    date: 2024-11-29
+    frames: 117
     exposure_s: 180
     filter_id: filter-antlia-alpt
 
 assets:
-  version: 3
+  version: 1
 
 skychart:
   version: 1
 
 seo:
-  alt: Image of the Soul Nebula.
+  alt: Image of the California Nebula.
   keywords:
-    - soul nebula
-    - ic1848
+    - california nebula
+    - ngc1499
     - astrophotography
     - deep sky
