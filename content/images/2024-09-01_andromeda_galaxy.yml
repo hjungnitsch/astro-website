@@ -1,0 +1,51 @@
+id: img_20240901_andromeda_galaxy
+title: Andromeda Galaxy
+date: 2024-09-01
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of the Andromeda Galaxy.
+
+targets:
+  - m31
+  - m32
+  - m110
+
+equipment:
+  scope_id: scope-ontc-200
+  mount_id: mount-sxp2
+  camera_id: camera-asi2400mc
+
+capture:
+  focal_length_mm: 920
+
+acquisitions:
+  - session_id: 2024-08-27-main
+    date: 2024-08-27
+    frames: 105
+    exposure_s: 120
+  - session_id: 2024-08-28-main
+    date: 2024-08-28
+    frames: 105
+    exposure_s: 180
+  - session_id: 2024-09-01-main
+    date: 2024-09-01
+    frames: 68
+    exposure_s: 180
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of the Andromeda Galaxy.
+  keywords:
+    - andromeda galaxy
+    - m31
+    - m32
+    - m110
+    - astrophotography
+    - deep sky
