@@ -28,11 +28,11 @@ acquisitions:
   - session_id: 2024-08-28-main
     date: 2024-08-28
     frames: 105
-    exposure_s: 180
+    exposure_s: 120
   - session_id: 2024-09-01-main
     date: 2024-09-01
     frames: 68
-    exposure_s: 180
+    exposure_s: 120
 
 assets:
   version: 1
