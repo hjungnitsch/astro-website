@@ -1,0 +1,42 @@
+id: img_20240303_bodes_galaxy
+title: Bode's Galaxy
+date: 2024-03-03
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of Bodes's Galaxy M81.
+
+targets:
+  - m81
+
+equipment:
+  scope_id: scope-ontc-200
+  mount_id: mount-sxp2
+  camera_id: camera-asi533mc
+  filter_id: filter-astronomik-l3
+
+acquisitions:
+  - session_id: 2024-02-27-main
+    date: 2024-02-27
+    frames: 53
+    exposure_s: 180
+  - session_id: 2024-03-03-main
+    date: 2024-03-03
+    frames: 62
+    exposure_s: 180
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of Bodes Galaxy.
+  keywords:
+    - bodes galaxy
+    - m81
+    - galaxies
+    - astrophotography
+    - deep sky
