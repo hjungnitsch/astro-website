@@ -21,6 +21,61 @@ if (!object) {
 }
 
 const images = await getImagesForObject(object.id);
+
+const preferredCatalogOrder = ["messier", "ngc", "ic", "sh2", "barnard", "abell"];
+
+const catalogEntries = Object.entries(object.catalogs ?? {})
+  .sort(([leftKey], [rightKey]) => {
+    const leftIndex = preferredCatalogOrder.indexOf(leftKey.toLowerCase());
+    const rightIndex = preferredCatalogOrder.indexOf(rightKey.toLowerCase());
+
+    const leftRank = leftIndex === -1 ? preferredCatalogOrder.length : leftIndex;
+    const rightRank = rightIndex === -1 ? preferredCatalogOrder.length : rightIndex;
+
+    if (leftRank !== rightRank) {
+      return leftRank - rightRank;
+    }
+
+    return leftKey.localeCompare(rightKey);
+  })
+  .map(([key, value]) => {
+    const normalized = key.toLowerCase();
+
+    if (normalized === "sh2") {
+      return { label: "Sh2", value };
+    }
+
+    return {
+      label: key.replace(/_/g, " ").replace(/\b\w/g, (char) => char.toUpperCase()),
+      value
+    };
+  });
+
+function formatRa(raDeg: number): string {
+  const totalSeconds = (raDeg / 15) * 3600;
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = Math.round(totalSeconds % 60);
+
+  return `${hours.toString().padStart(2, "0")}h ${minutes.toString().padStart(2, "0")}m ${seconds
+    .toString()
+    .padStart(2, "0")}s`;
+}
+
+function formatDec(decDeg: number): string {
+  const sign = decDeg < 0 ? "-" : "+";
+  const absolute = Math.abs(decDeg);
+  const totalSeconds = absolute * 3600;
+  const degrees = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = Math.round(totalSeconds % 60);
+
+  return `${sign}${degrees.toString().padStart(2, "0")}deg ${minutes.toString().padStart(2, "0")}m ${seconds
+    .toString()
+    .padStart(2, "0")}s`;
+}
+
+const hasCoordinates = typeof object.ra_deg === "number" && typeof object.dec_deg === "number";
 ---
 
 <BaseLayout
@@ -45,6 +100,50 @@ const images = await getImagesForObject(object.id);
       <p>{object.description}</p>
     </div>
   </section>
+
+  {(catalogEntries.length > 0 || object.constellation) && (
+    <section>
+      <h2 class="section-title">Facts</h2>
+      <dl class="meta-grid">
+        {catalogEntries.length > 0 && (
+          <div class="meta-tile">
+            <dt>Catalog numbers</dt>
+            <dd>{`${catalogEntries[0].label}: ${catalogEntries[0].value}`}</dd>
+            {catalogEntries.slice(1).map((entry) => (
+              <small class="meta-sub">{`${entry.label}: ${entry.value}`}</small>
+            ))}
+          </div>
+        )}
+        {object.constellation && (
+          <div class="meta-tile">
+            <dt>Constellation</dt>
+            <dd>{object.constellation}</dd>
+          </div>
+        )}
+        {hasCoordinates && (
+          <div class="meta-tile">
+            <dt>Coordinates</dt>
+            <dd>{`RA: ${formatRa(object.ra_deg!)}`}</dd>
+            <small class="meta-sub">{`Dec: ${formatDec(object.dec_deg!)}`}</small>
+            <small class="meta-sub">{`RA: ${object.ra_deg!.toFixed(4)}deg · Dec: ${object.dec_deg!.toFixed(4)}deg`}</small>
+          </div>
+        )}
+        {typeof object.magnitude === "number" && (
+          <div class="meta-tile">
+            <dt>Magnitude</dt>
+            <dd>{object.magnitude.toFixed(1)}</dd>
+          </div>
+        )}
+        {object.angular_size_arcmin && (
+          <div class="meta-tile">
+            <dt>Angular size</dt>
+            <dd>{object.angular_size_arcmin}</dd>
+            <small class="meta-sub">arcmin</small>
+          </div>
+        )}
+      </dl>
+    </section>
+  )}
 
   <section>
     <h2 class="section-title">Images</h2>
