@@ -1,0 +1,41 @@
+id: img_20241130_flaming_star_nebula
+title: Flaming Star Nebula
+date: 2024-11-30
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of the Flaming Star Nebula captured using the Antlia Triband filter.
+
+targets:
+  - ic405
+
+equipment:
+  scope_id: scope-ontc-200
+  mount_id: mount-sxp2
+  camera_id: camera-asi2400mc
+  filter_id: filter-antlia-triband
+
+capture:
+  focal_length_mm: 920
+
+acquisitions:
+  - session_id: 2024-11-30-main
+    date: 2024-11-30
+    frames: 124
+    exposure_s: 180
+    filter_id: filter-antlia-triband
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of the Flaming Star Nebula.
+  keywords:
+    - flaming star nebula
+    - ic405
+    - astrophotography
+    - deep sky
