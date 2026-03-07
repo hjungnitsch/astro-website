@@ -1,0 +1,18 @@
+id: m52
+slug: m52
+title: Open Cluster M52
+domain: deep_sky
+object_type: open-cluster
+catalogs:
+  messier: M52
+  ngc: NGC 7654
+constellation: Cassiopeia
+ra_deg: 351.196
+dec_deg: 61.593
+magnitude: 5.0
+angular_size_arcmin: "13 x 13"
+description: >
+  Compact open cluster in Cassiopeia with a rich star field, often framed together
+  with nearby diffuse nebulae in wide-field images.
+aliases:
+  - NGC 7654

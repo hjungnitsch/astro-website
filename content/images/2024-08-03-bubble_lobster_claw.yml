@@ -1,11 +1,11 @@
-id: img_20250824_bubble_lobster_claw
+id: img_20240803_bubble_lobster_claw
 title: Bubble and Lobster Claw Nebula
-date: 2025-08-24
+date: 2024-08-03
 capture_mode: deep_sky
 composition_type: single
 location_id: loc-bielefeld
 description: >
-  Widefield image of the Bubble and Lobster Claw Nebula.
+  Image of the Bubble and Lobster Claw Nebula.
 
 targets:
   - ngc7635
@@ -13,22 +13,22 @@ targets:
   - m52
 
 equipment:
-  scope_id: scope-sqa-106
+  scope_id: scope-ontc-200
   mount_id: mount-sxp2
   camera_id: camera-asi2400mc
-  filter_id: filter-antlia-triband
+  filter_id: filter-antlia-alpt
 
 acquisitions:
-  - session_id: 2025-08-23-main
-    date: 2025-08-23
-    frames: 96
+  - session_id: 2024-07-30-main
+    date: 2024-07-30
+    frames: 71
     exposure_s: 180
-    filter_id: filter-antlia-triband
-  - session_id: 2025-08-24-main
-    date: 2025-08-24
-    frames: 60
+    filter_id: filter-antlia-alpt
+  - session_id: 2024-08-03-main
+    date: 2024-08-03
+    frames: 59
     exposure_s: 180
-    filter_id: filter-antlia-triband
+    filter_id: filter-antlia-alpt
 
 assets:
   version: 1
