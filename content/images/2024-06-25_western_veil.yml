@@ -1,0 +1,41 @@
+id: img_20240625_western_veil
+title: Western Veil Nebula
+date: 2024-06-25
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of the Western Veil Nebula (NGC 6960).
+
+targets:
+  - ngc6960
+
+equipment:
+  scope_id: scope-ontc-200
+  mount_id: mount-sxp2
+  camera_id: camera-asi533mc
+  filter_id: filter-antlia-alpt
+
+acquisitions:
+  - session_id: 2024-06-24-main
+    date: 2024-06-24
+    frames: 58
+    exposure_s: 180
+  - session_id: 2024-06-25-main
+    date: 2024-06-25
+    frames: 56
+    exposure_s: 180
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of the Western Veil Nebula (NGC6960).
+  keywords:
+    - western veil nebula
+    - ngc6960
+    - astrophotography
+    - deep sky
