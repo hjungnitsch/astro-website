@@ -27,7 +27,7 @@ acquisitions:
     stacked_percent: 10
 
 assets:
-  version: 5
+  version: 6
 
 seo:
   alt: Image of Jupiter.
