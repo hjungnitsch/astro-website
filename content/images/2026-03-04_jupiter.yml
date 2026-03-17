@@ -5,7 +5,7 @@ capture_mode: solar_system
 composition_type: single
 location_id: loc-bielefeld
 description: >
-  High frame-rate planetary capture of Jupiter. A 2.7x coma correcting barlow lens was used for maginfication.
+  High frame-rate planetary capture of Jupiter. 4 Videos derotated in Winjupos. A 2.7x coma correcting barlow lens was used for maginfication.
 
 targets:
   - jupiter
@@ -22,12 +22,24 @@ capture:
 
 acquisitions:
   - date: 2026-03-04
+    frames: 9760
+    exposure_s: 0.018
+    stacked_percent: 15
+  - date: 2026-03-04
     frames: 7855
     exposure_s: 0.018
-    stacked_percent: 10
+    stacked_percent: 15
+  - date: 2026-03-04
+    frames: 9768
+    exposure_s: 0.018
+    stacked_percent: 15
+  - date: 2026-03-04
+    frames: 9764
+    exposure_s: 0.018
+    stacked_percent: 15
 
 assets:
-  version: 11
+  version: 12
 
 seo:
   alt: Image of Jupiter.
