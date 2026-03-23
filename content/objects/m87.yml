@@ -1,0 +1,18 @@
+id: m87
+slug: m87
+title: Galaxy M87
+domain: deep_sky
+object_type: galaxy
+catalogs:
+  messier: M87
+  ngc: NGC 4486
+constellation: Virgo
+ra_deg: 187.7059
+dec_deg: 12.3911
+magnitude: 8.6
+angular_size_arcmin: "8.3 x 6.6"
+description: >
+  Massive elliptical galaxy in the Virgo Cluster known for its central supermassive
+  black hole and relativistic jet, a notable deep-sky target in spring.
+aliases:
+  - NGC 4486

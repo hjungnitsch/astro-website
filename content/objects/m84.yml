@@ -1,0 +1,18 @@
+id: m84
+slug: m84
+title: Galaxy M84
+domain: deep_sky
+object_type: galaxy
+catalogs:
+  messier: M84
+  ngc: NGC 4374
+constellation: Virgo
+ra_deg: 186.2656
+dec_deg: 12.8869
+magnitude: 10.1
+angular_size_arcmin: "6.5 x 5.6"
+description: >
+  Giant elliptical galaxy in the Virgo Cluster and a key member of the Markarian's
+  Chain region, often captured together with neighboring galaxies.
+aliases:
+  - NGC 4374

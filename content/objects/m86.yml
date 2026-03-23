@@ -1,0 +1,18 @@
+id: m86
+slug: m86
+title: Galaxy M86
+domain: deep_sky
+object_type: galaxy
+catalogs:
+  messier: M86
+  ngc: NGC 4406
+constellation: Virgo
+ra_deg: 186.5492
+dec_deg: 12.9460
+magnitude: 8.9
+angular_size_arcmin: "9.8 x 5.8"
+description: >
+  Bright lenticular galaxy in the Virgo Cluster, commonly framed along Markarian's
+  Chain with M84 and many surrounding members.
+aliases:
+  - NGC 4406

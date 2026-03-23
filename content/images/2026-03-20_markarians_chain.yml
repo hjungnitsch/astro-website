@@ -1,0 +1,46 @@
+id: img_20260320_markarians_chain
+title: Markarian's Chain
+date: 2026-03-20
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Widefield image of the Markarian's Chain, a chain of galaxies that are part of the virgo cluster.
+
+targets:
+  - m84
+  - m86
+  - m87
+
+equipment:
+  scope_id: scope-sqa-106
+  mount_id: mount-sxp2
+  camera_id: camera-asi2400mc
+
+
+acquisitions:
+  - session_id: 2026-03-18-main
+    date: 2026-03-18
+    frames: 96
+    exposure_s: 180
+  - session_id: 2026-03-20-main
+    date: 2026-03-20
+    frames: 89
+    exposure_s: 180
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of Markarian's Chain.
+  keywords:
+    - markarians chain
+    - m84
+    - m86
+    - m87
+    - astrophotography
+    - galaxies
+    - deep sky
