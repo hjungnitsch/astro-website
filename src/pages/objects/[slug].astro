@@ -76,12 +76,14 @@ function formatDec(decDeg: number): string {
 }
 
 const hasCoordinates = typeof object.ra_deg === "number" && typeof object.dec_deg === "number";
+const objectTypeLabel = object.object_type.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
 ---
 
 <BaseLayout
   title={`${object.title} | Objects | AstroCaptures`}
   description={object.description}
   canonicalPath={`/objects/${object.slug}`}
+  pageClass="page-objects"
 >
   <section class="hero object-hero">
     <img
@@ -95,8 +97,9 @@ const hasCoordinates = typeof object.ra_deg === "number" && typeof object.dec_de
       onerror="this.style.display='none'"
     />
     <div class="object-hero-copy">
+      <span class="eyebrow">Object dossier</span>
       <h1>{object.title}</h1>
-      <p class="muted">{object.object_type}</p>
+      <p class="muted">{objectTypeLabel}</p>
       <p>{object.description}</p>
     </div>
   </section>

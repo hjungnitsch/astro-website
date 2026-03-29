@@ -1,29 +1,62 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ImageCard from "../components/ImageCard.astro";
-import { getAllImages } from "../lib/content";
+import { formatDate, getAllImages, getImageAssetUrl, getImageById } from "../lib/content";
 
 const images = await getAllImages();
 const latest = images.slice(0, 5);
+const featuredImage = await getImageById("img_20250919_andromeda");
+
+if (!featuredImage) {
+  throw new Error("Missing homepage featured image: img_20250919_andromeda");
+}
 ---
 
-<BaseLayout title="AstroCaptures" description="Astrophotography gallery with deep-sky and solar-system captures.">
-  <section class="hero">
-    <h1>Astrophotography by Hendrik Jungnitsch</h1>
-    <p class="muted">
-      Astrophotography from my backyard in Bielefeld, Germany.<br/>
-      Since 2020, I’ve been capturing whatever the night sky offers, from the Sun and planets to distant nebulae, galaxies, and globular clusters.
-      <br/>
-      This site is a growing collection of my deep-sky and solar system work, including capture details and dedicated object pages.
+<BaseLayout
+  title="AstroCaptures"
+  description="Astrophotography gallery with deep-sky and solar-system captures."
+  pageClass="page-home"
+>
+  <section class="home-masthead">
+    <div class="home-masthead-copy">
+      <span class="eyebrow">Backyard astrophotography from Bielefeld, Germany</span>
+      <h1>Astrophotography by Hendrik Jungnitsch</h1>
+      <p class="home-intro">
+        Since 2020, I’ve been capturing whatever the night sky offers, from the Sun and planets to distant nebulae, galaxies, and globular clusters.
+        This site is a growing collection of my deep-sky and solar system work, including capture details and dedicated object pages.
+      </p>
+      <div class="home-actions">
+        <a class="button-subtle" href="/gallery">View gallery</a>
+        <span class="home-action-meta">{images.length} images in archive</span>
+      </div>
+    </div>
+
+    <a class="featured-hero-card" href={`/images/${featuredImage.id}`}>
+      <div class="featured-hero-frame">
+        <img src={getImageAssetUrl(featuredImage, "web")} alt={featuredImage.seo?.alt ?? featuredImage.title} fetchpriority="high" />
+      </div>
+      <div class="featured-hero-meta">
+        <span class="eyebrow">Featured image</span>
+        <strong>{featuredImage.title}</strong>
+        <span class="muted">{formatDate(featuredImage.date)} · Widefield deep sky</span>
+      </div>
+    </a>
+  </section>
+
+  <section class="home-section home-section-intro">
+    <div class="section-heading">
+      <span class="eyebrow">Latest captures</span>
+      <h2>Fresh additions from the archive</h2>
+    </div>
+    <p class="muted home-section-copy">
+      Recent processed images presented with the details
+      behind each final frame.
     </p>
   </section>
 
   <section>
-    <h2 class="section-title">Latest Captures</h2>
     <div class="grid">
-      {
-        latest.map((image) => <ImageCard image={image} />)
-      }
+      {latest.map((image) => <ImageCard image={image} />)}
     </div>
   </section>
 </BaseLayout>

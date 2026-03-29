@@ -6,13 +6,15 @@ interface Props {
   description?: string;
   image?: string;
   canonicalPath?: string;
+  pageClass?: string;
 }
 
 const {
   title,
   description = "Astrophotography images, capture details, and celestial object references.",
   image,
-  canonicalPath = Astro.url.pathname
+  canonicalPath = Astro.url.pathname,
+  pageClass = ""
 } = Astro.props;
 
 const siteUrl = Astro.site ?? new URL("https://astrocaptures.de");
@@ -64,7 +66,7 @@ const navItems = [
     <meta name="twitter:description" content={description} />
     {ogImage && <meta name="twitter:image" content={ogImage} />}
   </head>
-  <body>
+  <body class={pageClass}>
     <header class="site-header">
       <a class="brand" href="/">
         <img class="brand-mark" src="/mark-outline.svg" alt="" width="30" height="30" loading="eager" />

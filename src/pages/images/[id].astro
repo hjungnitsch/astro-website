@@ -109,8 +109,10 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
   description={image.description ?? image.title}
   image={getImageAssetUrl(image, "web")}
   canonicalPath={`/images/${image.id}`}
+  pageClass="page-image-detail"
 >
-  <section class="hero">
+  <section class="hero image-hero">
+    <span class="eyebrow">Captured Frame</span>
     <h1>{image.title}</h1>
     <p class="muted">{formatDate(image.date)}</p>
     {image.description && <p>{image.description}</p>}
@@ -171,18 +173,18 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
       )}
     </dl>
 
-    <div class="panel" style="margin-top:0.9rem;">
+    <div class="panel image-related-panel">
       <h2>Objects</h2>
-      <div class="pill-list" style="margin-top:0.7rem;">
+      <div class="pill-list image-related-pills">
         {objectItems.map((item) => (
           <a class="pill" href={`/objects/${item.slug}`}>{item.title}</a>
         ))}
       </div>
     </div>
 
-    <div class:list={{ "detail-grid": true, "detail-grid-single": !skychartUrl }} style="margin-top:0.9rem;">
+    <div class:list={{ "detail-grid": true, "detail-grid-single": !skychartUrl, "image-detail-grid": true }}>
       {skychartUrl && (
-        <section class="panel">
+        <section class="panel image-detail-panel image-detail-panel-visual">
           <h2>Sky Chart</h2>
           <img
             class="skychart-img"
@@ -193,7 +195,7 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
         </section>
       )}
 
-      <aside class="panel meta-list">
+      <aside class="panel meta-list image-detail-panel image-detail-panel-reference">
         <div>
           <h2>Equipment</h2>
           <dd class="equipment-list">
@@ -238,7 +240,7 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
     </div>
 
     {showCaptureDetails && (
-      <details class="panel capture-details" style="margin-top:0.9rem;">
+      <details class="panel capture-details capture-details-archive">
         <summary>Capture details</summary>
         <table>
           <thead>
