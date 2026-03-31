@@ -237,7 +237,7 @@ button:focus-visible {
 
 .image-hero {
   position: relative;
-  max-width: 62rem;
+  /*max-width: 62rem;*/
   padding-bottom: 1.35rem;
   margin-bottom: 1.2rem;
 }
@@ -252,12 +252,12 @@ button:focus-visible {
   margin-bottom: 1.2rem;
 }
 
-.image-hero,
-.objects-hero,
-.object-hero,
-.equipment-hero {
-  max-width: 62rem;
-}
+/*.image-hero,*/
+/*.objects-hero,*/
+/*.object-hero,*/
+/*.equipment-hero {*/
+/*  max-width: 62rem;*/
+/*}*/
 
 .gallery-hero::after,
 .image-hero::after,
