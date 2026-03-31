@@ -359,6 +359,7 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
     let pinchState = null;
 
     const roundZoomPercent = (value) => `${Math.round(value * 100)}%`;
+    const waitForNextFrame = () => new Promise((resolve) => requestAnimationFrame(() => resolve(undefined)));
 
     const setLoading = (isLoading) => {
       viewerLoading.hidden = !isLoading;
@@ -475,9 +476,11 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
       render();
     };
 
-    const ensureOriginalLoaded = (onReady) => {
+    const ensureOriginalLoaded = async (onReady) => {
       if (loadedOriginal) {
         setLoading(false);
+        await waitForNextFrame();
+        await waitForNextFrame();
         onReady();
         return;
       }
@@ -487,35 +490,39 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
 
       if (!originalSource) {
         setLoading(false);
+        await waitForNextFrame();
         onReady();
         return;
       }
 
       setLoading(true);
 
-      viewerImage.addEventListener(
-        "load",
-        () => {
-          loadedOriginal = viewerImage.src.includes(originalSource);
-          setLoading(false);
-          onReady();
-        },
-        { once: true }
-      );
+      try {
+        const preload = new Image();
+        preload.src = originalSource;
 
-      viewerImage.addEventListener(
-        "error",
-        () => {
-          if (webSource) {
-            viewerImage.src = webSource;
-          }
-          setLoading(false);
-          onReady();
-        },
-        { once: true }
-      );
+        if (typeof preload.decode === "function") {
+          await preload.decode();
+        } else {
+          await new Promise((resolve, reject) => {
+            preload.addEventListener("load", () => resolve(undefined), { once: true });
+            preload.addEventListener("error", () => reject(new Error("Failed to load original image.")), { once: true });
+          });
+        }
 
-      viewerImage.src = originalSource;
+        viewerImage.src = originalSource;
+        loadedOriginal = true;
+      } catch {
+        if (webSource) {
+          viewerImage.src = webSource;
+        }
+        loadedOriginal = false;
+      }
+
+      await waitForNextFrame();
+      await waitForNextFrame();
+      setLoading(false);
+      onReady();
     };
 
     const openFallback = () => {
@@ -525,7 +532,7 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
       }
     };
 
-    const openViewer = (trigger) => {
+    const openViewer = async (trigger) => {
       if (!supportsDialog) {
         openFallback();
         return;
@@ -534,7 +541,7 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
       lastTrigger = trigger;
       viewerDialog.showModal();
       setLoading(true);
-      ensureOriginalLoaded(() => refreshFitScale(true));
+      await ensureOriginalLoaded(() => refreshFitScale(true));
     };
 
     const mobileViewerMedia = window.matchMedia("(max-width: 560px)");
