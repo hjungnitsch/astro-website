@@ -1387,6 +1387,24 @@ th {
   }
 }
 
+@media (max-width: 980px) {
+  .home-masthead {
+    grid-template-columns: minmax(0, 0.9fr) minmax(300px, 0.95fr);
+    gap: 1.2rem;
+  }
+
+  .home-masthead::after {
+    left: 52%;
+    width: 30rem;
+    height: 30rem;
+  }
+
+  .featured-hero-card,
+  .featured-hero-card:hover {
+    transform: none;
+  }
+}
+
 @media (max-width: 840px) {
   .image-hero {
     margin-bottom: 1rem;
