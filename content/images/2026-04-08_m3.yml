@@ -1,6 +1,6 @@
-id: img_20250429_m3
+id: img_20260408_m3
 title: Globular Cluster M3
-date: 2025-03-05
+date: 2026-04-08
 capture_mode: deep_sky
 composition_type: single
 location_id: loc-bielefeld
@@ -11,20 +11,20 @@ targets:
   - m3
 
 equipment:
-  scope_id: scope-ontc-200
+  scope_id: scope-sqa-106
   mount_id: mount-sxp2
   camera_id: camera-asi533mc
   filter_id: filter-astronomik-l3
 
 acquisitions:
-  - session_id: 2025-04-27-main
-    date: 2025-04-27
-    frames: 127
-    exposure_s: 90
-  - session_id: 2025-04-29-main
-    date: 2025-04-29
-    frames: 91
-    exposure_s: 90
+  - session_id: 2026-04-06-main
+    date: 2026-04-06
+    frames: 98
+    exposure_s: 180
+  - session_id: 2026-04-08-main
+    date: 2026-04-08
+    frames: 101
+    exposure_s: 180
 
 assets:
   version: 1
