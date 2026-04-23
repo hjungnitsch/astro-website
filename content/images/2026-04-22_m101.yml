@@ -1,0 +1,41 @@
+id: img_20260422_m101
+title: Pinwheel Galaxy
+date: 2026-04-22
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of the Pinwheel Galaxy (M101). 2x drizzle integration downsampled to 75%.
+
+targets:
+  - m101
+
+equipment:
+  scope_id: scope-sqa-106
+  mount_id: mount-sxp2
+  camera_id: camera-asi533mc
+  filter_id: filter-astronomik-l3
+
+acquisitions:
+  - session_id: 2026-04-21-main
+    date: 2026-04-21
+    frames: 91
+    exposure_s: 180
+  - session_id: 2026-04-22-main
+    date: 2026-04-22
+    frames: 73
+    exposure_s: 180
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of the Pinwheel Galaxy M101.
+  keywords:
+    - m101
+    - pinwheel galaxy
+    - astrophotography
+    - deep sky
