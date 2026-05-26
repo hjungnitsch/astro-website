@@ -1,0 +1,18 @@
+id: m13
+slug: m13
+title: Globular Cluster M13
+domain: deep_sky
+object_type: globular-cluster
+catalogs:
+  messier: M13
+  ngc: NGC 6205
+constellation: Hercules
+ra_deg: 250.4235
+dec_deg: 36.4613
+magnitude: 5.8
+angular_size_arcmin: "20 x 20"
+description: >
+  The Great Globular Cluster in Hercules, one of the brightest and best known
+  globular clusters in the northern sky.
+aliases:
+  - NGC 6205

@@ -1,0 +1,45 @@
+id: img_20260523_m13
+title: Hercules Globular Cluster
+date: 2026-05-23
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of the Hercules Globular Cluster M13.
+
+targets:
+  - m13
+
+equipment:
+  scope_id: scope-sqa-106
+  mount_id: mount-sxp2
+  camera_id: camera-asi533mc
+  filter_id: filter-astronomik-l3
+
+acquisitions:
+  - session_id: 2026-05-21-main
+    date: 2026-05-21
+    frames: 75
+    exposure_s: 180
+  - session_id: 2026-05-22-main
+    date: 2026-05-22
+    frames: 75
+    exposure_s: 180
+  - session_id: 2026-05-23-main
+    date: 2026-05-23
+    frames: 50
+    exposure_s: 180
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of the globular cluster M13.
+  keywords:
+    - m13
+    - globular cluster
+    - astrophotography
+    - deep sky
