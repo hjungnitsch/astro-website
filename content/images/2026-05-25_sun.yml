@@ -1,0 +1,30 @@
+id: img_20260525_sun
+title: Sun in H-Alpha inverted
+date: 2026-05-25
+capture_mode: solar_system
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Inverted H-Alpha Image of the Sun captured with the Skywatcher Heliostar 76 telescope.
+
+targets:
+  - sun
+
+equipment:
+  scope_id: scope-heliostar-76
+  mount_id: mount-sxp2
+  camera_id: camera-asi294mm
+
+capture:
+  focal_length_mm: 1575
+  notes: A 2.5x Barlow used. The Asi294mm camera was used in binned mode.
+
+assets:
+  version: 1
+
+seo:
+  alt: Sun in H-Alpha inverted.
+  keywords:
+    - sun
+    - h-alpha
+    - solar astrophotography
