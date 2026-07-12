@@ -1,0 +1,46 @@
+id: img_20260710_north_america_pelican
+title: North America and Pelican Nebula
+date: 2026-07-10
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Widefield image of the North America Nebula (NGC 7000) and Pelican Nebula (IC 5070).
+
+targets:
+  - ngc7000
+  - ic5070
+
+equipment:
+  scope_id: scope-sqa-106
+  mount_id: mount-sxp2
+  camera_id: camera-asi2400mc
+  filter_id: filter-antlia-triband
+
+acquisitions:
+  - session_id: 2026-07-09-main
+    date: 2026-07-09
+    frames: 40
+    exposure_s: 180
+    filter_id: filter-antlia-triband
+  - session_id: 2026-07-10-main
+    date: 2026-07-10
+    frames: 60
+    exposure_s: 180
+    filter_id: filter-antlia-triband
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Widefield image of North America Nebula.
+  keywords:
+    - north america nebula
+    - pelican nebula
+    - ngc7000
+    - ic5070
+    - astrophotography
+    - deep sky

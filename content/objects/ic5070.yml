@@ -1,0 +1,18 @@
+id: ic5070
+slug: ic5070
+title: Pelican Nebula
+domain: deep_sky
+object_type: emission-nebula
+catalogs:
+  ic: IC 5070
+constellation: Cygnus
+ra_deg: 312.75
+dec_deg: 44.37
+magnitude: 8.0
+angular_size_arcmin: "60 x 50"
+description: >
+  Large emission nebula in Cygnus next to the North America Nebula, shaped by
+  glowing hydrogen gas and dark dust lanes.
+aliases:
+  - IC 5067
+  - Pelican Nebula
