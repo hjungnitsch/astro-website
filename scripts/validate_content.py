@@ -30,7 +30,6 @@ SCHEMA_MAP = {
     "objects": "object.schema.json",
     "equipment": "equipment.schema.json",
     "locations": "location.schema.json",
-    "setups": "setup.schema.json",
 }
 
 
@@ -68,7 +67,7 @@ def main() -> int:
     parser.add_argument(
         "--content-dir",
         default="content",
-        help="Directory containing images/objects/equipment/locations/setups YAML folders.",
+        help="Directory containing images/objects/equipment/locations YAML folders.",
     )
     parser.add_argument(
         "--schemas-dir",
