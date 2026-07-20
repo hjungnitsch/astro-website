@@ -50,6 +50,13 @@ Image storage paths are deterministic:
 - Preserve `contents: read` as the default GitHub token permission unless a concrete step requires more.
 - Do not introduce `pull_request_target` for workflows that execute repository code.
 
+## Dependency updates
+
+- Keep `package-lock.json` synchronized with `package.json` and use `npm ci` for reproducible installs.
+- Change direct Python dependencies in `requirements-dev.in`, then regenerate the hashed `requirements-dev.txt` with the documented uv and Python versions; do not edit the generated lock manually.
+- Keep GitHub Actions pinned to full commit SHAs with the release version in an inline comment.
+- Pin Wrangler independently through the action's `wranglerVersion` input.
+
 ## Required checks
 
 Run all checks before merging:

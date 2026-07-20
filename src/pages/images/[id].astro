@@ -142,33 +142,41 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
     <dl class="meta-grid">
       <div class="meta-tile">
         <dt>Location</dt>
-        <dd>{location ? `${location.name}, ${location.country}` : image.location_id}</dd>
-        {locationLat && locationLon && <small class="meta-sub">lat: {locationLat}, long: {locationLon}</small>}
-        {location?.bortle && <small class="meta-sub">Bortle {location.bortle}</small>}
+        <dd>
+          {location ? `${location.name}, ${location.country}` : image.location_id}
+          {locationLat && locationLon && <small class="meta-sub">lat: {locationLat}, long: {locationLon}</small>}
+          {location?.bortle && <small class="meta-sub">Bortle {location.bortle}</small>}
+        </dd>
       </div>
       {showDeepSkyCaptureTile && (
         <div class="meta-tile">
           <dt>Capture</dt>
-          <dd>{formatIntegrationSeconds(totalIntegration!)}</dd>
-          <small class="meta-sub">
-            {sessionCount!} session{sessionCount === 1 ? "" : "s"} · {exposureSummary!.value}
-          </small>
-          {exposureSummary!.secondary && <small class="meta-sub">{exposureSummary!.secondary}</small>}
+          <dd>
+            {formatIntegrationSeconds(totalIntegration!)}
+            <small class="meta-sub">
+              {sessionCount!} session{sessionCount === 1 ? "" : "s"} · {exposureSummary!.value}
+            </small>
+            {exposureSummary!.secondary && <small class="meta-sub">{exposureSummary!.secondary}</small>}
+          </dd>
         </div>
       )}
       {showSolarCaptureTile && (
         <div class="meta-tile">
           <dt>Capture</dt>
-          <dd>{totalVideoFrames} video frames</dd>
-          <small class="meta-sub">Exposure/frame: {exposurePerFrame}</small>
-          {stackedSummary && <small class="meta-sub">{stackedSummary}</small>}
+          <dd>
+            {totalVideoFrames} video frames
+            <small class="meta-sub">Exposure/frame: {exposurePerFrame}</small>
+            {stackedSummary && <small class="meta-sub">{stackedSummary}</small>}
+          </dd>
         </div>
       )}
       {focalLengthMm !== null && (
         <div class="meta-tile">
           <dt>Focal length</dt>
-          <dd>{`${focalLengthMm} mm`}</dd>
-          {effectiveFRatio !== null && <small class="meta-sub">{`f/${effectiveFRatio.toFixed(1)}`}</small>}
+          <dd>
+            {`${focalLengthMm} mm`}
+            {effectiveFRatio !== null && <small class="meta-sub">{`f/${effectiveFRatio.toFixed(1)}`}</small>}
+          </dd>
         </div>
       )}
     </dl>
@@ -198,7 +206,7 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
       <aside class="panel meta-list image-detail-panel image-detail-panel-reference">
         <div>
           <h2>Equipment</h2>
-          <dd class="equipment-list">
+          <div class="equipment-list">
             <div>
               <span class="equip-label">Scope</span>
               <span>{scope ? `${scope.brand} ${scope.model}` : image.equipment.scope_id}</span>
@@ -234,7 +242,7 @@ const showSolarCaptureTile = isSolarSystem && showCaptureDetails;
                 )}
               </div>
             )}
-          </dd>
+          </div>
         </div>
       </aside>
     </div>

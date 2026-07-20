@@ -111,10 +111,12 @@ const objectTypeLabel = object.object_type.replace(/-/g, " ").replace(/\b\w/g, (
         {catalogEntries.length > 0 && (
           <div class="meta-tile">
             <dt>Catalog numbers</dt>
-            <dd>{`${catalogEntries[0].label}: ${catalogEntries[0].value}`}</dd>
-            {catalogEntries.slice(1).map((entry) => (
-              <small class="meta-sub">{`${entry.label}: ${entry.value}`}</small>
-            ))}
+            <dd>
+              {`${catalogEntries[0].label}: ${catalogEntries[0].value}`}
+              {catalogEntries.slice(1).map((entry) => (
+                <small class="meta-sub">{`${entry.label}: ${entry.value}`}</small>
+              ))}
+            </dd>
           </div>
         )}
         {object.constellation && (
@@ -126,9 +128,11 @@ const objectTypeLabel = object.object_type.replace(/-/g, " ").replace(/\b\w/g, (
         {hasCoordinates && (
           <div class="meta-tile">
             <dt>Coordinates</dt>
-            <dd>{`RA: ${formatRa(object.ra_deg!)}`}</dd>
-            <small class="meta-sub">{`Dec: ${formatDec(object.dec_deg!)}`}</small>
-            <small class="meta-sub">{`RA: ${object.ra_deg!.toFixed(4)}deg · Dec: ${object.dec_deg!.toFixed(4)}deg`}</small>
+            <dd>
+              {`RA: ${formatRa(object.ra_deg!)}`}
+              <small class="meta-sub">{`Dec: ${formatDec(object.dec_deg!)}`}</small>
+              <small class="meta-sub">{`RA: ${object.ra_deg!.toFixed(4)}deg · Dec: ${object.dec_deg!.toFixed(4)}deg`}</small>
+            </dd>
           </div>
         )}
         {typeof object.magnitude === "number" && (
@@ -140,8 +144,10 @@ const objectTypeLabel = object.object_type.replace(/-/g, " ").replace(/\b\w/g, (
         {object.angular_size_arcmin && (
           <div class="meta-tile">
             <dt>Angular size</dt>
-            <dd>{object.angular_size_arcmin}</dd>
-            <small class="meta-sub">arcmin</small>
+            <dd>
+              {object.angular_size_arcmin}
+              <small class="meta-sub">arcmin</small>
+            </dd>
           </div>
         )}
       </dl>

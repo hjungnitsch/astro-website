@@ -5,5 +5,6 @@ export default defineConfig({
   site: "https://astrocaptures.de",
   output: "static",
   integrations: [sitemap()],
+  compressHTML: true,
   trailingSlash: "never"
 });

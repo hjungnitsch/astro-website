@@ -21,9 +21,10 @@ The build does not contain astrophotography binaries. It generates deterministic
 
 ## Requirements
 
-- Node.js 22.12 or newer
-- npm 9.6.5 or newer
-- Python 3.12 recommended to match CI
+- Node.js 24.18.0, pinned in `.node-version`, `package.json`, and CI
+- npm 11.16.0, pinned in `package.json` and bundled with the pinned Node.js release
+- Python 3.14.6, pinned in `.python-version` and CI
+- uv 0.11.30 when regenerating the Python dependency lock
 - Git
 - Suitable R2 or Cloudflare access when uploading originals, charts, object images, or generated derivatives
 
@@ -36,7 +37,7 @@ npm ci
 
 python3 -m venv .venv
 . .venv/bin/activate
-python -m pip install -r requirements-dev.txt
+python -m pip install --require-hashes -r requirements-dev.txt
 ```
 
 Start the development server:
@@ -48,6 +49,22 @@ npm run dev
 Images use `https://img.astrocaptures.de` by default, so local development does not require local image files or R2 credentials.
 
 The custom YAML loader caches content in the Astro process. Restart the development server if a YAML change is not reflected.
+
+### Dependency locks
+
+`package-lock.json` pins the complete npm dependency graph used by `npm ci`. Regenerate it with the Node.js and npm versions pinned in `package.json`.
+
+Python direct dependencies are declared in `requirements-dev.in`. `requirements-dev.txt` is generated with uv 0.11.30 for Python 3.14 and pins the complete transitive graph with package hashes. Do not edit the generated lock manually. Regenerate it with [uv](https://docs.astral.sh/uv/) after changing the input file:
+
+```bash
+uv pip compile requirements-dev.in \
+  --python-version 3.14 \
+  --generate-hashes \
+  --upgrade \
+  --output-file requirements-dev.txt
+```
+
+GitHub Actions are pinned to full commit SHAs with release comments, and Wrangler is pinned separately through `wranglerVersion`. Dependabot checks npm and GitHub Actions weekly. Python updates remain manual so the hashed lock is always regenerated with the documented uv workflow.
 
 ## Quality checks
 
@@ -223,16 +240,16 @@ Previous image versions remain usable only while all R2 objects referenced by th
 
 ### `Missing dependency: jsonschema`
 
-Activate the virtual environment and install the Python requirements:
+Activate the virtual environment and install the locked Python requirements:
 
 ```bash
 . .venv/bin/activate
-python -m pip install -r requirements-dev.txt
+python -m pip install --require-hashes -r requirements-dev.txt
 ```
 
 ### Astro reports an unsupported Node.js version
 
-Use Node.js 22.12 or newer, keep `package-lock.json`, and reinstall dependencies with `npm ci`.
+Use the Node.js version from `.node-version`, keep `package-lock.json`, and reinstall dependencies with `npm ci`.
 
 ### `Missing source image`
 

@@ -1,0 +1,4 @@
+jsonschema==4.26.0
+PyYAML==6.0.3
+boto3==1.43.52
+Pillow==12.3.0

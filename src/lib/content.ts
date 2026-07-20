@@ -1,6 +1,6 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import yaml from "js-yaml";
+import { load as loadYaml } from "js-yaml";
 import { z } from "zod";
 
 const CONTENT_ROOT = path.join(process.cwd(), "content");
@@ -80,7 +80,7 @@ const imageSchema = z.object({
   if (image.capture_mode === "deep_sky") {
     if (!image.acquisitions || image.acquisitions.length === 0) {
       context.addIssue({
-        code: z.ZodIssueCode.custom,
+        code: "custom",
         path: ["acquisitions"],
         message: "Deep sky images must include at least one acquisition."
       });
@@ -90,7 +90,7 @@ const imageSchema = z.object({
     image.acquisitions.forEach((acquisition, index) => {
       if (typeof acquisition.frames !== "number" || typeof acquisition.exposure_s !== "number") {
         context.addIssue({
-          code: z.ZodIssueCode.custom,
+          code: "custom",
           path: ["acquisitions", index],
           message: "Deep sky acquisitions require both frames and exposure_s."
         });
@@ -164,7 +164,7 @@ async function readYamlDirectory<T>(directory: string, schema: z.ZodType<T>): Pr
   for (const fileName of yamlFiles) {
     const fullPath = path.join(absoluteDir, fileName);
     const raw = await fs.readFile(fullPath, "utf-8");
-    const parsed = yaml.load(raw);
+    const parsed = loadYaml(raw);
     const result = schema.safeParse(parsed);
     if (!result.success) {
       throw new Error(`Invalid content in ${directory}/${fileName}: ${result.error.message}`);
