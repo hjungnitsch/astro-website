@@ -1,0 +1,31 @@
+id: img_20260812_solar_eclipse
+title: Solar Eclipse
+date: 2026-08-12
+capture_mode: solar_system
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Collage of the partial solar eclipse on 12th of August 2026 captured from Bielefeld, Germany. Images aquired using the Skywatcher Heliostar 76 H-Aplha telescope.
+
+targets:
+  - sun
+
+equipment:
+  scope_id: scope-heliostar-76
+  mount_id: mount-sxp2
+  camera_id: camera-asi294mm
+
+capture:
+  focal_length_mm: 630
+  notes: The Asi294mm camera was used in binned mode.
+
+assets:
+  version: 1
+
+seo:
+  alt: Image of a solar eclipse.
+  keywords:
+    - sun
+    - eclipse
+    - h-alpha
+    - solar astrophotography
