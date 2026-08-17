@@ -5,7 +5,7 @@ capture_mode: solar_system
 composition_type: single
 location_id: loc-bielefeld
 description: >
-  Collage of the partial solar eclipse on 12th of August 2026 captured from Bielefeld, Germany. Images aquired using the Skywatcher Heliostar 76 H-Aplha telescope.
+  Collage of the partial solar eclipse on 12th of August 2026 captured from Bielefeld, Germany. Images aquired using the Skywatcher Heliostar 76 H-alpha telescope.
 
 targets:
   - sun
