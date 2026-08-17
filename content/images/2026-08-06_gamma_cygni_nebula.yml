@@ -1,0 +1,56 @@
+id: img_20260806_gamma_cygni_nebula
+title: Gamma Cygni Nebula
+date: 2026-01-22
+capture_mode: deep_sky
+composition_type: mosaic
+location_id: loc-bielefeld
+description: >
+  Widefield two panel Mosaic of the Gamma Cygni Nebula showing the Sadr Region and the Crescent Nebula. The frames for the mosaic were taken over a period of 4 nights.
+
+targets:
+  - ic1318
+  - ngc6888
+
+equipment:
+  scope_id: scope-sqa-106
+  mount_id: mount-sxp2
+  camera_id: camera-asi2400mc
+  filter_id: filter-antlia-triband
+
+acquisitions:
+  - session_id: 2026-07-11-night1
+    date: 2026-07-11
+    frames: 66
+    exposure_s: 180
+    filter_id: filter-antlia-triband
+  - session_id: 2026-07-12-night2
+    date: 2026-07-12
+    frames: 50
+    exposure_s: 180
+    filter_id: filter-antlia-triband
+  - session_id: 2026-01-21-night3
+    date: 2026-07-24
+    frames: 62
+    exposure_s: 180
+    filter_id: filter-antlia-triband
+  - session_id: 2026-08-06-night4
+    date: 2026-08-06
+    frames: 54
+    exposure_s: 180
+    filter_id: filter-antlia-triband
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+
+seo:
+  alt: Widefield mosaic of the Gamma Cygni Nebula.
+  keywords:
+    - gamma cygni nebula
+    - ic1318
+    - crescent nebula
+    - ngc6888
+    - deep sky astrophotography
