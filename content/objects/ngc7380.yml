@@ -1,0 +1,19 @@
+id: ngc7380
+slug: ngc7380
+title: Wizard Nebula
+domain: deep_sky
+object_type: emission-nebula
+catalogs:
+  ngc: NGC 7380
+  sharpless: Sh2-142
+constellation: Cepheus
+ra_deg: 341.8375
+dec_deg: 58.1317
+angular_size_arcmin: "25 x 25"
+description: >
+  Emission nebula in Cepheus surrounding the young open cluster NGC 7380. Stellar
+  radiation and winds sculpt the gas and dust of Sh2-142 into the structure that
+  gives the Wizard Nebula its name.
+aliases:
+  - Wizard Nebula
+  - Sh2-142

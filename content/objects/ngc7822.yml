@@ -1,0 +1,17 @@
+id: ngc7822
+slug: ngc7822
+title: Question Mark Nebula
+domain: deep_sky
+object_type: emission-nebula
+catalogs:
+  ngc: NGC 7822
+constellation: Cepheus
+ra_deg: 0.8958
+dec_deg: 67.15
+angular_size_arcmin: "60 x 30"
+description: >
+  Star-forming emission nebula in Cepheus, forming the curved upper section of
+  the Question Mark Nebula complex. Its bright ionization fronts and dark dust
+  lanes make it a prominent narrowband target.
+aliases:
+  - Question Mark Nebula
