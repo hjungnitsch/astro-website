@@ -1,0 +1,12 @@
+id: saturn
+slug: saturn
+title: Saturn
+domain: solar_system
+object_type: planet
+catalogs:
+  iau: Saturn
+description: >
+  The sixth planet from the Sun. Planetary images often reveal its prominent ring
+  system, atmospheric bands, and nearby moons.
+aliases:
+  - The Ringed Planet
