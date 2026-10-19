@@ -5,7 +5,7 @@ capture_mode: solar_system
 composition_type: single
 location_id: loc-bielefeld
 description: >
-  High frame-rate planetary capture of Saturn and Titan. 4 Videos derotated. A 2.7x coma correcting barlow lens was used for maginfication.
+  High frame-rate planetary capture of Saturn and one of its moons Titan. 4 Videos derotated. A 2.7x coma correcting barlow lens was used for maginfication.
 
 targets:
   - saturn

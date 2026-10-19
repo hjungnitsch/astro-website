@@ -1,0 +1,41 @@
+id: img_20261014_pacman_nebula
+title: Pacman Nebula
+date: 2026-10-14
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Broadband Image of the Pacman Nebula (NGC 281).
+
+targets:
+  - ngc281
+
+equipment:
+  scope_id: scope-sqa-106
+  mount_id: mount-sxp2
+  camera_id: camera-asi533mc
+  filter_id: filter-astronomik-l3
+
+acquisitions:
+  - session_id: 2026-10-12-main
+    date: 2026-10-12
+    frames: 116
+    exposure_s: 180
+  - session_id: 2026-10-14-main
+    date: 2026-10-14
+    frames: 76
+    exposure_s: 180
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of the Pacman Nebula.
+  keywords:
+    - ngc281
+    - pacman nebula
+    - astrophotography
+    - deep sky

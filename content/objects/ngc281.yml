@@ -1,0 +1,17 @@
+id: ngc281
+slug: ngc281
+title: Pacman Nebula
+domain: deep_sky
+object_type: emission-nebula
+catalogs:
+  ngc: NGC 281
+constellation: Cassiopeia
+ra_deg: 13.2473
+dec_deg: 56.6219
+angular_size_arcmin: "35 x 30"
+description: >
+  Star-forming emission nebula in Cassiopeia whose bright gas and dark dust lanes
+  create its distinctive Pacman-like appearance. It is a popular broadband and
+  narrowband imaging target.
+aliases:
+  - Pac-Man Nebula
