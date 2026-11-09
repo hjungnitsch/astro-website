@@ -1,0 +1,38 @@
+id: img_20261106_double_cluster
+title: Double Cluster
+date: 2026-11-05
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of the Double Cluster in the constellation Perseus.
+
+targets:
+  - ngc869-ngc884
+
+equipment:
+  scope_id: scope-sqa-106
+  mount_id: mount-sxp2
+  camera_id: camera-asi533mc
+  filter_id: filter-astronomik-l3
+
+acquisitions:
+  - session_id: 2026-11-06-main
+    date: 2026-11-06
+    frames: 170
+    exposure_s: 90
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of the Double Cluster.
+  keywords:
+    - ngc869
+    - ngc884
+    - double cluster
+    - astrophotography
+    - deep sky

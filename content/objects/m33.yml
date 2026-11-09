@@ -1,0 +1,19 @@
+id: m33
+slug: m33
+title: Triangulum Galaxy
+domain: deep_sky
+object_type: galaxy
+catalogs:
+  messier: M33
+  ngc: NGC 598
+constellation: Triangulum
+ra_deg: 23.4621
+dec_deg: 30.6599
+magnitude: 5.7
+angular_size_arcmin: "71 x 42"
+description: >
+  A nearby spiral galaxy in the Local Group, viewed nearly face-on. Its spiral
+  arms contain numerous star-forming regions, including the prominent emission
+  nebula NGC 604.
+aliases:
+  - Triangulum

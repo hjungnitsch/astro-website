@@ -1,0 +1,19 @@
+id: ngc869-ngc884
+slug: ngc869-ngc884
+title: Double Cluster
+domain: deep_sky
+object_type: open-cluster
+catalogs:
+  ngc: NGC 869 / NGC 884
+  caldwell: C14
+constellation: Perseus
+ra_deg: 34.75
+dec_deg: 57.1333
+angular_size_arcmin: "60 x 60"
+description: >
+  A pair of young open star clusters in Perseus, NGC 869 and NGC 884. Their rich
+  fields of blue-white stars, punctuated by orange and red supergiants, make them
+  a striking wide-field imaging target.
+aliases:
+  - h and chi Persei
+  - Perseus Double Cluster

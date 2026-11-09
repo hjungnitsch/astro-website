@@ -1,0 +1,41 @@
+id: img_20261105_triangulum_galaxy
+title: Triangulum Galaxy
+date: 2026-11-05
+capture_mode: deep_sky
+composition_type: single
+location_id: loc-bielefeld
+description: >
+  Image of the Triangulum Galaxy (M33).
+
+targets:
+  - m33
+
+equipment:
+  scope_id: scope-sqa-106
+  mount_id: mount-sxp2
+  camera_id: camera-asi533mc
+  filter_id: filter-astronomik-l3
+
+acquisitions:
+  - session_id: 2026-11-04-main
+    date: 2026-11-04
+    frames: 110
+    exposure_s: 180
+  - session_id: 2026-11-05-main
+    date: 2026-11-05
+    frames: 120
+    exposure_s: 180
+
+assets:
+  version: 1
+
+skychart:
+  version: 1
+
+seo:
+  alt: Image of the Triangulum Galaxy.
+  keywords:
+    - m33
+    - triangulum galaxy
+    - astrophotography
+    - deep sky
